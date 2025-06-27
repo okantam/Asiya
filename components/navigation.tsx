@@ -29,7 +29,8 @@ export default function Navigation() {
             </div>
             <div className="flex flex-col">
               <span className="font-serif text-lg text-foreground">Art With</span>
-              <span className="font-serif text-xs text-muted-foreground -mt-1">CHERYL</span>
+              <span className="font-serif text-xs text-muted-foreground -mt-1">
+              Asiya</span>
             </div>
           </Link>
 
@@ -46,10 +47,30 @@ export default function Navigation() {
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
-
               <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-green-600 dark:text-green-400">
-                  Student Artwork
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/lessons"
+                    className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                  >
+                  Lesson & Curriculum
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild>
+                  <Link
+                    href="/portfolio"
+                    className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                  >
+                Portfolio
+                  </Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+
+              {/* <NavigationMenuItem>
+                <NavigationMenuTrigger>
+                 My Works
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <div className="grid w-[200px] p-2">
@@ -79,7 +100,7 @@ export default function Navigation() {
                     </NavigationMenuLink>
                   </div>
                 </NavigationMenuContent>
-              </NavigationMenuItem>
+              </NavigationMenuItem> */}
 
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
@@ -115,7 +136,7 @@ export default function Navigation() {
             </Link>
             <Link
               href="/auth/signup"
-              className="bg-green-700 hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+              className="bg-dusty-rose hover:bg-dusty-rose dark:bg-dusty-rose  text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
             >
               Sign Up
             </Link>

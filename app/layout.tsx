@@ -10,10 +10,10 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" })
 
 export const metadata: Metadata = {
-  title: "Art With Cheryl - Art Educator & Artist",
+  title: "Art With Asiya - Art Educator & Artist",
   description:
     "Inspiring creativity through art and education. Explore student artwork from elementary to high school levels.",
-    generator: 'v0.dev'
+    generator: 'Emmanuel Foeh'
 }
 
 export default function RootLayout({

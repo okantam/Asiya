@@ -5,15 +5,10 @@ import type React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { LayoutDashboard, Upload, Users, Settings, ArrowLeft } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { Upload, Users, Settings, ArrowLeft } from "lucide-react"
 
 const adminNavItems = [
-  {
-    title: "Dashboard",
-    href: "/admin",
-    icon: LayoutDashboard,
-  },
+  
   {
     title: "Upload Artwork",
     href: "/admin",
@@ -46,15 +41,14 @@ export default function AdminLayout({
           <div className="p-6">
             <div className="flex items-center justify-between mb-8">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-green-600 dark:bg-green-500 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-pink-600 dark:bg-pink-500 rounded-full flex items-center justify-center">
                   <span className="text-white font-bold text-sm">🎨</span>
                 </div>
                 <div className="flex flex-col">
                   <span className="font-serif text-lg text-foreground">Admin Panel</span>
-                  <span className="font-serif text-xs text-muted-foreground -mt-1">ART WITH CHERYL</span>
+                  <span className="font-serif text-xs text-muted-foreground -mt-1">ART WITH Asiya</span>
                 </div>
               </div>
-              <ThemeToggle />
             </div>
 
             <nav className="space-y-2">

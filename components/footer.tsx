@@ -1,4 +1,4 @@
-import Link from "next/link"
+
 
 export default function Footer() {
   return (
@@ -6,10 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-sm text-muted-foreground">
-            © 2025, All Rights Reserved. Website Developed By{" "}
-            <Link href="#" className="text-green-600 dark:text-green-400 hover:underline">
-              Zakariya
-            </Link>
+            © 2025, All Rights Reserved.
           </p>
         </div>
       </div>

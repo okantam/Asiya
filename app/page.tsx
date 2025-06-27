@@ -7,7 +7,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center justify-center">
+      <section className="relative h-[407px] object-cover object-center flex items-center justify-center">
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -18,26 +18,28 @@ export default function HomePage() {
         </div>
 
         <div className="relative z-10 text-center bg-background/95 dark:bg-background/90 backdrop-blur-sm p-8 rounded-lg max-w-2xl mx-4 border border-border">
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-2">Cheryl</h1>
-          <h2 className="text-2xl md:text-3xl font-serif italic text-muted-foreground mb-4">Art Educator/Artist</h2>
+          <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-2" style={{ fontFamily: "sacramento,cursive" }}>Art Educator/Teaching Portfolio
+          </h1>
+          {/* <h2 className="text-2xl md:text-3xl font-serif italic text-muted-foreground mb-4">Art Educator/Artist</h2> */}
           <p className="text-lg text-muted-foreground mb-6">Inspiring Creativity Through Art & Education</p>
           <Button
             asChild
-            className="bg-green-700 hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 text-white px-8 py-3"
+            variant='outline'
+            className="bg-dusty-rose  text-white px-8 py-3"
           >
-            <Link href="/elementary-art">Student Art Work</Link>
+            <Link href="/elementary-art">Lessons</Link>
           </Button>
         </div>
       </section>
 
       {/* Introduction Section */}
-      <section className="py-16 bg-green-50 dark:bg-green-950/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-card rounded-lg shadow-lg overflow-hidden border border-border">
-            <div className="md:flex">
+      <section className="py-16 bg-green-50 dark:bg-green-950/20 m-0 bg-[linear-gradient(157deg,_#FFFFFF_2.23%,_#AFB7D6_73.54%,_#045184_100%)]">
+        <div className="w-[calc(100%-5rem)] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-card h-[450px] rounded-lg shadow-lg  overflow-hidden border border-border">
+            <div className="md:flex justify-center">
               <div className="md:w-1/2 p-8">
-                <h2 className="text-3xl font-bold text-foreground mb-4">Hi, I'm Cheryl</h2>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <h2 className="text-3xl font-bold text-foreground mb-4">Hi, I'm Asiya Kinebrew</h2>
+                <p className="w-2/3 text-muted-foreground mb-6 leading-relaxed">
                   Welcome! I am an experienced art educator passionate about fostering creativity in students. Through
                   hands-on projects, mixed media, and mindfulness, I help young artists explore, express, and gain
                   confidence in their creative process.
@@ -52,19 +54,21 @@ export default function HomePage() {
                 </div>
                 <Button
                   asChild
+                  
                   variant="outline"
-                  className="bg-green-700 text-white hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 border-green-700 dark:border-green-600"
+                  className=" !border-2 !border-dusty-rose !text-dusty-rose hover:!bg-dusty-rose hover:!text-white px-8 py-4 rounded-full font-semibold transition-all duration-300"
                 >
                   <Link href="/about">Learn More</Link>
                 </Button>
               </div>
-              <div className="md:w-1/2">
+              <div className="md:w-1/3 relative h-[450px]">
                 <Image
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=400&fit=crop&crop=face"
-                  alt="Cheryl - Art Educator"
+                  src="/images/Asiya-profile.png"
+                  alt="Asiya - Art Educator"
                   width={500}
-                  height={400}
-                  className="w-full h-full object-cover"
+                  height={600}
+                  className="w-full h-full object-cover "
+                 
                 />
               </div>
             </div>
