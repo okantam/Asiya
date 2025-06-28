@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Upload, ImageIcon, Trash2 } from "lucide-react"
+import { Upload, ImageIcon, Trash2, UploadIcon } from "lucide-react"
 
 interface UploadedImage {
   id: string
@@ -32,15 +32,12 @@ export default function AdminPage() {
   const [isUploading, setIsUploading] = useState(false)
 
   const categories = [
-    "Elementary Art",
-    "Middle School Art",
-    "High School Art",
-    "Kindergarten",
+    "Ceramics",
+    "Photography",
     "Mixed Media",
     "Digital Art",
-    "Sculpture",
+    "2D Art",
     "Painting",
-    "Drawing",
   ]
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -119,7 +116,7 @@ export default function AdminPage() {
                 <Upload className="w-5 h-5 mr-2" />
                 Upload New Artwork
               </CardTitle>
-              <CardDescription>Add new student artwork to the gallery</CardDescription>
+              <CardDescription>Add new artwork to the gallery</CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -127,7 +124,7 @@ export default function AdminPage() {
                 <div>
                   <Label htmlFor="image">Image *</Label>
                   <div className="mt-1">
-                    <div className="flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-green-400 transition-colors">
+                    <div className="flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md hover:border-pink-400 transition-colors">
                       <div className="space-y-1 text-center">
                         {previewUrl ? (
                           <div className="relative">
@@ -155,7 +152,7 @@ export default function AdminPage() {
                             <div className="flex text-sm text-gray-600">
                               <label
                                 htmlFor="image"
-                                className="relative cursor-pointer bg-white rounded-md font-medium text-green-600 hover:text-green-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-green-500"
+                                className="relative cursor-pointer bg-white rounded-md font-medium text-pink-600 hover:text-pink-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-green-500"
                               >
                                 <span>Upload a file</span>
                                 <input
@@ -223,8 +220,9 @@ export default function AdminPage() {
                   />
                 </div>
 
-                <Button type="submit" disabled={isUploading} className="w-full bg-green-700 hover:bg-green-800">
+                <Button type="submit" disabled={isUploading} className="w-full bg-dusty-rose hover:bg-mauve text-white">
                   {isUploading ? "Uploading..." : "Upload Artwork"}
+                  <UploadIcon className="h-5 w-5" />
                 </Button>
               </form>
             </CardContent>
@@ -255,7 +253,7 @@ export default function AdminPage() {
                       />
                       <div className="flex-1 min-w-0">
                         <h4 className="text-sm font-medium text-gray-900 truncate">{image.title}</h4>
-                        <p className="text-sm text-green-600">{image.category}</p>
+                        <p className="text-sm text-pink-600">{image.category}</p>
                         {image.description && (
                           <p className="text-xs text-gray-500 mt-1 line-clamp-2">{image.description}</p>
                         )}

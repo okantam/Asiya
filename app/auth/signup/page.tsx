@@ -62,7 +62,7 @@ export default function SignUpPage() {
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-gray-900">Create your account</h2>
-          <p className="mt-2 text-sm text-gray-600">Join the Art With Cheryl community</p>
+          <p className="mt-2 text-sm text-gray-600">Join the Art With Asiya community</p>
         </div>
 
         <Card>
@@ -170,7 +170,7 @@ export default function SignUpPage() {
                 </div>
               </div>
 
-              <div className="flex items-center space-x-2">
+              {/* <div className="flex items-center space-x-2">
                 <Checkbox
                   id="agreeToTerms"
                   checked={formData.agreeToTerms}
@@ -178,24 +178,24 @@ export default function SignUpPage() {
                 />
                 <Label htmlFor="agreeToTerms" className="text-sm">
                   I agree to the{" "}
-                  <Link href="#" className="text-green-600 hover:text-green-500">
+                  <Link href="#" className="text-dusty-rose hover:text-mauve">
                     Terms and Conditions
                   </Link>{" "}
                   and{" "}
-                  <Link href="#" className="text-green-600 hover:text-green-500">
+                  <Link href="#" className="text-dusty-rose hover:text-mauve">
                     Privacy Policy
                   </Link>
                 </Label>
-              </div>
+              </div> */}
 
-              <Button type="submit" disabled={isLoading} className="w-full bg-green-700 hover:bg-green-800">
+              <Button type="submit" disabled={isLoading} className="w-full bg-dusty-rose hover:bg-mauve">
                 {isLoading ? "Creating account..." : "Create account"}
               </Button>
 
               <div className="text-center">
                 <span className="text-sm text-gray-600">
                   Already have an account?{" "}
-                  <Link href="/auth/signin" className="font-medium text-green-600 hover:text-green-500">
+                  <Link href="/auth/signin" className="font-medium text-dusty-rose hover:text-mauve">
                     Sign in
                   </Link>
                 </span>

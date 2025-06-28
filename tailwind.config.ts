@@ -64,6 +64,7 @@ const config: Config = {
           'sage-green': '#A8B5A0',
           'charcoal': '#2D3748',
           'soft-white': '#FEFEFE',
+        'primary-dark': '#eaa8a8',
       },
       borderRadius: {
         lg: "var(--radius)",

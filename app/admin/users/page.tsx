@@ -113,9 +113,8 @@ export default function UserManagementPage() {
 
   const roles = [
     { value: "admin", label: "Admin", color: "bg-red-100 text-red-800" },
-    { value: "teacher", label: "Teacher", color: "bg-blue-100 text-blue-800" },
+    { value: "user", label: "User", color: "bg-blue-100 text-blue-800" },
     { value: "student", label: "Student", color: "bg-green-100 text-green-800" },
-    { value: "parent", label: "Parent", color: "bg-purple-100 text-purple-800" },
   ]
 
   const filteredUsers = users.filter((user) => {
@@ -304,7 +303,7 @@ export default function UserManagementPage() {
 
               <Dialog open={isAddDialogOpen} onOpenChange={setIsAddDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button className="bg-green-700 hover:bg-green-800">
+                  <Button className="bg-dusty-rose hover:bg-mauve">
                     <UserPlus className="w-4 h-4 mr-2" />
                     Add User
                   </Button>
@@ -365,7 +364,7 @@ export default function UserManagementPage() {
                     <Button variant="outline" onClick={() => setIsAddDialogOpen(false)}>
                       Cancel
                     </Button>
-                    <Button onClick={handleAddUser} className="bg-green-700 hover:bg-green-800">
+                    <Button onClick={handleAddUser} className="bg-dusty-rose hover:bg-mauve">
                       Add User
                     </Button>
                   </DialogFooter>

@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
-import { Linkedin, Instagram } from "lucide-react"
+import { Linkedin, Instagram, Send } from "lucide-react"
 import Link from "next/link"
 
 export default function ContactPage() {
@@ -32,49 +32,41 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="min-h-screen py-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-8">Contact</h1>
-
-          <div className="max-w-2xl mx-auto text-muted-foreground space-y-4 mb-8">
-            <p>Thank you for visiting my site.</p>
-            <p>I'm currently based in Muscat, Oman and always happy to connect.</p>
-            <p>If you have any questions or would like to reach out, feel free to contact me below.</p>
-          </div>
-        </div>
-
-        <div className="bg-muted/50 dark:bg-muted/20 rounded-lg p-8 border border-border">
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold text-foreground mb-4">Let's Connect</h2>
-            <p className="text-muted-foreground mb-4">Follow along or reach out via email or social media:</p>
-
-            <div className="mb-6">
-              <Link
-                href="mailto:artdesigncheryl@gmail.com"
-                className="text-green-600 dark:text-green-400 hover:underline"
-              >
-                artdesigncheryl@gmail.com
-              </Link>
+   
+    <div className="min-h-screen">
+          {/* Hero Section */}
+          <section className="relative h-[400px] flex items-center justify-center">
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage:
+                  "url('/images/paint-brash.jpg')",
+              }}
+            >
+              <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
             </div>
-
-            <div className="flex space-x-4">
-              <Link href="#" className="text-muted-foreground hover:text-green-600 dark:hover:text-green-400">
-                <Linkedin className="w-6 h-6" />
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-green-600 dark:hover:text-green-400">
-                <Instagram className="w-6 h-6" />
-              </Link>
+    
+            <div className="relative z-10 text-center bg-soft-white/95 p-8 rounded-lg max-w-3xl mx-4 border border-border">
+              <h1 className="text-4xl md:text-5xl font-serif italic text-dusty-rose mb-4">
+              Let's Create Together
+              </h1>
+              <p className="text-lg text-coffee/80">Ready to start your artistic journey? Get in touch to learn more about classes, schedule a consultation, or ask any questions about art education.</p>
             </div>
-          </div>
-
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <Label htmlFor="firstName" className="text-sm font-medium text-foreground">
-                  First Name
-                </Label>
-                <Input
+          </section>
+    
+          {/* Main Content */}
+      
+    
+          {/* Background & Experience */}
+          <section className="py-16">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <form onSubmit={handleSubmit} className="space-y-6">
+           <div className="grid md:grid-cols-2 gap-6">
+            <div>
+               <Label htmlFor="firstName" className="text-sm font-medium text-foreground">
+                 First Name
+               </Label>
+              <Input
                   type="text"
                   id="firstName"
                   name="firstName"
@@ -130,14 +122,15 @@ export default function ContactPage() {
             <div className="text-center">
               <Button
                 type="submit"
-                className="bg-green-700 hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700 text-white px-12 py-3"
+                className="bg-dusty-rose hover:bg-mauve text-white px-12 py-3"
               >
-                Send
+                Send Message
+                <Send className="h-5 w-5" />
               </Button>
             </div>
           </form>
+            </div>
+          </section>
         </div>
-      </div>
-    </div>
   )
 }

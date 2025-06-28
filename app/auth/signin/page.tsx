@@ -44,7 +44,7 @@ export default function SignInPage() {
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-foreground">Welcome back</h2>
-          <p className="mt-2 text-sm text-muted-foreground">Sign in to your Art With Cheryl account</p>
+          <p className="mt-2 text-sm text-muted-foreground">Sign in to your Art With Asiya account</p>
         </div>
 
         <Card>
@@ -98,7 +98,7 @@ export default function SignInPage() {
 
               <div className="flex items-center justify-between">
                 <div className="text-sm">
-                  <Link href="#" className="font-medium text-green-600 dark:text-green-400 hover:text-green-500">
+                  <Link href="#" className="font-medium text-mauve">
                     Forgot your password?
                   </Link>
                 </div>
@@ -107,7 +107,7 @@ export default function SignInPage() {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-green-700 hover:bg-green-800 dark:bg-green-600 dark:hover:bg-green-700"
+                className="w-full bg-dusty-rose hover:bg-mauve"
               >
                 {isLoading ? "Signing in..." : "Sign in"}
               </Button>
@@ -117,7 +117,7 @@ export default function SignInPage() {
                   Don't have an account?{" "}
                   <Link
                     href="/auth/signup"
-                    className="font-medium text-green-600 dark:text-green-400 hover:text-green-500"
+                    className="font-medium text-mauve dark:text-mauve hover:text-mauve"
                   >
                     Sign up
                   </Link>

@@ -19,11 +19,6 @@ const adminNavItems = [
     href: "/admin/users",
     icon: Users,
   },
-  {
-    title: "Settings",
-    href: "/admin/settings",
-    icon: Settings,
-  },
 ]
 
 export default function AdminLayout({
@@ -54,7 +49,7 @@ export default function AdminLayout({
             <nav className="space-y-2">
               <Link
                 href="/"
-                className="flex items-center space-x-3 text-muted-foreground hover:text-green-600 dark:hover:text-green-400 hover:bg-accent rounded-lg px-3 py-2 transition-colors"
+                className="flex items-center space-x-3 text-muted-foreground hover:text-pink-600 dark:hover:text-pink-400 hover:bg-accent rounded-lg px-3 py-2 transition-colors"
               >
                 <ArrowLeft className="w-4 h-4" />
                 <span className="text-sm font-medium">Back to Site</span>
@@ -69,8 +64,8 @@ export default function AdminLayout({
                     className={cn(
                       "flex items-center space-x-3 rounded-lg px-3 py-2 transition-colors",
                       isActive
-                        ? "bg-green-100 dark:bg-green-900/20 text-green-700 dark:text-green-400"
-                        : "text-muted-foreground hover:text-green-600 dark:hover:text-green-400 hover:bg-accent",
+                        ? "bg-pink-100 dark:bg-pink-900/20 text-pink-700 dark:text-pink-400"
+                        : "text-muted-foreground hover:text-pink-600 dark:hover:text-pink-400 hover:bg-accent",
                     )}
                   >
                     <item.icon className="w-4 h-4" />

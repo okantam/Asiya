@@ -20,7 +20,7 @@ const lessonPlans = [
       { name: "Activity Lesson Plan", type: "pdf", icon: FileText },
       { name: "Bingo Activity Plan", type: "pdf", icon: FileText },
       { name: "Bingo Activity Slideshow", type: "presentation", icon: Presentation },
-      { name: "Bingo Cards", type: "pdf", icon: ImageIcon },
+      
     ],
     category: "Cultural Education",
     grade: "4th Grade",
@@ -32,11 +32,7 @@ const lessonPlans = [
     image: "/images/marine-life.png",
     imageAlt: "Colorful marine life mural featuring whale, sea turtle, and ocean creatures",
     materials: [
-      { name: "Complete Lesson Plan", type: "pdf", icon: FileText },
-      { name: "Marine Life Reference Guide", type: "pdf", icon: FileText },
-      { name: "Mural Planning Template", type: "pdf", icon: ImageIcon },
-      { name: "Assessment Rubric", type: "pdf", icon: FileText },
-      { name: "Student Worksheets", type: "pdf", icon: FileText },
+      { name: "Lesson Plan", type: "pdf", icon: FileText },
     ],
     category: "Environmental Art",
     grade: "Elementary",
@@ -89,14 +85,32 @@ export default function LessonPlansPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-pink-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
+      {/* <div className="bg-cream-pink/50 shadow-sm border-b">
         <div className="container mx-auto px-6 py-12">
           <div className="text-center">
-            <h1 className="text-5xl font-bold text-gray-900 mb-4 tracking-tight">Elementary Lesson Plans</h1>
+            <h1 className="text-5xl font-bold text-coffee mb-4 tracking-tight">Elementary Lesson Plans</h1>
             <div className="w-24 h-1 bg-pink-500 mx-auto rounded-full"></div>
           </div>
         </div>
-      </div>
+      </div> */}
+       <section className="relative h-[400px] flex items-center justify-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1200&h=400&fit=crop')",
+          }}
+        >
+          <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
+        </div>
+
+        <div className="relative z-10 text-center bg-soft-white/95 p-8 rounded-lg max-w-3xl mx-4 border border-border">
+          <h1 className="text-4xl md:text-5xl font-serif italic text-dusty-rose mb-4" style={{ fontFamily: "sacramento,cursive" }}>
+          Elementary Lesson Plans
+          </h1>
+          <p className="text-lg text-coffee/80">Lesson & Curriculum</p>
+        </div>
+      </section>
 
       {/* Main Content */}
       <div className="container mx-auto px-6 py-12">
@@ -126,7 +140,7 @@ export default function LessonPlansPage() {
                       {/* Header */}
                       <div className="space-y-4">
                         <div className="flex flex-wrap gap-2">
-                          <Badge variant="secondary" className="bg-blue-100 text-blue-800 hover:bg-blue-200">
+                          <Badge variant="secondary" className="bg-pink-50 text-pink-400 hover:bg-pink-200">
                             {lesson.category}
                           </Badge>
                           <Badge variant="outline" className="border-gray-300">
@@ -172,14 +186,16 @@ export default function LessonPlansPage() {
                             >
                               <div className="flex items-center gap-3">
                                 <material.icon className={`h-5 w-5 ${getFileTypeColor(material.type)}`} />
-                                <span className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors">
+                                <span className="font-medium text-gray-900 group-hover:text-pink-400 transition-colors">
                                   {material.name}
                                 </span>
                               </div>
                               <Button
+                              
                                 size="sm"
+                                variant='outline'
                                 onClick={() => handleDownload(material.name)}
-                                className="bg-blue-600 hover:bg-blue-700 text-white shadow-sm"
+                                className="!border-2 !border-dusty-rose !text-dusty-rose  hover:!text-whites hover:bg-pink-50 shadow-sm"
                               >
                                 <Download className="h-4 w-4 mr-2" />
                                 Download

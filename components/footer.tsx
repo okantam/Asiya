@@ -1,15 +1,61 @@
+import React from 'react';
+import { Palette, Heart } from 'lucide-react';
 
-
-export default function Footer() {
+const Footer = () => {
   return (
-    <footer className="bg-muted py-8 mt-16 border-t border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <p className="text-sm text-muted-foreground">
-            © 2025, All Rights Reserved.
-          </p>
+    <footer className="bg-coffee text-white py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            <div className="md:col-span-2">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="relative">
+                  <Palette className="h-8 w-8 text-dusty-rose" />
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-sage-green rounded-full"></div>
+                </div>
+                <div>
+                  <span className="text-xl font-serif font-bold">Art With</span>
+                  <div className="text-sm text-dusty-rose font-medium tracking-wide">ASIYA KINE BREW</div>
+                </div>
+              </div>
+              <p className="text-gray-300 leading-relaxed max-w-md">
+                Inspiring creativity and nurturing artistic talent through personalized 
+                art instruction, mindful practices, and comprehensive educational resources.
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4 text-dusty-rose">Quick Links</h4>
+              <ul className="space-y-2">
+                <li><a href="/about" className="text-gray-300 hover:text-dusty-rose transition-colors">About</a></li>
+                {/* <li><a href="#gallery" className="text-gray-300 hover:text-dusty-rose transition-colors">Student Artwork</a></li> */}
+                <li><a href="/lesson" className="text-gray-300 hover:text-dusty-rose transition-colors">Resources</a></li>
+                <li><a href="/contact" className="text-gray-300 hover:text-dusty-rose transition-colors">Contact</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold mb-4 text-dusty-rose">Programs</h4>
+              <ul className="space-y-2 text-gray-300">
+                <li>Elementary Art</li>
+                <li>Middle School Art</li>
+                <li>High School Art</li>
+                <li>Creative Workshops</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-gray-600 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <p className="text-gray-300 flex items-center space-x-2">
+                <span>© 2025, All Rights Reserved.</span>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
+
+export default Footer;

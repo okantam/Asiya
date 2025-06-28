@@ -1,9 +1,13 @@
+"use client"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Linkedin, Instagram } from "lucide-react"
+import { ArrowRight, Linkedin, Instagram, Facebook, Eye } from "lucide-react"
 
 export default function HomePage() {
+  const openResume = () => {
+    window.open("/Asiya Kinebrew's Resume.pdf", "_blank");
+  };
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -27,7 +31,7 @@ export default function HomePage() {
             variant='outline'
             className="bg-dusty-rose  text-white px-8 py-3"
           >
-            <Link href="/elementary-art">Lessons</Link>
+            <Link href="/lessons">Lessons</Link>
           </Button>
         </div>
       </section>
@@ -35,39 +39,50 @@ export default function HomePage() {
       {/* Introduction Section */}
       <section className="py-16 bg-green-50 dark:bg-green-950/20 m-0 bg-[linear-gradient(157deg,_#FFFFFF_2.23%,_#AFB7D6_73.54%,_#045184_100%)]">
         <div className="w-[calc(100%-5rem)] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-card h-[450px] rounded-lg shadow-lg  overflow-hidden border border-border">
-            <div className="md:flex justify-center">
-              <div className="md:w-1/2 p-8">
+          <div className="bg-card rounded-lg shadow-lg  overflow-hidden border border-border">
+            <div className="flex flex-col-reverse md:flex-row justify-center">
+              <div className="order-2 md:order-1 md:w-1/2 p-8 my-auto">
+                {/* <h2 className="text-3xl font-bold text-foreground mb-4">Welcome</h2> */}
                 <h2 className="text-3xl font-bold text-foreground mb-4">Hi, I'm Asiya Kinebrew</h2>
-                <p className="w-2/3 text-muted-foreground mb-6 leading-relaxed">
-                  Welcome! I am an experienced art educator passionate about fostering creativity in students. Through
-                  hands-on projects, mixed media, and mindfulness, I help young artists explore, express, and gain
-                  confidence in their creative process.
+                <p className="w-full md:w-2/3 text-muted-foreground mb-6 leading-relaxed">
+                   A Pre-Service Art Teacher and junior at Miami University of Ohio, pursuing a degree in Art Education.
                 </p>
                 <div className="flex space-x-4 mb-6">
-                  <Link href="#" className="text-muted-foreground hover:text-green-600 dark:hover:text-green-400">
+                  <a href="https://www.linkedin.com/in/asiyakinebrew/" target="_blank" className="text-muted-foreground hover:text-dusty-rose dark:hover:text-dusty-rose">
                     <Linkedin className="w-6 h-6" />
-                  </Link>
-                  <Link href="#" className="text-muted-foreground hover:text-green-600 dark:hover:text-green-400">
+                  </a>
+                  <Link href="#" className="text-muted-foreground hover:text-dusty-rose dark:hover:text-dusty-rose">
                     <Instagram className="w-6 h-6" />
                   </Link>
+                  <Link href="#" className="text-muted-foreground hover:text-dusty-rose dark:hover:text-dusty-rose">
+                    <Facebook className="w-6 h-6" />
+                  </Link>
                 </div>
-                <Button
+<div className="flex flex-col md:flex-row  mt-4 gap-4">
+  <Button
                   asChild
                   
                   variant="outline"
-                  className=" !border-2 !border-dusty-rose !text-dusty-rose hover:!bg-dusty-rose hover:!text-white px-8 py-4 rounded-full font-semibold transition-all duration-300"
+                  className=" !border-2 !border-dusty-rose !text-dusty-rose hover:!bg-dusty-rose hover:!text-white px-8 py-4 font-semibold transition-all duration-300"
                 >
-                  <Link href="/about">Learn More</Link>
+                  <Link href="/about">Read More</Link>
                 </Button>
+                <Button
+                onClick={openResume}
+                  className="bg-dusty-rose hover:text-white px-8 py-4 font-semibold transition-all duration-300"
+                >
+                  View My Resume
+                <Eye className="w-4 h-4 mr-2" />
+                </Button>
+</div>   
               </div>
-              <div className="md:w-1/3 relative h-[450px]">
+              <div className="order-1 md:order-2 md:w-1/3 relative">
                 <Image
-                  src="/images/Asiya-profile.png"
-                  alt="Asiya - Art Educator"
-                  width={500}
-                  height={600}
-                  className="w-full h-full object-cover "
+                  src="/images/new-Asiya-profile.png"
+                  alt="Asiya - profile"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover"
                  
                 />
               </div>
@@ -101,10 +116,10 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="group-hover:bg-green-700 group-hover:text-white dark:group-hover:bg-green-600 transition-colors"
+                  className="group-hover:bg-primary-dark group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
                 >
                   <Link href="/elementary-art" className="flex items-center">
-                    View Gallery <ArrowRight className="w-4 h-4 ml-2" />
+                    View Lesson <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
               </div>
@@ -131,10 +146,10 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="group-hover:bg-green-700 group-hover:text-white dark:group-hover:bg-green-600 transition-colors"
+                  className="group-hover:bg-primary-dark group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
                 >
-                  <Link href="/middle-school-art" className="flex items-center">
-                    View Gallery <ArrowRight className="w-4 h-4 ml-2" />
+                  <Link href="/lessons" className="flex items-center">
+                    View Lesson <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
               </div>
@@ -161,10 +176,10 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="group-hover:bg-green-700 group-hover:text-white dark:group-hover:bg-green-600 transition-colors"
+                  className="group-hover:bg-primary-dark group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
                 >
-                  <Link href="/high-school-art" className="flex items-center">
-                    View Gallery <ArrowRight className="w-4 h-4 ml-2" />
+                  <Link href="/lessons" className="flex items-center">
+                    View Lesson <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
               </div>

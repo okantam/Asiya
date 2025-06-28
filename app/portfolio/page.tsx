@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from 'react';
-import { ArrowLeft, Filter } from 'lucide-react';
 import MasonryGallery from '@/components/MasonryGallery';
 
 const GalleryPage = ({ onBack }: { onBack: () => void }) => {
@@ -57,7 +56,7 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
   return (
     <div className="min-h-screen bg-soft-white">
       {/* Header */}
-      <div className="bg-cream-pink/50 py-8">
+      {/* <div className="bg-cream-pink/50 py-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
                   
@@ -72,7 +71,26 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <section className="relative h-[400px] flex items-center justify-center">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1200&h=400&fit=crop')",
+          }}
+        >
+          <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
+        </div>
+
+        <div className="relative z-10 text-center bg-soft-white/95 p-8 rounded-lg max-w-3xl mx-4 border border-border">
+          <h1 className="text-4xl md:text-5xl font-serif italic text-dusty-rose mb-4" style={{ fontFamily: "sacramento,cursive" }}>
+          Artwork Gallery
+          </h1>
+          <p className="text-lg text-coffee/80"> Explore the creative journey of my work across different category and skill levels. 
+          Each piece represents growth, learning, and artistic expression.</p>
+        </div>
+      </section>
 
       {/* Filter Section */}
       <div className="py-8 bg-soft-white border-b border-cream-pink">

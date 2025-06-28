@@ -15,11 +15,11 @@ export default function AboutPage() {
           <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
         </div>
 
-        <div className="relative z-10 text-center bg-background/95 dark:bg-background/90 backdrop-blur-sm p-8 rounded-lg max-w-3xl mx-4 border border-border">
-          <h1 className="text-4xl md:text-5xl font-serif italic text-foreground mb-4">
+        <div className="relative z-10 text-center bg-soft-white/95 p-8 rounded-lg max-w-3xl mx-4 border border-border">
+          <h1 className="text-4xl md:text-5xl font-serif italic text-dusty-rose mb-4">
             Art Educator/Teaching Portfolio
           </h1>
-          <p className="text-lg text-muted-foreground">Inspiring Creativity Through Art & Education</p>
+          <p className="text-lg text-coffee/80">Inspiring Creativity Through Art & Education</p>
         </div>
       </section>
 
@@ -30,26 +30,29 @@ export default function AboutPage() {
             <div className="md:flex">
               <div className="md:w-1/3">
                 <Image
-                  src="https://images.unsplash.com/photo-1494790108755-2616c9c0e8c5?w=400&h=400&fit=crop&crop=face"
-                  alt="Cheryl - Art Educator at the beach"
+                  src="/images/new-Asiya-profile.png"
+                  alt="Asiya - Art Educator at the beach"
                   width={400}
                   height={400}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="md:w-2/3 p-8">
+              <div className="md:w-2/3 p-8 my-auto">
                 <div className="mb-8">
                   <blockquote className="text-lg italic text-muted-foreground mb-4 text-center">
-                    "When I'm not teaching or making art, you'll likely find me outside – by the ocean, in the sunlight,
-                    and anywhere with wide open space. Nature feeds my creative process."
+                  “Art has the role in education of helping children become like themselves instead of more like everyone else.”
+                  — <span className="font-semibold">Sydney Gurewitz Clemens</span> 
                   </blockquote>
                 </div>
 
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Art has always been a meaningful part of my life, both personally and professionally. For over 15
-                  years, I've had the joy of helping students tap into their creativity, build confidence, and explore
-                  self-expression through hands-on projects, mixed media, and mindful art experiences.
+                 I'm <span className="font-bold"> Asiya Kinebrew-Okanta </span>
+                   an Art Education student at Miami University with a passion for guiding children through creativity as a tool for healing, reflection, and growth. My teaching approach is rooted in the belief that art is not just skill, but "soul"... a path to wholeness, voice, and connection.
                 </p>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                Through process-based, reflective learning, I guide young artists to explore their identities, tap into their intuition, and express what words sometimes can’t. In my classroom, we embrace exploration, make space for feelings, and create with care.
+                </p>
+               
               </div>
             </div>
           </div>
@@ -61,55 +64,46 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center">
-              <span className="text-green-600 dark:text-green-400 mr-2">🎓</span>
+              <span className="mr-2">🎓</span>
               My Background & Experience
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              I hold a Bachelor of Fine Arts and a Bachelor of Education, specializing in Art. Over the years, I've
-              taught in Canada, Taiwan, the Cayman Islands, the United Arab Emirates, Kazakhstan, and Oman, working with
-              students from elementary to high school.
+           I'm a Pre-Service Art Teacher and junior at Miami University of Ohio, pursuing a degree in Art Education.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              My experience also includes curriculum development, interdisciplinary projects, ESL instruction, and an
-              ongoing interest in creative therapy techniques.
+            My background includes collaborative lesson planning, culturally responsive teaching, hands-on craft facilitation, and continued exploration of inclusive, community-based art practices.
             </p>
           </div>
-
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center">
-              <span className="text-green-600 dark:text-green-400 mr-2">🎨</span>
+              <span className="mr-2">🎨</span>
               My Approach to Teaching Art
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-4">
-              I believe art is more than just technique—it's about exploration, expression, and problem-solving. My
-              teaching approach centers on:
+            I’m passionate about using art as a vehicle for learning, empowerment, and expression.
+            <br />
+            My work centers on:
             </p>
-            <ul className="list-disc list-inside text-muted-foreground space-y-2 mb-4">
-              <li>🎯 Encouraging experimentation with materials and techniques</li>
-              <li>✨ Supporting students in developing their unique artistic voice</li>
-              <li>🌟 Making art accessible and enjoyable for all learners</li>
+            <ul className=" list-inside text-muted-foreground space-y-2 mb-4">
+              <li>🧑‍🏫 Teaching art with purpose</li>
+              <li>⚜️ Designing inclusive and engaging curriculum</li>
+              <li>🎯 Advocating creatively for social and educational change</li>
+              <li>✨ Empowering students through intentional, expressive experiences</li>
+              <li>🌟 Inspiring the next generation of artists</li>
             </ul>
             <p className="text-muted-foreground leading-relaxed">
-              Whether we're working with painting, mixed media, ceramics, printmaking, or digital art, I strive to
-              create a classroom environment that is engaging, inclusive, and supportive- where students feel free to
-              take creative risks and grow through the process.
+            Whether exploring painting, mixed media, ceramics, printmaking, or digital art, I aim to foster a creative space that’s welcoming, inclusive, and full of encouragement—where students feel confident to take artistic risks and evolve through the creative journey.
             </p>
           </div>
 
           <div>
             <h2 className="text-2xl font-bold text-foreground mb-4 flex items-center">
-              <span className="text-green-600 dark:text-green-400 mr-2">🌱</span>
-              My Philosophy
+              <span className=" mr-2">🌱</span>
+              My Teaching Philosophy
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              I believe creativity lives in everyone, and that everyday life is full of inspiration waiting to be
-              explored.
-            </p>
+            
             <p className="text-muted-foreground leading-relaxed">
-              My goal is to help students feel curious and comfortable as they explore new ways of expressing their
-              ideas—allowing inspiration to grow naturally, and enjoying the process of making. It's also about building
-              confidence and connection—sharing their work with joy and pride, and engaging meaningfully with others
-              through the creative experience.
+            As a future in-service educator, I am passionate about creating an inclusive and supportive environment where students can freely explore their creativity and build confidence in their self-expression. I believe in the transformative power of art to inspire, heal, and connect, and I am dedicated to fostering these possibilities in every student I have the privilege to teach. 
             </p>
           </div>
         </div>
