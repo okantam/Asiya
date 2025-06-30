@@ -31,7 +31,7 @@ export default function AboutPage() {
             <div className="md:flex">
               <div className="md:w-1/3 overflow-hidden">
                 <Image
-                  src="/images/asiya-profile.png"
+                  src="/images/asiya-profile_.avif"
                   alt="Asiya - Art Educator at the beach"
                   width={400}
                   height={500}
