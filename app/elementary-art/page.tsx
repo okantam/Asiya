@@ -11,12 +11,12 @@ export default function ElementaryArtPage() {
   const kindergartenImages = [
     "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop",
     "https://images.unsplash.com/photo-1515378791036-0648a814c963?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&h=300&fit=crop",
+    // "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&h=300&fit=crop",
     "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
   ]
 
   const gradesImages = [
-    "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop",
+    // "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&h=400&fit=crop",
     "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&h=400&fit=crop",
     "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop",
   ]
