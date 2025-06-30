@@ -1,5 +1,5 @@
-import React from 'react';
-import { Palette, Heart } from 'lucide-react';
+import React from "react";
+import { Palette } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -14,23 +14,47 @@ const Footer = () => {
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-sage-green rounded-full"></div>
                 </div>
                 <div>
-                  <span className="text-xl font-serif font-bold">Art With</span>
-                  <div className="text-sm text-dusty-rose font-medium tracking-wide">ASIYA KINE BREW</div>
+                  <span className=" text-sm font-serif font-bold">Art With</span>
+                  <div className="text-xl text-dusty-rose font-medium tracking-wide">
+                    ASIYA KINE BREW
+                  </div>
                 </div>
               </div>
               <p className="text-gray-300 leading-relaxed max-w-md">
-                Inspiring creativity and nurturing artistic talent through personalized 
-                art instruction, mindful practices, and comprehensive educational resources.
+                Inspiring creativity and nurturing artistic talent through personalized
+                art instruction, mindful practices, and comprehensive educational
+                resources.
               </p>
             </div>
 
             <div>
               <h4 className="font-semibold mb-4 text-dusty-rose">Quick Links</h4>
               <ul className="space-y-2">
-                <li><a href="/about" className="text-gray-300 hover:text-dusty-rose transition-colors">About</a></li>
+                <li>
+                  <a
+                    href="/about"
+                    className="text-gray-300 hover:text-dusty-rose transition-colors"
+                  >
+                    About
+                  </a>
+                </li>
                 {/* <li><a href="#gallery" className="text-gray-300 hover:text-dusty-rose transition-colors">Student Artwork</a></li> */}
-                <li><a href="/lesson" className="text-gray-300 hover:text-dusty-rose transition-colors">Resources</a></li>
-                <li><a href="/contact" className="text-gray-300 hover:text-dusty-rose transition-colors">Contact</a></li>
+                <li>
+                  <a
+                    href="/lesson"
+                    className="text-gray-300 hover:text-dusty-rose transition-colors"
+                  >
+                    Resources
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/contact"
+                    className="text-gray-300 hover:text-dusty-rose transition-colors"
+                  >
+                    Contact
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -38,7 +62,7 @@ const Footer = () => {
               <h4 className="font-semibold mb-4 text-dusty-rose">Programs</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>Elementary Art</li>
-                <li>Middle School Art</li>
+                <li>Junior School Art</li>
                 <li>High School Art</li>
                 <li>Creative Workshops</li>
               </ul>

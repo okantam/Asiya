@@ -1,20 +1,23 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { useState } from "react"
-import { Menu } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
+import Link from "next/link";
+import { useState } from "react";
+import { Menu } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { usePathname } from "next/navigation";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+} from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false); // Example state for admin check
+  const pathname = usePathname();
 
   return (
     <header className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border sticky top-0 z-50">
@@ -26,9 +29,12 @@ export default function Navigation() {
               <span className="text-white font-bold text-sm">🎨</span>
             </div>
             <div className="flex flex-col">
-              <span className="text-xl lg:text-2xl font-serif font-bold text-coffee dark:text-primary-dark">Art With</span>
-              <span className="text-sm text-primary-dark dark:text-primary-dark font-medium tracking-wide">
-              Asiya</span>
+              <span className="text-sm font-serif font-bold text-coffee dark:text-primary-dark">
+                Art With
+              </span>
+              <span className=" text-xl lg:text-2xl text-primary-dark dark:text-primary-dark font-medium tracking-wide">
+                Asiya
+              </span>
             </div>
           </Link>
 
@@ -39,7 +45,11 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <Link
                     href="/"
-                    className="hover:text-primary-dark group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                      pathname === "/"
+                        ? "bg-accent text-primary-dark"
+                        : "bg-background hover:text-accent-foreground"
+                    }`}
                   >
                     Home
                   </Link>
@@ -49,9 +59,13 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <Link
                     href="/lessons"
-                    className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                      pathname === "/lessons"
+                        ? "bg-accent text-primary-dark"
+                        : "bg-background hover:text-accent-foreground"
+                    }`}
                   >
-                  Lesson & Curriculum
+                    Lesson & Curriculum
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -59,9 +73,13 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <Link
                     href="/portfolio"
-                    className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                      pathname === "/portfolio"
+                        ? "bg-accent text-primary-dark"
+                        : "bg-background hover:text-accent-foreground"
+                    }`}
                   >
-                Portfolio
+                    Portfolio
                   </Link>
                 </NavigationMenuLink>
               </NavigationMenuItem>
@@ -104,7 +122,11 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <Link
                     href="/about"
-                    className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                      pathname === "/about"
+                        ? "bg-accent text-primary-dark"
+                        : "bg-background hover:text-accent-foreground"
+                    }`}
                   >
                     About
                   </Link>
@@ -115,7 +137,11 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <Link
                     href="/contact"
-                    className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                      pathname === "/contact"
+                        ? "bg-accent text-primary-dark"
+                        : "bg-background hover:text-accent-foreground"
+                    }`}
                   >
                     Contact
                   </Link>
@@ -125,25 +151,31 @@ export default function Navigation() {
           </NavigationMenu>
 
           {/* Authentication Links & Theme Toggle - Desktop */}
-          <div className="hidden lg:flex items-center space-x-4 ml-8">
-            <Link
-              href="/auth/signin"
-              className="text-foreground hover:text-primary-dark dark:hover:text-primary-dark px-3 py-2 text-sm font-medium transition-colors"
-            >
-              Sign In
-            </Link>
-            <Link
-              href="/auth/signup"
-              className="bg-dusty-rose hover:bg-primary-dark dark:bg-dusty-rose  text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
-            >
-              Sign Up
-            </Link>
-            <Link
-              href="/admin"
-              className="text-foreground hover:text-primary-dark dark:hover:text-primary-dark px-3 py-2 text-sm font-medium transition-colors"
-            >
-              Admin
-            </Link>
+
+          <div className="flex items-center space-x-4 ">
+            {isAdmin && (
+              <div className="hidden lg:flex items-center space-x-4 ml-8">
+                <Link
+                  href="/auth/signin"
+                  className="text-foreground hover:text-primary-dark dark:hover:text-primary-dark px-3 py-2 text-sm font-medium transition-colors"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/auth/signup"
+                  className="bg-dusty-rose hover:bg-primary-dark dark:bg-dusty-rose  text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  Sign Up
+                </Link>
+                <Link
+                  href="/admin"
+                  className="text-foreground hover:text-primary-dark dark:hover:text-primary-dark px-3 py-2 text-sm font-medium transition-colors"
+                >
+                  Admin
+                </Link>
+              </div>
+            )}
+
             <ThemeToggle />
           </div>
 
@@ -163,7 +195,9 @@ export default function Navigation() {
                 </div>
                 <Link
                   href="/"
-                  className="text-lg font-medium hover:text-primary-dark transition-colors"
+                  className={`text-lg font-medium transition-colors ${
+                    pathname === "/" ? "text-primary-dark" : "hover:text-primary-dark"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   Home
@@ -196,14 +230,22 @@ export default function Navigation() {
                 </div> */}
                 <Link
                   href="/about"
-                  className="text-lg font-medium hover:text-primary-dark transition-colors"
+                  className={`text-lg font-medium transition-colors ${
+                    pathname === "/about"
+                      ? "text-primary-dark"
+                      : "hover:text-primary-dark"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   About
                 </Link>
                 <Link
                   href="/contact"
-                  className="text-lg font-medium hover:text-primary-dark transition-colors"
+                  className={`text-lg font-medium transition-colors ${
+                    pathname === "/contact"
+                      ? "text-primary-dark"
+                      : "hover:text-primary-dark"
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   Contact
@@ -235,5 +277,5 @@ export default function Navigation() {
         </div>
       </div>
     </header>
-  )
+  );
 }
