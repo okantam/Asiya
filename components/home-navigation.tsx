@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
@@ -11,6 +11,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export default function HomeNavigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,22 +20,11 @@ export default function HomeNavigation() {
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          {/* <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <span
-                className="text-3xl font-bold text-white drop-shadow-md"
-                style={{ fontFamily: "sacramento,cursive" }}
-              >
-                Asiya Kinebrew
-              </span>
-            </Link>
-          </div> */}
-
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden lg:flex mx-auto ">
+          <NavigationMenu className="hidden lg:flex mx-auto">
             <NavigationMenuList className="flex gap-40">
-              <NavigationMenuItem className="flex items-center">
+              {/* Left navigation items */}
+              <div className="flex items-center gap-4">
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link
@@ -56,8 +46,9 @@ export default function HomeNavigation() {
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
-              </NavigationMenuItem>
+              </div>
 
+              {/* Center logo/title */}
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link href="/" className="flex items-center">
@@ -71,7 +62,8 @@ export default function HomeNavigation() {
                 </NavigationMenuLink>
               </NavigationMenuItem>
 
-              <NavigationMenuItem className="flex items-center">
+              {/* Right navigation items */}
+              <div className="flex items-center gap-4">
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link
@@ -93,20 +85,17 @@ export default function HomeNavigation() {
                     </Link>
                   </NavigationMenuLink>
                 </NavigationMenuItem>
-              </NavigationMenuItem>
+              </div>
             </NavigationMenuList>
           </NavigationMenu>
 
           {/* Theme Toggle and Mobile Menu Button */}
           <div className="flex items-center justify-between pt-8 md:pt-0">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="lg:hidden text-white"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              <Menu className="h-8 w-8" />
-            </Button>
+            <div className="text-white">
+              <ThemeToggle />
+            </div>
+
+            {/* Mobile title */}
             <div className="flex md:hidden justify-center">
               <span
                 className="text-3xl text-center font-bold text-white drop-shadow-md"
@@ -115,56 +104,64 @@ export default function HomeNavigation() {
                 Artist, Educator, & Visionary
               </span>
             </div>
-            <div className="text-white">
-              <ThemeToggle />
+
+            <div className="flex items-center space-x-4">
+              {/* Mobile Navigation */}
+              <Sheet open={isOpen} onOpenChange={setIsOpen}>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="sm" className="lg:hidden text-white">
+                    <Menu className="h-8 w-8" />
+                    <span className="sr-only">Toggle menu</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                  <nav className="flex flex-col space-y-4 mt-8">
+                    <div className="flex justify-between items-center mb-4">
+                      <span className="text-lg font-semibold">Menu</span>
+                      <ThemeToggle />
+                    </div>
+                    <Link
+                      href="/"
+                      className="text-lg font-medium hover:text-primary-dark transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Home
+                    </Link>
+                    <Link
+                      href="/lessons"
+                      className="text-lg font-medium hover:text-primary-dark transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Lessons
+                    </Link>
+                    <Link
+                      href="/portfolio"
+                      className="text-lg font-medium hover:text-primary-dark transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Portfolio
+                    </Link>
+                    <Link
+                      href="/about"
+                      className="text-lg font-medium hover:text-primary-dark transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      About
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="text-lg font-medium hover:text-primary-dark transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Contact
+                    </Link>
+                  </nav>
+                </SheetContent>
+              </Sheet>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-sm">
-          <div className="flex justify-end p-4">
-            <Button variant="ghost" size="sm" onClick={() => setIsOpen(false)}>
-              <X className="h-6 w-6" />
-            </Button>
-          </div>
-          <nav className="flex flex-col items-center justify-center h-full space-y-8">
-            <Link
-              href="/lessons"
-              className="text-lg font-medium hover:text-primary-dark transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Lessons
-            </Link>
-            <Link
-              href="/portfolio"
-              className="text-lg font-medium hover:text-primary-dark transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Portfolio
-            </Link>
-            <Link
-              href="/about"
-              className="text-lg font-medium hover:text-primary-dark transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="text-lg font-medium hover:text-primary-dark transition-colors"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </Link>
-            <div className="mt-8">
-              <ThemeToggle />
-            </div>
-          </nav>
-        </div>
-      )}
     </header>
   );
 }

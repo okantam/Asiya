@@ -63,7 +63,7 @@ export default function HomePage() {
                 </Button>
                 <Button
                   onClick={openResume}
-                  className="border-2 border-coral-700  bg-transparent hover:border-coral-700 text-gray-100 px-8 py-4 rounded-full font-bold hover:bg-coral-700 hover:text-white transition-all"
+                  className="border-2   bg-transparent hover:border-coral-700 text-gray-100 px-8 py-4 rounded-full font-bold hover:bg-coral-700 hover:text-white transition-all"
                 >
                   View My Resume
                   <Eye className="w-4 h-4 mr-2" />
@@ -77,7 +77,7 @@ export default function HomePage() {
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
             fill="#e58991"
-            fill-opacity="1"
+            fillOpacity="1"
             d="M0,256L48,218.7C96,181,192,107,288,112C384,117,480,203,576,245.3C672,288,768,288,864,250.7C960,213,1056,139,1152,122.7C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
           ></path>
         </svg>
@@ -184,7 +184,7 @@ export default function HomePage() {
                   size="sm"
                   className="group-hover:bg-coral-600 text-charcoal bg-coral-300  group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
                 >
-                  <Link href="/elementary-art" className="flex items-center">
+                  <Link href="/lessons?tab=elementary" className="flex items-center">
                     View Lesson <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
@@ -216,7 +216,7 @@ export default function HomePage() {
                   size="sm"
                   className="group-hover:bg-coral-600 text-charcoal bg-coral-300  group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
                 >
-                  <Link href="/middle-school-art" className="flex items-center">
+                  <Link href="/lessons?tab=junior" className="flex items-center">
                     View Lesson <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
@@ -248,7 +248,7 @@ export default function HomePage() {
                   size="sm"
                   className="group-hover:bg-coral-600 text-charcoal bg-coral-300  group-hover:text-white dark:group-hover:bg-coral-600 transition-colors"
                 >
-                  <Link href="/high-school-art" className="flex items-center">
+                  <Link href="/lessons?tab=high-school" className="flex items-center">
                     View Lesson <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
