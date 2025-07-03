@@ -1,4 +1,4 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: ["class"],
@@ -55,6 +55,18 @@ const config: Config = {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
+        coral: {
+          50: "#fef7f7",
+          100: "#fdeeed",
+          200: "#fbc4c1",
+          300: "#f89a95",
+          400: "#f57069",
+          500: "#f2463d",
+          600: "#FF8B94",
+          700: "#e63946",
+          800: "#cc252f",
+          900: "#b31419",
+        },
 
         "dusty-rose": "#D4A5A5",
         mauve: "#C49A9A",
@@ -109,4 +121,4 @@ const config: Config = {
   ],
 };
 
-export default config
+export default config;

@@ -3,105 +3,159 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Linkedin, Instagram, Eye } from "lucide-react";
+import HomeNavigation from "@/components/home-navigation";
 
 export default function HomePage() {
   const openResume = () => {
     window.open("/Asiya Kinebrew's Resume.pdf", "_blank");
   };
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-primary-dark dark:bg-gray-900 text-white">
+      <HomeNavigation />
+
       {/* Hero Section */}
-      <section className="relative h-[407px] object-cover object-center flex items-center justify-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/images/homepage-background.jpeg')",
-          }}
-        >
-          <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
-        </div>
+      {/* New Hero Section */}
+      <section className="pt-24 bg-[linear-gradient(157deg,_#be848f_2.23%,_#d58597_73.54%,_#d9b7bd_100%)] relative">
+        <div className="absolute top-24 right-36 w-32 h-32 bg-[#d5a4a8] rounded-full opacity-30"></div>
+        <div className="max-w-7xl mx-auto my-auto px-4 gap-12 flex items-center relative">
+          <div className="flex flex-col md:flex-row md:mt-16 justify-center">
+            <div className="flex md:w-1/2 mt-6 md:mt-0 overflow-hidden rounded-md relative">
+              <Image
+                src="/images/asiya-hero-brush.png"
+                alt="Asiya - profile"
+                width={500}
+                height={1000}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className=" md:w-1/2 p-8 my-auto">
+              <h2 className="text-4xl text-center md:text-left md:w-[60%] font-bold text-white dark:text-charcoal mb-4">
+                Inspiring the Next Generation of Artists
+              </h2>
 
-        <div className="relative z-10 text-center bg-background/95 dark:bg-background/90 backdrop-blur-sm p-8 rounded-lg max-w-2xl mx-4 border border-border">
-          <h1
-            className="text-4xl md:text-5xl font-bold text-dusty-rose mb-4"
-            style={{ fontFamily: "sacramento,cursive" }}
-          >
-            Teaching Portfolio
-          </h1>
-          {/* <h2 className="text-2xl md:text-3xl font-serif italic text-muted-foreground mb-4">Art Educator/Artist</h2> */}
-          <p className="text-lg text-muted-foreground mb-6">
-            Inspiring Creativity Through Art & Education
-          </p>
-          <Button
-            asChild
-            variant="outline"
-            className="bg-dusty-rose  text-white hover:text-white hover:bg-primary-dark px-8 py-3"
-          >
-            <Link href="/lessons">Lessons</Link>
-          </Button>
-        </div>
-      </section>
-
-      {/* Introduction Section */}
-      <section className="py-16 bg-green-50 dark:bg-green-950/20 m-0 bg-[linear-gradient(157deg,_#f2dde1_2.23%,_#d58597_73.54%,_#d9b7bd_100%)]">
-        <div className="w-[calc(100%-5rem)] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-card rounded-lg shadow-lg  overflow-hidden border border-border">
-            <div className="flex flex-col-reverse md:flex-row justify-center">
-              <div className="order-2 md:order-1 md:w-1/2 p-8 my-auto">
-                {/* <h2 className="text-3xl font-bold text-foreground mb-4">Welcome</h2> */}
-                <h2 className="text-3xl font-bold text-foreground mb-4">
-                  Hi, I'm Asiya Kinebrew
-                </h2>
-                <p className="w-full md:w-2/3 text-muted-foreground mb-6 leading-relaxed">
-                  A Pre-Service Art Teacher and junior at Miami University of Ohio,
-                  pursuing a degree in Art Education.
-                </p>
-                <div className="flex space-x-4 mb-6">
-                  <a
-                    href="https://www.linkedin.com/in/asiyakinebrew/"
-                    target="_blank"
-                    className="text-muted-foreground hover:text-primary-dark dark:hover:text-dusty-rose"
-                  >
-                    <Linkedin className="w-6 h-6" />
-                  </a>
-                  <Link
-                    href="https://www.instagram.com/asiyateaches"
-                    target="_blank"
-                    className="text-muted-foreground hover:text-primary-dark dark:hover:text-dusty-rose"
-                  >
-                    <Instagram className="w-6 h-6" />
-                  </Link>
-                </div>
-                <div className="flex flex-col md:flex-row  mt-4 gap-4">
-                  <Button
-                    asChild
-                    variant="outline"
-                    className=" !border-2 !border-dusty-rose text-dusty-rose hover:bg-primary-dark hover:!text-white px-8 py-4 font-semibold transition-all duration-300"
-                  >
-                    <Link href="/about">Read More</Link>
-                  </Button>
-                  <Button
-                    onClick={openResume}
-                    className="bg-dusty-rose hover:text-white hover:!bg-primary-dark px-8 py-4 font-semibold transition-all duration-300"
-                  >
-                    View My Resume
-                    <Eye className="w-4 h-4 mr-2" />
-                  </Button>
-                </div>
+              <p className="w-full text-center md:text-left  md:w-2/3 text-charcoal mb-6 leading-relaxed">
+                A Pre-Service Art Teacher at Miami University of Ohio, pursuing a degree
+                in Art Education.
+              </p>
+              <div className="flex justify-center md:justify-start space-x-4 mb-6">
+                <a
+                  href="https://www.linkedin.com/in/asiyakinebrew/"
+                  target="_blank"
+                  className="text-coffee hover:text-coral-700 dark:hover:text-coral-700"
+                >
+                  <Linkedin className="w-6 h-6" />
+                </a>
+                <Link
+                  href="https://www.instagram.com/asiyateaches"
+                  target="_blank"
+                  className="text-coffee hover:text-coral-700 dark:hover:text-coral-700"
+                >
+                  <Instagram className="w-6 h-6" />
+                </Link>
               </div>
-              <div className="order-1 md:order-2 md:w-1/3 relative">
-                <Image
-                  src="/images/asiya-profile_.avif"
-                  alt="Asiya - profile"
-                  width={400}
-                  height={400}
-                  className="w-full h-full object-cover"
-                />
+              <div className="flex flex-col md:flex-row  mt-4 gap-4">
+                <Button
+                  asChild
+                  variant="secondary"
+                  className="bg-coral-600 border-coral-600 text-white px-8 py-4 rounded-full font-bold hover:bg-coral-700 transition-all transform hover:scale-105"
+                >
+                  <Link href="/about">Read More</Link>
+                </Button>
+                <Button
+                  onClick={openResume}
+                  className="border-2 border-coral-700  bg-transparent hover:border-coral-700 text-gray-100 px-8 py-4 rounded-full font-bold hover:bg-coral-700 hover:text-white transition-all"
+                >
+                  View My Resume
+                  <Eye className="w-4 h-4 mr-2" />
+                </Button>
               </div>
             </div>
           </div>
+          <div className="absolute bottom-0 -left-16 w-32 h-32 bg-[#c36e75] rounded-full opacity-30"></div>
+          <div className="absolute bottom-0 -right-52 w-32 h-32 bg-coral-300 rounded-full opacity-30"></div>
         </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="#e58991"
+            fill-opacity="1"
+            d="M0,256L48,218.7C96,181,192,107,288,112C384,117,480,203,576,245.3C672,288,768,288,864,250.7C960,213,1056,139,1152,122.7C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          ></path>
+        </svg>
       </section>
+
+      {/* <section className="pt-24 bg-[linear-gradient(157deg,_#be848f_2.23%,_#d58597_73.54%,_#d9b7bd_100%)] relative">
+        <div className="absolute top-24 right-36 w-32 h-32 bg-[#d5a4a8] rounded-full opacity-30"></div>
+        <div className="max-w-7xl mx-auto my-auto px-4 gap-12 flex items-center relative">
+          <div className="flex flex-col md:flex-row md:mt-10 justify-center">
+            <div className="flex md:w-1/2 mt-6 md:mt-0 overflow-hidden rounded-md relative">
+              <Image
+                src="/images/asiya-hero-brush.png"
+                alt="Asiya - profile"
+                width={500}
+                height={1000}
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className=" md:w-1/2 p-8 my-auto">
+              <h2 className="text-4xl text-center md:text-left md:w-[60%] font-bold text-foreground mb-4">
+                Inspiring the Next Generation of Artists
+              </h2>
+
+              <div>
+                <h2 className="text-3xl font-bold text-foreground mb-4">
+                  Hi, I'm Asiya Kinebrew
+                </h2>
+
+                <p className="w-full text-center md:text-left  md:w-2/3 text-charcoal mb-6 leading-relaxed">
+                  A Pre-Service Art Teacher at Miami University of Ohio, pursuing a degree
+                  in Art Education.
+                </p>
+              </div>
+
+              <div className="flex justify-center md:justify-start space-x-4 mb-6">
+                <a
+                  href="https://www.linkedin.com/in/asiyakinebrew/"
+                  target="_blank"
+                  className="text-coffee hover:text-coral-700 dark:hover:text-coral-700"
+                >
+                  <Linkedin className="w-6 h-6" />
+                </a>
+                <Link
+                  href="https://www.instagram.com/asiyateaches"
+                  target="_blank"
+                  className="text-coffee hover:text-coral-700 dark:hover:text-dusty-rose"
+                >
+                  <Instagram className="w-6 h-6" />
+                </Link>
+              </div>
+              <div className="flex flex-col md:flex-row  mt-4 gap-4">
+                <Button
+                  asChild
+                  variant="secondary"
+                  className="bg-coral-600 border-coral-600 text-white px-8 py-4 rounded-full font-bold hover:bg-coral-700 transition-all transform hover:scale-105"
+                >
+                  <Link href="/about">Read More</Link>
+                </Button>
+                <Button
+                  onClick={openResume}
+                  className="border-2 border-coral-700  bg-transparent hover:border-coral-700 text-gray-100 px-8 py-4 rounded-full font-bold hover:bg-coral-700 hover:text-white transition-all"
+                >
+                  View My Resume
+                  <Eye className="w-4 h-4 mr-2" />
+                </Button>
+              </div>
+            </div>
+          </div>
+          <div className="absolute bottom-0 -left-16 w-32 h-32 bg-[#c36e75] rounded-full opacity-30"></div>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+          <path
+            fill="#e58991"
+            fill-opacity="1"
+            d="M0,256L48,218.7C96,181,192,107,288,112C384,117,480,203,576,245.3C672,288,768,288,864,250.7C960,213,1056,139,1152,122.7C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
+          ></path>
+        </svg>
+      </section> */}
 
       {/* Art Categories Section */}
       <section className="py-16">
@@ -128,9 +182,9 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="group-hover:bg-primary-dark group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
+                  className="group-hover:bg-coral-600 text-charcoal bg-coral-300  group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
                 >
-                  <Link href="/lessons" className="flex items-center">
+                  <Link href="/elementary-art" className="flex items-center">
                     View Lesson <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
@@ -160,9 +214,9 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="group-hover:bg-primary-dark group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
+                  className="group-hover:bg-coral-600 text-charcoal bg-coral-300  group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
                 >
-                  <Link href="/lessons" className="flex items-center">
+                  <Link href="/middle-school-art" className="flex items-center">
                     View Lesson <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
@@ -192,9 +246,9 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="group-hover:bg-primary-dark group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
+                  className="group-hover:bg-coral-600 text-charcoal bg-coral-300  group-hover:text-white dark:group-hover:bg-coral-600 transition-colors"
                 >
-                  <Link href="/lessons" className="flex items-center">
+                  <Link href="/high-school-art" className="flex items-center">
                     View Lesson <ArrowRight className="w-4 h-4 ml-2" />
                   </Link>
                 </Button>
