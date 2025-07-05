@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useSearchParams } from "next/navigation";
+import { Dialog, DialogContent, DialogOverlay } from "@/components/ui/dialog";
+import Image from "next/image";
 import { FileText, Presentation } from "lucide-react";
 import { LessonPlan } from "@/types/lesson";
 
@@ -154,7 +156,7 @@ export default function LessonPlansPage() {
 
           {/* Lesson Plans Tab Content */}
           <TabsContent value="lesson-plans">
-            <LessonPlans
+            <LessonPlans 
               lessonPlans={lessonPlans}
               categories={categories}
               selectedCategory={selectedCategory}
@@ -164,26 +166,35 @@ export default function LessonPlansPage() {
 
           {/* Elementary Art Tab Content */}
           <TabsContent value="elementary">
-            <ElementaryArt activeTab={activeTab} openImageModal={openImageModal} />
+            <ElementaryArt 
+              activeTab={activeTab} 
+              openImageModal={openImageModal} 
+            />
           </TabsContent>
 
           {/* Junior Art Tab Content */}
           <TabsContent value="junior">
-            <JuniorArt activeTab={activeTab} openImageModal={openImageModal} />
+            <JuniorArt 
+              activeTab={activeTab} 
+              openImageModal={openImageModal} 
+            />
           </TabsContent>
 
           {/* High School Art Tab Content */}
           <TabsContent value="high-school">
-            <HighSchoolArt activeTab={activeTab} openImageModal={openImageModal} />
+            <HighSchoolArt 
+              activeTab={activeTab}
+              openImageModal={openImageModal}
+            />
           </TabsContent>
         </Tabs>
       </div>
 
       {/* Image Modal */}
-      <ImageModal
-        modalOpen={modalOpen}
-        closeImageModal={closeImageModal}
-        selectedImage={selectedImage}
+      <ImageModal 
+        modalOpen={modalOpen} 
+        closeImageModal={closeImageModal} 
+        selectedImage={selectedImage} 
       />
     </div>
   );
