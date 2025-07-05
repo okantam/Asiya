@@ -15,8 +15,8 @@ const Footer = () => {
                 </div>
                 <div>
                   <span className=" text-sm font-serif font-bold">Art With</span>
-                  <div className="text-xl text-dusty-rose font-medium tracking-wide">
-                    ASIYA KINE BREW
+                  <div className="text-xl text-dusty-rose font-medium tracking-wide uppercase">
+                    Asiya Kinebrew-Okanta
                   </div>
                 </div>
               </div>
@@ -41,8 +41,10 @@ const Footer = () => {
                 {/* <li><a href="#gallery" className="text-gray-300 hover:text-dusty-rose transition-colors">Student Artwork</a></li> */}
                 <li>
                   <a
-                    href="/lesson"
+                    href="https://docs.google.com/document/d/1FjWNguA60g2dS67Y7MswOywLRwBy5GAXBqOo6ALfRI8"
                     className="text-gray-300 hover:text-dusty-rose transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Resources
                   </a>

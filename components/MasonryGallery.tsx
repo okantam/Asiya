@@ -35,7 +35,7 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
   };
 
   return (
-    <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 column-gap-6 space-y-6 mt-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
       {portfolioData.map(artwork => (
         <div
           key={artwork.id}

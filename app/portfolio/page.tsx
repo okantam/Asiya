@@ -7,228 +7,247 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
 
   const categories = [
     { id: "all", name: "All Artwork" },
-    { id: "ceramics", name: "Ceramics" },
     { id: "photography", name: "Photography" },
     { id: "digital-art", name: "Digital Art" },
     { id: "2d-art", name: "2D Art" },
+    { id: "3d-art", name: "3D Art" },
   ];
 
   const artworks = [
-    // Kindergarten Art
+    // 3D and  Ceramic Art
     {
       id: 1,
-      category: "ceramics",
-      title: "Colorful Shapes",
-      image:
-        "https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Exploring basic shapes and primary colors",
+      category: "3d-art",
+      title: "",
+      image: "/images/ceramic_1.png",
+      description: "",
     },
     {
       id: 2,
-      category: "ceramics",
-      title: "My Family",
-      image:
-        "https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Simple figure drawing with crayons",
+      category: "3d-art",
+      title: "",
+      image: "/images/ceramic_2.png",
+      description: "",
     },
     {
       id: 3,
-      category: "ceramics",
-      title: "Rainbow Fish",
-      image:
-        "https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Watercolor and tissue paper collage",
+      category: "3d-art",
+      title: "",
+      image: "/images/ceramic_3.png",
+      description: "",
     },
     {
       id: 4,
-      category: "ceramics",
-      title: "Handprint Tree",
-      image:
-        "https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Seasonal handprint art project",
-    },
-    {
-      id: 5,
-      category: "ceramics",
-      title: "Pattern Painting",
-      image:
-        "https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Learning patterns through paint",
-    },
-    {
-      id: 6,
-      category: "ceramics",
-      title: "Animal Friends",
-      image:
-        "https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Simple animal shapes and colors",
+      category: "3d-art",
+      title: "",
+      image: "/images/ceramic_4.png",
+      description: "",
     },
 
-    // Elementary Art
+    {
+      id: 26,
+      category: "3d-art",
+      title: "",
+      image: "/images/3d-img-1.png",
+      description: "",
+    },
+    // {
+    //   id: 5,
+    //   category: "ceramics",
+    //   title: "Pattern Painting",
+    //   image:
+    //     "https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    //   description: "Learning patterns through paint",
+    // },
+    // {
+    //   id: 6,
+    //   category: "ceramics",
+    //   title: "Animal Friends",
+    //   image:
+    //     "https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    //   description: "Simple animal shapes and colors",
+    // },
+
+    // Photography Art
     {
       id: 7,
       category: "photography",
-      title: "Landscape Study",
-      image:
-        "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Watercolor landscape techniques",
+      title: "",
+      image: "/images/tinywow_Photo 31_82159934.avif",
+      description: "",
     },
     {
       id: 8,
       category: "photography",
-      title: "Self Portrait",
-      image:
-        "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Proportions and facial features",
+      title: "",
+      image: "/images/photo_6.jpg",
+      description: "",
     },
     {
       id: 9,
       category: "photography",
-      title: "Still Life",
-      image:
-        "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Observational drawing skills",
+      title: "",
+      image: "/images/photo_2.jpg",
+      description: "",
     },
     {
       id: 10,
       category: "photography",
-      title: "Abstract Collage",
-      image:
-        "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Mixed media exploration",
+      title: "",
+      image: "/images/photo_3.jpg",
+      description: "",
     },
     {
       id: 11,
       category: "photography",
-      title: "Color Wheel",
-      image:
-        "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Understanding color theory",
+      title: "",
+      image: "/images/photo_4.jpg",
+      description: "",
     },
     {
       id: 12,
       category: "photography",
-      title: "Texture Study",
-      image:
-        "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Exploring different textures",
-    },
-    {
-      id: 13,
-      category: "photography",
-      title: "Nature Prints",
-      image:
-        "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Leaf and flower printing",
+      title: "",
+      image: "/images/photo_5.jpg",
+      description: "",
     },
     {
       id: 14,
       category: "photography",
-      title: "Geometric Art",
-      image:
-        "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Shapes and patterns",
+      title: "",
+      image: "/images/photo_2.jpg",
+      description: "",
+    },
+    {
+      id: 113,
+      category: "photography",
+      title: "",
+      image: "/images/photo_7.jpg",
+      description: "",
+    },
+    {
+      id: 114,
+      category: "photography",
+      title: "",
+      image: "/images/photo_8.jpg",
+      description: "",
+    },
+    {
+      id: 115,
+      category: "photography",
+      title: "",
+      image: "/images/photo_9.png",
+      description: "",
+    },
+    {
+      id: 116,
+      category: "photography",
+      title: "",
+      image: "/images/photo_10.jpg",
+      description: "",
+    },
+    {
+      id: 117,
+      category: "photography",
+      title: "",
+      image: "/images/photo_11.jpg",
+      description: "",
+    },
+    {
+      id: 118,
+      category: "photography",
+      title: "",
+      image: "/images/photo_12.jpg",
+      description: "",
     },
 
-    // Middle School Art
+    // Digital Art
     {
       id: 15,
       category: "digital-art",
-      title: "Perspective Drawing",
-      image:
-        "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "One-point perspective cityscape",
+      title: "",
+      image: "/images/digital_1.JPG",
+      description: "",
     },
     {
       id: 16,
       category: "digital-art",
-      title: "Charcoal Portrait",
-      image:
-        "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Advanced shading techniques",
+      title: "",
+      image: "/images/digital_2.jpg",
+      description: "",
     },
     {
       id: 17,
       category: "digital-art",
-      title: "Pop Art Design",
-      image:
-        "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Inspired by Andy Warhol",
+      title: "",
+      image: "/images/digital_3.jpg",
+      description: "",
     },
-    {
-      id: 18,
-      category: "digital-art",
-      title: "Ceramic Bowl",
-      image:
-        "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Hand-building techniques",
-    },
-    {
-      id: 19,
-      category: "digital-art",
-      title: "Abstract Painting",
-      image:
-        "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Expressing emotions through color",
-    },
-    {
-      id: 20,
-      category: "digital-art",
-      title: "Printmaking",
-      image:
-        "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Linoleum block printing",
-    },
+    // {
+    //   id: 18,
+    //   category: "digital-art",
+    //   title: "Ceramic Bowl",
+    //   image:
+    //     "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    //   description: "Hand-building techniques",
+    // },
+    // {
+    //   id: 19,
+    //   category: "digital-art",
+    //   title: "Abstract Painting",
+    //   image:
+    //     "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    //   description: "Expressing emotions through color",
+    // },
+    // {
+    //   id: 20,
+    //   category: "digital-art",
+    //   title: "Printmaking",
+    //   image:
+    //     "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    //   description: "Linoleum block printing",
+    // },
 
-    // High School Art
+    // 2D Art
     {
       id: 21,
       category: "2d-art",
-      title: "Oil Painting Portrait",
-      image:
-        "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Advanced painting techniques",
+      title: "",
+      image: "/images/2d_img_1.jpg",
+      description: "",
     },
-    {
-      id: 22,
-      category: "2d-art",
-      title: "Digital Art Composition",
-      image:
-        "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Modern digital techniques",
-    },
-    {
-      id: 23,
-      category: "2d-art",
-      title: "Sculpture Study",
-      image:
-        "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "3D form and space exploration",
-    },
-    {
-      id: 24,
-      category: "2d-art",
-      title: "Mixed Media Installation",
-      image:
-        "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Contemporary art concepts",
-    },
-    {
-      id: 25,
-      category: "2d-art",
-      title: "Photography Series",
-      image:
-        "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "Visual storytelling project",
-    },
-    {
-      id: 26,
-      category: "2d-art",
-      title: "Portfolio Piece",
-      image:
-        "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-      description: "College application artwork",
-    },
+    // {
+    //   id: 22,
+    //   category: "2d-art",
+    //   title: "Digital Art Composition",
+    //   image:
+    //     "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    //   description: "Modern digital techniques",
+    // },
+    // {
+    //   id: 23,
+    //   category: "2d-art",
+    //   title: "Sculpture Study",
+    //   image:
+    //     "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    //   description: "3D form and space exploration",
+    // },
+    // {
+    //   id: 24,
+    //   category: "2d-art",
+    //   title: "Mixed Media Installation",
+    //   image:
+    //     "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    //   description: "Contemporary art concepts",
+    // },
+    // {
+    //   id: 25,
+    //   category: "2d-art",
+    //   title: "Photography Series",
+    //   image:
+    //     "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
+    //   description: "Visual storytelling project",
+    // },
   ];
 
   const filteredArtworks =

@@ -10,7 +10,7 @@ export default function HomePage() {
     window.open("/Asiya Kinebrew's Resume.pdf", "_blank");
   };
   return (
-    <div className="min-h-screen bg-primary-dark dark:bg-gray-900 text-white">
+    <div className="min-h-screen bg-[#e58991] dark:bg-gray-900 text-white">
       <HomeNavigation />
 
       {/* Hero Section */}
@@ -72,7 +72,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="absolute bottom-0 -left-16 w-32 h-32 bg-[#c36e75] rounded-full opacity-30"></div>
-          <div className="absolute bottom-0 -right-52 w-32 h-32 bg-coral-300 rounded-full opacity-30"></div>
+          <div className="absolute bottom-0 right-32 w-32 h-32 bg-coral-300 rounded-full opacity-30"></div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path

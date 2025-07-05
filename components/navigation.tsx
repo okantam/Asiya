@@ -24,7 +24,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="hidden md:flex items-center space-x-2">
             <div className="w-8 h-8 bg-dusty-rose rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-sm">🎨</span>
             </div>
@@ -179,10 +179,19 @@ export default function Navigation() {
             <ThemeToggle />
           </div>
 
+          <div className="flex md:hidden justify-center">
+            <span
+              className="text-3xl text-center font-bold text-coral-600 drop-shadow-md"
+              style={{ fontFamily: "sacramento,cursive" }}
+            >
+              Artist & Educator
+            </span>
+          </div>
+
           {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="lg:hidden">
+              <Button variant="outline" size="icon" className="lg:hidden bg-coral-600">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
@@ -202,32 +211,29 @@ export default function Navigation() {
                 >
                   Home
                 </Link>
-                {/* <div className="space-y-2">
-                  <span className="text-lg font-medium text-green-600 dark:text-green-400">Student Artwork</span>
-                  <div className="pl-4 space-y-2">
-                    <Link
-                      href="/elementary-art"
-                      className="block text-muted-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Elementary Art
-                    </Link>
-                    <Link
-                      href="/middle-school-art"
-                      className="block text-muted-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Middle School Art
-                    </Link>
-                    <Link
-                      href="/high-school-art"
-                      className="block text-muted-foreground hover:text-green-600 dark:hover:text-green-400 transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      High School Art
-                    </Link>
-                  </div>
-                </div> */}
+                <Link
+                  href="/lessons"
+                  className={`text-lg font-medium transition-colors ${
+                    pathname === "/lessons"
+                      ? "text-primary-dark"
+                      : "hover:text-primary-dark"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Lessons
+                </Link>
+                <Link
+                  href="/portfolio"
+                  className={`text-lg font-medium transition-colors ${
+                    pathname === "/portfolio"
+                      ? "text-primary-dark"
+                      : "hover:text-primary-dark"
+                  }`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  Portfolio
+                </Link>
+
                 <Link
                   href="/about"
                   className={`text-lg font-medium transition-colors ${
@@ -250,7 +256,7 @@ export default function Navigation() {
                 >
                   Contact
                 </Link>
-                <Link
+                {/* <Link
                   href="/auth/signin"
                   className="text-lg font-medium hover:text-primary-dark transition-colors"
                   onClick={() => setIsOpen(false)}
@@ -270,7 +276,7 @@ export default function Navigation() {
                   onClick={() => setIsOpen(false)}
                 >
                   Admin
-                </Link>
+                </Link> */}
               </nav>
             </SheetContent>
           </Sheet>

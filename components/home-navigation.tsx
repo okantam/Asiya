@@ -56,7 +56,7 @@ export default function HomeNavigation() {
                       className="text-3xl font-bold text-white drop-shadow-md"
                       style={{ fontFamily: "sacramento,cursive" }}
                     >
-                      Artist, Educator, & Visionary
+                      Artist & Educator
                     </span>
                   </Link>
                 </NavigationMenuLink>
@@ -90,7 +90,7 @@ export default function HomeNavigation() {
           </NavigationMenu>
 
           {/* Theme Toggle and Mobile Menu Button */}
-          <div className="flex items-center justify-between pt-8 md:pt-0">
+          <div className="flex items-center justify-between w-full  pt-8 md:pt-0">
             <div className="text-white">
               <ThemeToggle />
             </div>
@@ -101,7 +101,7 @@ export default function HomeNavigation() {
                 className="text-3xl text-center font-bold text-white drop-shadow-md"
                 style={{ fontFamily: "sacramento,cursive" }}
               >
-                Artist, Educator, & Visionary
+                Artist & Educator
               </span>
             </div>
 

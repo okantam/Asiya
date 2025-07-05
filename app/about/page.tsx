@@ -132,7 +132,7 @@ export default function AboutPage() {
             <a
               href="https://docs.google.com/document/d/1FjWNguA60g2dS67Y7MswOywLRwBy5GAXBqOo6ALfRI8/edit?usp=drivesdk"
               target="_blank"
-              className="text-primary-dark"
+              className="text-primary-dark hover:text-coral-700"
             >
               Read about my teaching philosophy
             </a>

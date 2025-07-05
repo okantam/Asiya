@@ -190,36 +190,17 @@ export default function LessonPlansPage() {
 
   const gradesImages = [
     "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop",
+    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop",
   ];
 
   // Junior art section data (previously "Middle School Art")
   const juniorArtworks = [
     {
-      title: "Mixed Media Collages",
+      title: "Tee Shirt Design",
       description: "Students experiment with various materials and textures",
-      images: [
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1515378791036-0648a814c963?w=400&h=300&fit=crop",
-      ],
-    },
-    {
-      title: "Portrait Studies",
-      description: "Exploring facial features and expressions through different mediums",
-      images: [
-        "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop",
-      ],
-    },
-    {
-      title: "Abstract Compositions",
-      description: "Students develop their understanding of color theory and composition",
-      images: [
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1515378791036-0648a814c963?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&h=300&fit=crop",
-      ],
+      images: ["/images/junior-img-1.avif", "/images/junior-img-2.jpg"],
     },
   ];
 
