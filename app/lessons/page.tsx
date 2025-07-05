@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, Suspense } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useSearchParams } from "next/navigation";
 import { FileText, Presentation } from "lucide-react";
 import { LessonPlan } from "@/types/lesson";
 
@@ -12,6 +11,7 @@ import JuniorArt from "@/components/lessons/JuniorArt";
 import HighSchoolArt from "@/components/lessons/HighSchoolArt";
 import LessonPlans from "@/components/lessons/LessonPlans";
 import ImageModal from "@/components/lessons/ImageModal";
+import TabSelector from "@/components/lessons/TabSelector";
 
 const lessonPlans: LessonPlan[] = [
   {
@@ -72,24 +72,6 @@ const categories = [
   { id: "high", name: "High School" },
 ];
 
-// Client component that uses searchParams
-function TabSelector({ setActiveTab }: { setActiveTab: (tab: string) => void }) {
-  const searchParams = useSearchParams();
-
-  // Set active tab based on URL parameter
-  useEffect(() => {
-    const tabParam = searchParams.get("tab");
-    if (
-      tabParam &&
-      ["lesson-plans", "elementary", "junior", "high-school"].includes(tabParam)
-    ) {
-      setActiveTab(tabParam);
-    }
-  }, [searchParams, setActiveTab]);
-
-  return null;
-}
-
 export default function LessonPlansPage() {
   const [selectedCategory, setSelectedCategory] = useState("elementary");
   const [activeTab, setActiveTab] = useState("lesson-plans");
@@ -119,7 +101,9 @@ export default function LessonPlansPage() {
         </div>
 
         {/* Use TabSelector to set tab based on URL parameters */}
-        <TabSelector setActiveTab={setActiveTab} />
+        <Suspense fallback={null}>
+          <TabSelector setActiveTab={setActiveTab} />
+        </Suspense>
 
         <Tabs
           value={activeTab}
