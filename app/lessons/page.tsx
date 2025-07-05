@@ -9,6 +9,7 @@ import {
   Presentation,
   ChevronLeft,
   ChevronRight,
+  X,
 } from "lucide-react";
 import Image from "next/image";
 import { useState, useEffect, Suspense } from "react";
@@ -16,6 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Dialog, DialogContent, DialogOverlay } from "@/components/ui/dialog";
 
 const lessonPlans = [
   {
@@ -143,6 +145,11 @@ const lessonPlans = [
   // },
 ];
 
+// Utility function to safely get index from array with default value
+function safeIndex<T>(arr: T[], index: number, defaultValue: T): T {
+  return index >= 0 && index < arr.length ? arr[index] : defaultValue;
+}
+
 const categories = [
   { id: "elementary", name: "Elementary" },
   { id: "junior", name: "Junior High" },
@@ -180,8 +187,21 @@ function TabSelector({ setActiveTab }: { setActiveTab: (tab: string) => void }) 
 
 export default function LessonPlansPage() {
   const [selectedCategory, setSelectedCategory] = useState("elementary");
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("lesson-plans");
+
+  // State for slidable image galleries in all tabs
+  const [elementaryImageIndexes, setElementaryImageIndexes] = useState<number[]>([0, 0]); // [kindergarten, grades1-3]
+  const [juniorImageIndexes, setJuniorImageIndexes] = useState<number[]>([]);
+  const [sectionImageIndexes, setSectionImageIndexes] = useState<number[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  // Auto-sliding states
+  const SLIDE_INTERVAL = 5000; // 5 seconds between slides
+  const AUTO_SLIDE_RESUME_DELAY = 10000; // 10 seconds before auto-slide resumes after manual navigation
+  const [autoSlideElementary, setAutoSlideElementary] = useState<boolean[]>([true, true]); // For kindergarten and grades 1-3
+  const [autoSlideJunior, setAutoSlideJunior] = useState<boolean[]>([]); // For junior art sections
+  const [autoSlideHighSchool, setAutoSlideHighSchool] = useState<boolean[]>([]); // For high school sections
 
   // Elementary art images
   const kindergartenImages = [
@@ -246,12 +266,272 @@ export default function LessonPlansPage() {
     },
   ];
 
-  const nextImage = () => {
-    setCurrentImageIndex(prev => (prev + 1) % gradesImages.length);
+  // Elementary art navigation functions
+  useEffect(() => {
+    // Make sure elementaryImageIndexes is initialized
+    if (elementaryImageIndexes.length < 2) {
+      setElementaryImageIndexes([0, 0]); // [kindergarten, grades1-3]
+    }
+
+    // Initialize auto-slide states if needed
+    if (autoSlideElementary.length < 2) {
+      setAutoSlideElementary([true, true]); // Default auto-slide to true
+    }
+  }, [elementaryImageIndexes.length, autoSlideElementary.length]);
+
+  // Auto-sliding for elementary art sections - continuous while tab is active
+  useEffect(() => {
+    // Create interval for kindergarten images
+    let kindergartenInterval: NodeJS.Timeout | null = null;
+    if (
+      activeTab === "elementary" &&
+      autoSlideElementary[0] &&
+      kindergartenImages.length > 1
+    ) {
+      kindergartenInterval = setInterval(() => {
+        nextElementaryImage(0);
+      }, SLIDE_INTERVAL);
+    }
+
+    // Create interval for grades 1-3 images
+    let gradesInterval: NodeJS.Timeout | null = null;
+    if (activeTab === "elementary" && autoSlideElementary[1] && gradesImages.length > 1) {
+      gradesInterval = setInterval(() => {
+        nextElementaryImage(1);
+      }, SLIDE_INTERVAL);
+    }
+
+    // Cleanup function to clear intervals
+    return () => {
+      if (kindergartenInterval) clearInterval(kindergartenInterval);
+      if (gradesInterval) clearInterval(gradesInterval);
+    };
+  }, [activeTab, autoSlideElementary, kindergartenImages.length, gradesImages.length]); // Only necessary dependencies
+
+  // Auto slide is always enabled, no toggle function needed
+
+  const setElementaryImageIndex = (sectionIdx: number, imageIdx: number) => {
+    const newIndexes = [...elementaryImageIndexes];
+    newIndexes[sectionIdx] = imageIdx;
+    setElementaryImageIndexes(newIndexes);
+
+    // Pause auto-slide temporarily when manually changing images
+    if (autoSlideElementary[sectionIdx]) {
+      const newStates = [...autoSlideElementary];
+      newStates[sectionIdx] = false;
+      setAutoSlideElementary(newStates);
+
+      // Resume auto-slide after delay
+      setTimeout(() => {
+        if (activeTab === "elementary") {
+          const resumeStates = [...autoSlideElementary];
+          resumeStates[sectionIdx] = true;
+          setAutoSlideElementary(resumeStates);
+        }
+      }, AUTO_SLIDE_RESUME_DELAY);
+    }
   };
 
-  const prevImage = () => {
-    setCurrentImageIndex(prev => (prev - 1 + gradesImages.length) % gradesImages.length);
+  const nextElementaryImage = (sectionIdx: number) => {
+    const images = sectionIdx === 0 ? kindergartenImages : gradesImages;
+    if (images.length === 0) return;
+
+    const currentIndex = elementaryImageIndexes[sectionIdx] || 0;
+    const newIndex = (currentIndex + 1) % images.length;
+    setElementaryImageIndex(sectionIdx, newIndex);
+  };
+
+  const prevElementaryImage = (sectionIdx: number) => {
+    const images = sectionIdx === 0 ? kindergartenImages : gradesImages;
+    if (images.length === 0) return;
+
+    const currentIndex = elementaryImageIndexes[sectionIdx] || 0;
+    const newIndex = (currentIndex - 1 + images.length) % images.length;
+    setElementaryImageIndex(sectionIdx, newIndex);
+  };
+
+  // Junior art navigation functions
+  useEffect(() => {
+    // Initialize junior image indexes if needed
+    if (juniorImageIndexes.length < juniorArtworks.length) {
+      setJuniorImageIndexes(new Array(juniorArtworks.length).fill(0));
+    }
+
+    // Initialize auto-slide states if needed
+    if (autoSlideJunior.length < juniorArtworks.length) {
+      setAutoSlideJunior(new Array(juniorArtworks.length).fill(true)); // Default auto-slide to true
+    }
+  }, [juniorArtworks.length, juniorImageIndexes.length, autoSlideJunior.length]);
+
+  // Setup auto-sliding for each junior art section
+  useEffect(() => {
+    // Create an array of intervals for junior art sections
+    const intervals = juniorArtworks
+      .map((section, idx) => {
+        if (activeTab === "junior" && autoSlideJunior[idx] && section.images.length > 1) {
+          return setInterval(() => {
+            nextJuniorImage(idx);
+          }, SLIDE_INTERVAL);
+        }
+        return null;
+      })
+      .filter(Boolean); // Filter out null intervals
+
+    // Cleanup function to clear all intervals
+    return () => {
+      intervals.forEach(interval => {
+        if (interval) clearInterval(interval);
+      });
+    };
+  }, [activeTab, autoSlideJunior, juniorArtworks]);
+
+  // Auto slide is always enabled, no toggle function needed
+
+  const setJuniorImageIndex = (sectionIdx: number, imageIdx: number) => {
+    const newIndexes = [...juniorImageIndexes];
+    newIndexes[sectionIdx] = imageIdx;
+    setJuniorImageIndexes(newIndexes);
+
+    // Pause auto-slide temporarily when manually changing images
+    if (sectionIdx < autoSlideJunior.length && autoSlideJunior[sectionIdx]) {
+      const newStates = [...autoSlideJunior];
+      newStates[sectionIdx] = false;
+      setAutoSlideJunior(newStates);
+
+      // Resume auto-slide after delay
+      setTimeout(() => {
+        if (activeTab === "junior") {
+          const resumeStates = [...autoSlideJunior];
+          resumeStates[sectionIdx] = true;
+          setAutoSlideJunior(resumeStates);
+        }
+      }, AUTO_SLIDE_RESUME_DELAY);
+    }
+  };
+
+  const nextJuniorImage = (sectionIdx: number) => {
+    if (sectionIdx >= juniorArtworks.length) return;
+
+    const section = juniorArtworks[sectionIdx];
+    if (!section || section.images.length === 0) return;
+
+    const currentIndex = juniorImageIndexes[sectionIdx] || 0;
+    const newIndex = (currentIndex + 1) % section.images.length;
+    setJuniorImageIndex(sectionIdx, newIndex);
+  };
+
+  const prevJuniorImage = (sectionIdx: number) => {
+    if (sectionIdx >= juniorArtworks.length) return;
+
+    const section = juniorArtworks[sectionIdx];
+    if (!section || section.images.length === 0) return;
+
+    const currentIndex = juniorImageIndexes[sectionIdx] || 0;
+    const newIndex = (currentIndex - 1 + section.images.length) % section.images.length;
+    setJuniorImageIndex(sectionIdx, newIndex);
+  };
+
+  // High school section image navigation
+  // Initialize section image indexes if they don't exist yet
+  useEffect(() => {
+    if (sectionImageIndexes.length < highSchoolPortfolioSections.length) {
+      setSectionImageIndexes(new Array(highSchoolPortfolioSections.length).fill(0));
+    }
+
+    // Initialize auto-slide states if needed
+    if (autoSlideHighSchool.length < highSchoolPortfolioSections.length) {
+      setAutoSlideHighSchool(new Array(highSchoolPortfolioSections.length).fill(true)); // Default auto-slide to true
+    }
+  }, [
+    highSchoolPortfolioSections.length,
+    sectionImageIndexes.length,
+    autoSlideHighSchool.length,
+  ]);
+
+  // Setup auto-sliding for each high school section
+  useEffect(() => {
+    // Create an array of intervals for high school sections
+    const intervals = highSchoolPortfolioSections
+      .map((section, idx) => {
+        if (
+          activeTab === "high-school" &&
+          autoSlideHighSchool[idx] &&
+          section.images.length > 1
+        ) {
+          return setInterval(() => {
+            nextSectionImage(idx);
+          }, SLIDE_INTERVAL);
+        }
+        return null;
+      })
+      .filter(Boolean); // Filter out null intervals
+
+    // Cleanup function to clear all intervals
+    return () => {
+      intervals.forEach(interval => {
+        if (interval) clearInterval(interval);
+      });
+    };
+  }, [activeTab, autoSlideHighSchool, highSchoolPortfolioSections]);
+
+  // Auto slide is always enabled, no toggle function needed
+
+  // Set specific section image index
+  const setSectionImageIndex = (sectionIdx: number, imageIdx: number) => {
+    const newIndexes = [...sectionImageIndexes];
+    newIndexes[sectionIdx] = imageIdx;
+    setSectionImageIndexes(newIndexes);
+
+    // Pause auto-slide temporarily when manually changing images
+    if (sectionIdx < autoSlideHighSchool.length && autoSlideHighSchool[sectionIdx]) {
+      const newStates = [...autoSlideHighSchool];
+      newStates[sectionIdx] = false;
+      setAutoSlideHighSchool(newStates);
+
+      // Resume auto-slide after delay
+      setTimeout(() => {
+        if (activeTab === "high-school") {
+          const resumeStates = [...autoSlideHighSchool];
+          resumeStates[sectionIdx] = true;
+          setAutoSlideHighSchool(resumeStates);
+        }
+      }, AUTO_SLIDE_RESUME_DELAY);
+    }
+  };
+
+  // Next image for a specific section
+  const nextSectionImage = (sectionIdx: number) => {
+    if (sectionIdx >= highSchoolPortfolioSections.length) return;
+
+    const section = highSchoolPortfolioSections[sectionIdx];
+    if (!section || section.images.length === 0) return;
+
+    const currentIndex = sectionImageIndexes[sectionIdx] || 0;
+    const newIndex = (currentIndex + 1) % section.images.length;
+    setSectionImageIndex(sectionIdx, newIndex);
+  };
+
+  // Previous image for a specific section
+  const prevSectionImage = (sectionIdx: number) => {
+    if (sectionIdx >= highSchoolPortfolioSections.length) return;
+
+    const section = highSchoolPortfolioSections[sectionIdx];
+    if (!section || section.images.length === 0) return;
+
+    const currentIndex = sectionImageIndexes[sectionIdx] || 0;
+    const newIndex = (currentIndex - 1 + section.images.length) % section.images.length;
+    setSectionImageIndex(sectionIdx, newIndex);
+  };
+
+  // Modal functions
+  const openImageModal = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+    setModalOpen(true);
+  };
+
+  const closeImageModal = () => {
+    setModalOpen(false);
+    setSelectedImage(null);
   };
 
   const handleDownload = (materialName: string) => {
@@ -386,7 +666,7 @@ export default function LessonPlansPage() {
                                         >
                                           Miami Tribe&apos;s community blog
                                           <ExternalLink className="h-3 w-3 ml-1" />
-                                        </button>
+                                        </button>{" "}
                                         .
                                       </>
                                     ) : (
@@ -468,78 +748,187 @@ export default function LessonPlansPage() {
                 </p>
               </div>
 
-              {/* Kindergarten Art Images */}
-              <section className="mb-16">
-                <h3 className="text-2xl font-serif italic text-center text-gray-800 mb-8">
-                  Kindergarten Art
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {kindergartenImages.map(image => (
-                    <div
-                      key={image}
-                      className="bg-white rounded-lg shadow-lg overflow-hidden"
-                    >
-                      <Image
-                        src={image || "/placeholder.svg"}
-                        alt="Kindergarten artwork"
-                        width={400}
-                        height={300}
-                        className="w-full h-64 object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* Grades 1,2,3 Art Images */}
-              <section>
-                <h3 className="text-2xl font-serif italic text-center text-gray-800 mb-8">
-                  Grades 1-3 Art
-                </h3>
-                <div className="relative max-w-4xl mx-auto">
-                  <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <Image
-                      src={gradesImages[currentImageIndex] || "/placeholder.svg"}
-                      alt={`Grades 1-3 artwork ${currentImageIndex + 1}`}
-                      width={600}
-                      height={400}
-                      className="w-full h-96 object-cover"
-                    />
+              <div className="space-y-24">
+                {/* Kindergarten Art Section */}
+                <section className="mb-16">
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl font-serif italic text-gray-800 mb-4">
+                      Kindergarten Art
+                    </h3>
+                    <p className="text-gray-600 max-w-2xl mx-auto">
+                      Our youngest artists explore basic art elements through imaginative
+                      play and discovery.
+                    </p>
                   </div>
 
-                  {/* Navigation Arrows */}
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
-                    onClick={prevImage}
-                  >
-                    <ChevronLeft className="h-6 w-6" />
-                  </Button>
+                  <div className="relative max-w-4xl mx-auto">
+                    {kindergartenImages.length > 0 ? (
+                      <>
+                        <button
+                          className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer w-full border-0 p-0"
+                          onClick={() =>
+                            openImageModal(
+                              kindergartenImages[elementaryImageIndexes[0] || 0]
+                            )
+                          }
+                          aria-label="Enlarge kindergarten artwork"
+                        >
+                          <Image
+                            src={
+                              kindergartenImages[elementaryImageIndexes[0] || 0] ||
+                              "/placeholder.svg"
+                            }
+                            alt="Kindergarten artwork"
+                            width={600}
+                            height={400}
+                            className="w-full h-96 object-cover"
+                          />
+                          <div className="absolute inset-0 bg-black/5 hover:bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <span className="bg-white/80 px-4 py-2 rounded-full text-sm font-medium">
+                              Click to enlarge
+                            </span>
+                          </div>
+                        </button>
 
-                  <Button
-                    variant="outline"
-                    size="icon"
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
-                    onClick={nextImage}
-                  >
-                    <ChevronRight className="h-6 w-6" />
-                  </Button>
+                        {/* Navigation Arrows */}
+                        {kindergartenImages.length > 1 && (
+                          <>
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
+                              onClick={() => prevElementaryImage(0)}
+                            >
+                              <ChevronLeft className="h-6 w-6" />
+                            </Button>
 
-                  {/* Dots Indicator */}
-                  <div className="flex justify-center mt-6 space-x-2">
-                    {gradesImages.map((img, index) => (
-                      <button
-                        key={`${img}-${index}`}
-                        className={`w-3 h-3 rounded-full transition-colors ${
-                          index === currentImageIndex ? "bg-green-600" : "bg-gray-300"
-                        }`}
-                        onClick={() => setCurrentImageIndex(index)}
-                      />
-                    ))}
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
+                              onClick={() => nextElementaryImage(0)}
+                            >
+                              <ChevronRight className="h-6 w-6" />
+                            </Button>
+                          </>
+                        )}
+
+                        {/* Dots Indicator */}
+                        {kindergartenImages.length > 1 && (
+                          <div className="flex justify-center mt-6 space-x-2">
+                            {kindergartenImages.map((img, imgIndex) => (
+                              <button
+                                key={`kinder-dot-${img}-${imgIndex}`}
+                                className={`w-3 h-3 rounded-full transition-colors ${
+                                  imgIndex === (elementaryImageIndexes[0] || 0)
+                                    ? "bg-green-600"
+                                    : "bg-gray-300"
+                                }`}
+                                onClick={() => setElementaryImageIndex(0, imgIndex)}
+                                aria-label={`View kindergarten image ${imgIndex + 1}`}
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <div className="text-center py-12 bg-gray-50 rounded-lg">
+                        <p>No images available for this section.</p>
+                      </div>
+                    )}
                   </div>
-                </div>
-              </section>
+                </section>
+
+                {/* Grades 1-3 Art Section */}
+                <section className="mb-16">
+                  <div className="text-center mb-8">
+                    <h3 className="text-2xl font-serif italic text-gray-800 mb-4">
+                      Grades 1-3 Art
+                    </h3>
+                    <p className="text-gray-600 max-w-2xl mx-auto">
+                      Young artists develop skills through guided exploration of
+                      techniques and materials.
+                    </p>
+                  </div>
+
+                  <div className="relative max-w-4xl mx-auto">
+                    {gradesImages.length > 0 ? (
+                      <>
+                        <button
+                          className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer w-full border-0 p-0"
+                          onClick={() =>
+                            openImageModal(gradesImages[elementaryImageIndexes[1] || 0])
+                          }
+                          aria-label="Enlarge grades 1-3 artwork"
+                        >
+                          <Image
+                            src={
+                              gradesImages[elementaryImageIndexes[1] || 0] ||
+                              "/placeholder.svg"
+                            }
+                            alt={`Grades 1-3 artwork ${
+                              (elementaryImageIndexes[1] || 0) + 1
+                            }`}
+                            width={600}
+                            height={400}
+                            className="w-full h-96 object-cover"
+                          />
+                          <div className="absolute inset-0 bg-black/5 hover:bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                            <span className="bg-white/80 px-4 py-2 rounded-full text-sm font-medium">
+                              Click to enlarge
+                            </span>
+                          </div>
+                        </button>
+
+                        {/* Navigation Arrows */}
+                        {gradesImages.length > 1 && (
+                          <>
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
+                              onClick={() => prevElementaryImage(1)}
+                            >
+                              <ChevronLeft className="h-6 w-6" />
+                            </Button>
+
+                            <Button
+                              variant="outline"
+                              size="icon"
+                              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
+                              onClick={() => nextElementaryImage(1)}
+                            >
+                              <ChevronRight className="h-6 w-6" />
+                            </Button>
+                          </>
+                        )}
+
+                        {/* Dots Indicator */}
+                        {gradesImages.length > 1 && (
+                          <div className="flex justify-center mt-6 space-x-2">
+                            {gradesImages.map((img, imgIndex) => (
+                              <button
+                                key={`grades-dot-${img}-${imgIndex}`}
+                                className={`w-3 h-3 rounded-full transition-colors ${
+                                  imgIndex === (elementaryImageIndexes[1] || 0)
+                                    ? "bg-green-600"
+                                    : "bg-gray-300"
+                                }`}
+                                onClick={() => setElementaryImageIndex(1, imgIndex)}
+                                aria-label={`View grades 1-3 image ${imgIndex + 1}`}
+                              />
+                            ))}
+                          </div>
+                        )}
+                      </>
+                    ) : (
+                      <div className="text-center py-12 bg-gray-50 rounded-lg">
+                        <p>No images available for this section.</p>
+                      </div>
+                    )}
+                  </div>
+                </section>
+              </div>
             </div>
           </TabsContent>
 
@@ -554,38 +943,115 @@ export default function LessonPlansPage() {
                 </p>
               </div>
 
-              {juniorArtworks.map((section, sectionIndex) => (
-                <section
-                  key={`junior-section-${section.title}-${sectionIndex}`}
-                  className="mb-16"
-                >
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-serif italic text-gray-800 mb-4">
-                      {section.title}
-                    </h3>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
-                      {section.description}
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {section.images.map((image, index) => (
-                      <div
-                        key={`junior-img-${section.title}-${index}`}
-                        className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-                      >
-                        <Image
-                          src={image || "/placeholder.svg"}
-                          alt={`${section.title} artwork ${index + 1}`}
-                          width={400}
-                          height={300}
-                          className="w-full h-64 object-cover"
-                        />
+              {juniorArtworks.length > 0 ? (
+                <div className="space-y-24">
+                  {/* Display all junior sections vertically */}
+                  {juniorArtworks.map((section, sectionIndex) => (
+                    <section
+                      key={`junior-section-${section.title}-${sectionIndex}`}
+                      className="mb-16"
+                    >
+                      <div className="text-center mb-8">
+                        <h3 className="text-2xl font-serif italic text-gray-800 mb-4">
+                          {section.title}
+                        </h3>
+                        <p className="text-gray-600 max-w-2xl mx-auto">
+                          {section.description}
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                </section>
-              ))}
+
+                      {/* Image Carousel for this section */}
+                      <div className="relative max-w-4xl mx-auto">
+                        {section.images.length > 0 ? (
+                          <>
+                            <button
+                              className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer w-full border-0 p-0"
+                              onClick={() => {
+                                // Open the modal with the current image
+                                openImageModal(
+                                  section.images[juniorImageIndexes[sectionIndex] || 0]
+                                );
+                              }}
+                              aria-label={`Enlarge ${section.title} artwork`}
+                            >
+                              <Image
+                                src={
+                                  section.images[juniorImageIndexes[sectionIndex] || 0] ||
+                                  "/placeholder.svg"
+                                }
+                                alt={`${section.title} artwork ${
+                                  (juniorImageIndexes[sectionIndex] || 0) + 1
+                                }`}
+                                width={600}
+                                height={400}
+                                className="w-full h-96 object-cover"
+                              />
+                              <div className="absolute inset-0 bg-black/5 hover:bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                <span className="bg-white/80 px-4 py-2 rounded-full text-sm font-medium">
+                                  Click to enlarge
+                                </span>
+                              </div>
+                            </button>
+
+                            {/* Navigation Arrows */}
+                            {section.images.length > 1 && (
+                              <>
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
+                                  onClick={() => prevJuniorImage(sectionIndex)}
+                                >
+                                  <ChevronLeft className="h-6 w-6" />
+                                </Button>
+
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
+                                  onClick={() => nextJuniorImage(sectionIndex)}
+                                >
+                                  <ChevronRight className="h-6 w-6" />
+                                </Button>
+                              </>
+                            )}
+
+                            {/* Dots Indicator */}
+                            {section.images.length > 1 && (
+                              <div className="flex justify-center mt-6 space-x-2">
+                                {section.images.map((img, imgIndex) => (
+                                  <button
+                                    key={`junior-dot-${section.title}-${img}-${imgIndex}`}
+                                    className={`w-3 h-3 rounded-full transition-colors ${
+                                      imgIndex === (juniorImageIndexes[sectionIndex] || 0)
+                                        ? "bg-dusty-rose"
+                                        : "bg-gray-300"
+                                    }`}
+                                    onClick={() =>
+                                      setJuniorImageIndex(sectionIndex, imgIndex)
+                                    }
+                                    aria-label={`View image ${imgIndex + 1}`}
+                                  />
+                                ))}
+                              </div>
+                            )}
+                          </>
+                        ) : (
+                          <div className="text-center py-12 bg-gray-50 rounded-lg">
+                            <p>No images available for this section.</p>
+                          </div>
+                        )}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-16 bg-gray-50 rounded-lg border border-gray-200">
+                  <p className="text-gray-600">
+                    No artwork available for this section yet.
+                  </p>
+                </div>
+              )}
             </div>
           </TabsContent>
 
@@ -600,42 +1066,159 @@ export default function LessonPlansPage() {
                 </p>
               </div>
 
-              {highSchoolPortfolioSections.map((section, sectionIndex) => (
-                <section
-                  key={`hs-section-${section.title}-${sectionIndex}`}
-                  className="mb-16"
-                >
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-serif italic text-gray-800 mb-4">
-                      {section.title}
-                    </h3>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
-                      {section.description}
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {section.images.map((image, index) => (
-                      <div
-                        key={`hs-img-${section.title}-${index}`}
-                        className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
-                      >
-                        <Image
-                          src={image || "/placeholder.svg"}
-                          alt={`${section.title} artwork ${index + 1}`}
-                          width={400}
-                          height={400}
-                          className="w-full h-64 object-cover"
-                        />
+              {highSchoolPortfolioSections.length > 0 ? (
+                <div className="space-y-24">
+                  {/* Display all sections vertically */}
+                  {highSchoolPortfolioSections.map((section, sectionIndex) => (
+                    <section
+                      key={`hs-section-${section.title}-${sectionIndex}`}
+                      className="mb-16"
+                    >
+                      <div className="text-center mb-8">
+                        <h3 className="text-2xl font-serif italic text-gray-800 mb-4">
+                          {section.title}
+                        </h3>
+                        <p className="text-gray-600 max-w-2xl mx-auto">
+                          {section.description}
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                </section>
-              ))}
+
+                      {/* Image Carousel for this section */}
+                      <div className="relative max-w-4xl mx-auto">
+                        {section.images.length > 0 ? (
+                          <>
+                            <button
+                              className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer w-full border-0 p-0"
+                              onClick={() => {
+                                // Find the index of this section
+                                const currentSectionIndex =
+                                  highSchoolPortfolioSections.findIndex(
+                                    s => s.title === section.title
+                                  );
+                                // Open the modal with the current image
+                                openImageModal(
+                                  section.images[
+                                    sectionImageIndexes[currentSectionIndex] || 0
+                                  ]
+                                );
+                              }}
+                              aria-label={`Enlarge ${section.title} artwork`}
+                            >
+                              <Image
+                                src={
+                                  section.images[
+                                    sectionImageIndexes[sectionIndex] || 0
+                                  ] ||
+                                  section.images[0] ||
+                                  "/placeholder.svg"
+                                }
+                                alt={`${section.title} artwork ${
+                                  (sectionImageIndexes[sectionIndex] || 0) + 1
+                                }`}
+                                width={600}
+                                height={400}
+                                className="w-full h-96 object-cover"
+                              />
+                              <div className="absolute inset-0 bg-black/5 hover:bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+                                <span className="bg-white/80 px-4 py-2 rounded-full text-sm font-medium">
+                                  Click to enlarge
+                                </span>
+                              </div>
+                            </button>
+
+                            {/* Navigation Arrows */}
+                            {section.images.length > 1 && (
+                              <>
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
+                                  onClick={() => prevSectionImage(sectionIndex)}
+                                >
+                                  <ChevronLeft className="h-6 w-6" />
+                                </Button>
+
+                                <Button
+                                  variant="outline"
+                                  size="icon"
+                                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
+                                  onClick={() => nextSectionImage(sectionIndex)}
+                                >
+                                  <ChevronRight className="h-6 w-6" />
+                                </Button>
+                              </>
+                            )}
+
+                            {/* Dots Indicator */}
+                            {section.images.length > 1 && (
+                              <div className="flex justify-center mt-6 space-x-2">
+                                {section.images.map((img, imgIndex) => (
+                                  <button
+                                    key={`hs-dot-${section.title}-${img}-${imgIndex}`}
+                                    className={`w-3 h-3 rounded-full transition-colors ${
+                                      imgIndex ===
+                                      (sectionImageIndexes[sectionIndex] || 0)
+                                        ? "bg-dusty-rose"
+                                        : "bg-gray-300"
+                                    }`}
+                                    onClick={() =>
+                                      setSectionImageIndex(sectionIndex, imgIndex)
+                                    }
+                                    aria-label={`View image ${imgIndex + 1}`}
+                                  />
+                                ))}
+                              </div>
+                            )}
+                          </>
+                        ) : (
+                          <div className="text-center py-12 bg-gray-50 rounded-lg">
+                            <p>No images available for this section.</p>
+                          </div>
+                        )}
+                      </div>
+                    </section>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-16 bg-gray-50 rounded-lg border border-gray-200">
+                  <p className="text-gray-600">
+                    No artwork available for this section yet.
+                  </p>
+                </div>
+              )}
             </div>
           </TabsContent>
         </Tabs>
       </div>
+
+      {/* Image Modal */}
+      <Dialog open={modalOpen} onOpenChange={closeImageModal}>
+        <DialogOverlay className="bg-black/80" />
+        <DialogContent className="max-w-5xl p-0 border-none bg-transparent overflow-hidden">
+          <div className="relative">
+            {selectedImage && (
+              <div className="relative">
+                <Image
+                  src={selectedImage}
+                  alt="Enlarged artwork"
+                  width={1200}
+                  height={800}
+                  className="w-full h-auto max-h-[80vh] object-contain"
+                />
+              </div>
+            )}
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute top-4 right-4 rounded-full bg-white/50 hover:bg-white"
+              onClick={closeImageModal}
+            >
+              <X className="h-5 w-5" />
+              <span className="sr-only">Close</span>
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
