@@ -8,10 +8,7 @@ interface ElementaryArtProps {
   openImageModal: (imageSrc: string) => void;
 }
 
-export default function ElementaryArt({
-  activeTab,
-  openImageModal,
-}: Readonly<ElementaryArtProps>) {
+export default function ElementaryArt({ activeTab, openImageModal }: Readonly<ElementaryArtProps>) {
   // State for slidable image galleries
   const [elementaryImageIndexes, setElementaryImageIndexes] = useState<number[]>([0, 0]); // [kindergarten, grades1-3]
 
@@ -55,9 +52,7 @@ export default function ElementaryArt({
       kindergartenImages.length > 1
     ) {
       kindergartenInterval = setInterval(() => {
-        const currentIndex = elementaryImageIndexes[0] || 0;
-        const newIndex = (currentIndex + 1) % kindergartenImages.length;
-        setElementaryImageIndex(0, newIndex);
+        nextElementaryImage(0);
       }, SLIDE_INTERVAL);
     }
 
@@ -65,9 +60,7 @@ export default function ElementaryArt({
     let gradesInterval: NodeJS.Timeout | null = null;
     if (activeTab === "elementary" && autoSlideElementary[1] && gradesImages.length > 1) {
       gradesInterval = setInterval(() => {
-        const currentIndex = elementaryImageIndexes[1] || 0;
-        const newIndex = (currentIndex + 1) % gradesImages.length;
-        setElementaryImageIndex(1, newIndex);
+        nextElementaryImage(1);
       }, SLIDE_INTERVAL);
     }
 
@@ -76,13 +69,7 @@ export default function ElementaryArt({
       if (kindergartenInterval) clearInterval(kindergartenInterval);
       if (gradesInterval) clearInterval(gradesInterval);
     };
-  }, [
-    activeTab,
-    autoSlideElementary,
-    kindergartenImages.length,
-    gradesImages.length,
-    elementaryImageIndexes,
-  ]); // Only necessary dependencies
+  }, [activeTab, autoSlideElementary, kindergartenImages.length, gradesImages.length]); // Only necessary dependencies
 
   const setElementaryImageIndex = (sectionIdx: number, imageIdx: number) => {
     const newIndexes = [...elementaryImageIndexes];
@@ -104,6 +91,24 @@ export default function ElementaryArt({
         }
       }, AUTO_SLIDE_RESUME_DELAY);
     }
+  };
+
+  const nextElementaryImage = (sectionIdx: number) => {
+    const images = sectionIdx === 0 ? kindergartenImages : gradesImages;
+    if (images.length === 0) return;
+
+    const currentIndex = elementaryImageIndexes[sectionIdx] || 0;
+    const newIndex = (currentIndex + 1) % images.length;
+    setElementaryImageIndex(sectionIdx, newIndex);
+  };
+
+  const prevElementaryImage = (sectionIdx: number) => {
+    const images = sectionIdx === 0 ? kindergartenImages : gradesImages;
+    if (images.length === 0) return;
+
+    const currentIndex = elementaryImageIndexes[sectionIdx] || 0;
+    const newIndex = (currentIndex - 1 + images.length) % images.length;
+    setElementaryImageIndex(sectionIdx, newIndex);
   };
 
   return (
@@ -134,9 +139,9 @@ export default function ElementaryArt({
             images={kindergartenImages}
             sectionTitle="Kindergarten Art"
             currentIndex={elementaryImageIndexes[0] || 0}
-            setCurrentIndex={index => setElementaryImageIndex(0, index)}
+            setCurrentIndex={(index) => setElementaryImageIndex(0, index)}
             autoSlide={autoSlideElementary[0] || false}
-            setAutoSlide={value => {
+            setAutoSlide={(value) => {
               const newStates = [...autoSlideElementary];
               newStates[0] = value;
               setAutoSlideElementary(newStates);
@@ -165,9 +170,9 @@ export default function ElementaryArt({
             images={gradesImages}
             sectionTitle="Grades 1-3 Art"
             currentIndex={elementaryImageIndexes[1] || 0}
-            setCurrentIndex={index => setElementaryImageIndex(1, index)}
+            setCurrentIndex={(index) => setElementaryImageIndex(1, index)}
             autoSlide={autoSlideElementary[1] || false}
-            setAutoSlide={value => {
+            setAutoSlide={(value) => {
               const newStates = [...autoSlideElementary];
               newStates[1] = value;
               setAutoSlideElementary(newStates);

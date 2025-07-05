@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Eye } from "lucide-react";
+import ImageCarousel from "./ImageCarousel";
 
 interface HighSchoolSection {
   title: string;
@@ -16,7 +14,10 @@ interface HighSchoolArtProps {
   openImageModal: (imageSrc: string) => void;
 }
 
-export default function HighSchoolArt({ activeTab, openImageModal }: HighSchoolArtProps) {
+export default function HighSchoolArt({
+  activeTab,
+  openImageModal,
+}: Readonly<HighSchoolArtProps>) {
   // State for slidable image galleries
   const [sectionImageIndexes, setSectionImageIndexes] = useState<number[]>([]);
 
@@ -145,18 +146,6 @@ export default function HighSchoolArt({ activeTab, openImageModal }: HighSchoolA
     setSectionImageIndex(sectionIdx, newIndex);
   };
 
-  // Previous image for a specific section
-  const prevSectionImage = (sectionIdx: number) => {
-    if (sectionIdx >= highSchoolPortfolioSections.length) return;
-
-    const section = highSchoolPortfolioSections[sectionIdx];
-    if (!section || section.images.length === 0) return;
-
-    const currentIndex = sectionImageIndexes[sectionIdx] || 0;
-    const newIndex = (currentIndex - 1 + section.images.length) % section.images.length;
-    setSectionImageIndex(sectionIdx, newIndex);
-  };
-
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <div className="text-center mb-10">
@@ -183,86 +172,22 @@ export default function HighSchoolArt({ activeTab, openImageModal }: HighSchoolA
               </div>
 
               {/* Image Carousel for this section */}
-              <div className="relative max-w-4xl mx-auto">
-                {section.images.length > 0 ? (
-                  <>
-                    <button
-                      className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer w-full border-0 p-0"
-                      onClick={() => {
-                        // Open the modal with the current image
-                        openImageModal(
-                          section.images[sectionImageIndexes[sectionIndex] || 0]
-                        );
-                      }}
-                      aria-label={`Enlarge ${section.title} artwork`}
-                    >
-                      <Image
-                        src={
-                          section.images[sectionImageIndexes[sectionIndex] || 0] ||
-                          section.images[0] ||
-                          "/placeholder.svg"
-                        }
-                        alt={`${section.title} artwork ${
-                          (sectionImageIndexes[sectionIndex] || 0) + 1
-                        }`}
-                        width={600}
-                        height={400}
-                        className="w-full h-96 object-cover"
-                      />
-                      <div className="absolute inset-0 bg-black/5 hover:bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                        <span className="bg-white/80 px-4 py-2 rounded-full text-sm font-medium">
-                          <Eye className="inline h-4 w-4" />
-                        </span>
-                      </div>
-                    </button>
-
-                    {/* Navigation Arrows */}
-                    {section.images.length > 1 && (
-                      <>
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
-                          onClick={() => prevSectionImage(sectionIndex)}
-                        >
-                          <ChevronLeft className="h-6 w-6" />
-                        </Button>
-
-                        <Button
-                          variant="outline"
-                          size="icon"
-                          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
-                          onClick={() => nextSectionImage(sectionIndex)}
-                        >
-                          <ChevronRight className="h-6 w-6" />
-                        </Button>
-                      </>
-                    )}
-
-                    {/* Dots Indicator */}
-                    {section.images.length > 1 && (
-                      <div className="flex justify-center mt-6 space-x-2">
-                        {section.images.map((img, imgIndex) => (
-                          <button
-                            key={`hs-dot-${section.title}-${img}-${imgIndex}`}
-                            className={`w-3 h-3 rounded-full transition-colors ${
-                              imgIndex === (sectionImageIndexes[sectionIndex] || 0)
-                                ? "bg-dusty-rose"
-                                : "bg-gray-300"
-                            }`}
-                            onClick={() => setSectionImageIndex(sectionIndex, imgIndex)}
-                            aria-label={`View image ${imgIndex + 1}`}
-                          />
-                        ))}
-                      </div>
-                    )}
-                  </>
-                ) : (
-                  <div className="text-center py-12 bg-gray-50 rounded-lg">
-                    <p>No images available for this section.</p>
-                  </div>
-                )}
-              </div>
+              <ImageCarousel
+                images={section.images}
+                sectionTitle={section.title}
+                currentIndex={sectionImageIndexes[sectionIndex] || 0}
+                setCurrentIndex={index => setSectionImageIndex(sectionIndex, index)}
+                autoSlide={autoSlideHighSchool[sectionIndex] || false}
+                setAutoSlide={value => {
+                  const newStates = [...autoSlideHighSchool];
+                  newStates[sectionIndex] = value;
+                  setAutoSlideHighSchool(newStates);
+                }}
+                onImageClick={openImageModal}
+                activeTab={activeTab}
+                tabId="high-school"
+                sectionIndex={sectionIndex}
+              />
             </section>
           ))}
         </div>

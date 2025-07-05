@@ -14,10 +14,7 @@ interface JuniorArtProps {
   openImageModal: (imageSrc: string) => void;
 }
 
-export default function JuniorArt({
-  activeTab,
-  openImageModal,
-}: Readonly<JuniorArtProps>) {
+export default function JuniorArt({ activeTab, openImageModal }: Readonly<JuniorArtProps>) {
   // State for slidable image galleries
   const [juniorImageIndexes, setJuniorImageIndexes] = useState<number[]>([]);
 
@@ -103,6 +100,17 @@ export default function JuniorArt({
     setJuniorImageIndex(sectionIdx, newIndex);
   };
 
+  const prevJuniorImage = (sectionIdx: number) => {
+    if (sectionIdx >= juniorArtworks.length) return;
+
+    const section = juniorArtworks[sectionIdx];
+    if (!section || section.images.length === 0) return;
+
+    const currentIndex = juniorImageIndexes[sectionIdx] || 0;
+    const newIndex = (currentIndex - 1 + section.images.length) % section.images.length;
+    setJuniorImageIndex(sectionIdx, newIndex);
+  };
+
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <div className="text-center mb-10">
@@ -133,9 +141,9 @@ export default function JuniorArt({
                 images={section.images}
                 sectionTitle={section.title}
                 currentIndex={juniorImageIndexes[sectionIndex] || 0}
-                setCurrentIndex={index => setJuniorImageIndex(sectionIndex, index)}
+                setCurrentIndex={(index) => setJuniorImageIndex(sectionIndex, index)}
                 autoSlide={autoSlideJunior[sectionIndex] || false}
-                setAutoSlide={value => {
+                setAutoSlide={(value) => {
                   const newStates = [...autoSlideJunior];
                   newStates[sectionIndex] = value;
                   setAutoSlideJunior(newStates);
