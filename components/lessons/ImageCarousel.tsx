@@ -28,7 +28,6 @@ export default function ImageCarousel({
   onImageClick,
   activeTab,
   tabId,
-  sectionIndex,
 }: ImageCarouselProps) {
   const AUTO_SLIDE_RESUME_DELAY = 10000;
 
@@ -95,7 +94,7 @@ export default function ImageCarousel({
                 />
                 <div className="absolute inset-0 bg-black/5 hover:bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
                   <span className="bg-white/80 px-4 py-2 rounded-full text-sm font-medium">
-                    <Eye className="inline h-4 w-4 mr-1" /> View Larger
+                    <Eye className="inline h-4 w-4 mr-1" /> View
                   </span>
                 </div>
               </motion.div>
@@ -132,7 +131,7 @@ export default function ImageCarousel({
                 <button
                   key={`dot-${sectionTitle}-${imgIndex}`}
                   className={`w-3 h-3 rounded-full transition-colors ${
-                    imgIndex === currentIndex ? "bg-dusty-rose" : "bg-gray-300"
+                    imgIndex === currentIndex ? "bg-coral-600" : "bg-gray-300"
                   }`}
                   onClick={() => goToImage(imgIndex)}
                   aria-label={`View image ${imgIndex + 1}`}

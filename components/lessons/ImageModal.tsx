@@ -1,8 +1,6 @@
 "use client";
 
-import { X } from "lucide-react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogOverlay } from "@/components/ui/dialog";
 
 interface ImageModalProps {
@@ -18,7 +16,7 @@ export default function ImageModal({
 }: Readonly<ImageModalProps>) {
   return (
     <Dialog open={modalOpen} onOpenChange={closeImageModal}>
-      <DialogOverlay className="bg-black/80" />
+      <DialogOverlay className="bg-gray-400/80" />
       <DialogContent className="max-w-5xl p-0 border-none bg-transparent overflow-hidden">
         <div className="relative">
           {selectedImage && (
@@ -32,15 +30,6 @@ export default function ImageModal({
               />
             </div>
           )}
-          <Button
-            variant="outline"
-            size="icon"
-            className="absolute top-4 right-4 rounded-full bg-white/50 hover:bg-white"
-            onClick={closeImageModal}
-          >
-            <X className="h-5 w-5" />
-            <span className="sr-only">Close</span>
-          </Button>
         </div>
       </DialogContent>
     </Dialog>

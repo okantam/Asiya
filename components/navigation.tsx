@@ -25,14 +25,14 @@ export default function Navigation() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="hidden md:flex items-center space-x-2">
-            <div className="w-8 h-8 bg-dusty-rose rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-coral-600 rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-sm">🎨</span>
             </div>
             <div className="flex flex-col">
               <span className="text-sm font-serif font-bold text-coffee dark:text-primary-dark">
                 Art With
               </span>
-              <span className=" text-xl lg:text-2xl text-primary-dark dark:text-primary-dark font-medium tracking-wide">
+              <span className=" text-xl lg:text-2xl text-coral-600 dark:text-primary-dark font-medium tracking-wide">
                 Asiya
               </span>
             </div>
@@ -45,9 +45,9 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <Link
                     href="/"
-                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-coral-600 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
                       pathname === "/"
-                        ? "bg-accent text-primary-dark"
+                        ? "bg-accent text-coral-600"
                         : "bg-background hover:text-accent-foreground"
                     }`}
                   >
@@ -59,9 +59,9 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <Link
                     href="/lessons"
-                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-coral-600 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
                       pathname === "/lessons"
-                        ? "bg-accent text-primary-dark"
+                        ? "bg-accent text-coral-600"
                         : "bg-background hover:text-accent-foreground"
                     }`}
                   >
@@ -73,9 +73,9 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <Link
                     href="/portfolio"
-                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-coral-600 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
                       pathname === "/portfolio"
-                        ? "bg-accent text-primary-dark"
+                        ? "bg-accent text-coral-600"
                         : "bg-background hover:text-accent-foreground"
                     }`}
                   >
@@ -122,9 +122,9 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <Link
                     href="/about"
-                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-coral-600 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
                       pathname === "/about"
-                        ? "bg-accent text-primary-dark"
+                        ? "bg-accent text-coral-600"
                         : "bg-background hover:text-accent-foreground"
                     }`}
                   >
@@ -137,9 +137,9 @@ export default function Navigation() {
                 <NavigationMenuLink asChild>
                   <Link
                     href="/contact"
-                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
+                    className={`group inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-coral-600 focus:outline-none disabled:pointer-events-none disabled:opacity-50 ${
                       pathname === "/contact"
-                        ? "bg-accent text-primary-dark"
+                        ? "bg-accent text-coral-600"
                         : "bg-background hover:text-accent-foreground"
                     }`}
                   >
@@ -157,7 +157,7 @@ export default function Navigation() {
               <div className="hidden lg:flex items-center space-x-4 ml-8">
                 <Link
                   href="/auth/signin"
-                  className="text-foreground hover:text-primary-dark dark:hover:text-primary-dark px-3 py-2 text-sm font-medium transition-colors"
+                  className="text-foreground hover:text-coral-600 dark:hover:text-coral-600 px-3 py-2 text-sm font-medium transition-colors"
                 >
                   Sign In
                 </Link>
@@ -169,7 +169,7 @@ export default function Navigation() {
                 </Link>
                 <Link
                   href="/admin"
-                  className="text-foreground hover:text-primary-dark dark:hover:text-primary-dark px-3 py-2 text-sm font-medium transition-colors"
+                  className="text-foreground hover:text-coral-600 dark:hover:text-coral-600 px-3 py-2 text-sm font-medium transition-colors"
                 >
                   Admin
                 </Link>
@@ -205,7 +205,7 @@ export default function Navigation() {
                 <Link
                   href="/"
                   className={`text-lg font-medium transition-colors ${
-                    pathname === "/" ? "text-primary-dark" : "hover:text-primary-dark"
+                    pathname === "/" ? "text-coral-600" : "hover:text-coral-600"
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
@@ -215,7 +215,7 @@ export default function Navigation() {
                   href="/lessons"
                   className={`text-lg font-medium transition-colors ${
                     pathname === "/lessons"
-                      ? "text-primary-dark"
+                      ? "text-coral-600"
                       : "hover:text-primary-dark"
                   }`}
                   onClick={() => setIsOpen(false)}

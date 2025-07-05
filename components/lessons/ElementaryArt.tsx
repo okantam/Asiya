@@ -13,97 +13,152 @@ export default function ElementaryArt({
   openImageModal,
 }: Readonly<ElementaryArtProps>) {
   // State for slidable image galleries
-  const [elementaryImageIndexes, setElementaryImageIndexes] = useState<number[]>([0, 0]); // [kindergarten, grades1-3]
+  const [sectionImageIndexes, setSectionImageIndexes] = useState<number[]>([]);
 
   // Auto-sliding states
   const SLIDE_INTERVAL = 5000; // 5 seconds between slides
   const AUTO_SLIDE_RESUME_DELAY = 10000; // 10 seconds before auto-slide resumes after manual navigation
-  const [autoSlideElementary, setAutoSlideElementary] = useState<boolean[]>([true, true]); // For kindergarten and grades 1-3
+  const [autoSlideHighSchool, setAutoSlideHighSchool] = useState<boolean[]>([]);
 
-  // Elementary art images
-  const kindergartenImages = [
-    "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=300&fit=crop",
-  ];
-
-  const gradesImages = [
-    "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop",
-    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-    "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=600&h=400&fit=crop",
+  const elementaryArtworks = [
+    {
+      title: "Paper Plate Mask",
+      description:
+        "Our second grade artists at Camp Art Academy explore basic art elements through King Tut Pharaoh Mask creation.",
+      images: ["/images/paper-mask-1.jpg", "/images/paper-mask-2.jpg"],
+    },
+    {
+      title: "King Tut Pharaoh Mask",
+      description:
+        "Our second grade artists at Camp Art Academy explore basic art elements through King Tut Pharaoh Mask creation.",
+      images: [
+        "/images/elementary-img-1.jpg",
+        "/images/elementary-img-2.jpg",
+        "/images/elementary-img-3.jpg",
+        "/images/elementary-img-4.jpg",
+      ],
+    },
+    {
+      title: "Paper Puppets Art",
+      description:
+        "Second and third grade students at Camp Art Academy create whimsical paper puppets, exploring character design and storytelling.",
+      images: [
+        "/images/paper-puppet-1.jpg",
+        "/images/paper-puppet-2.jpg",
+        "/images/paper-puppet-3.jpg",
+        "/images/paper-puppet-4.jpg",
+      ],
+    },
+    {
+      title: "Sugar Skull Art",
+      description:
+        "Students create vibrant sugar skulls with cardboard, tissue paper, and glue at Camp Art Academy",
+      images: [
+        "/images/sugar-skull-1.jpg",
+        "/images/sugar-skull-2.jpg",
+        "/images/sugar-skull-3.jpg",
+        "/images/sugar-skull-4.jpg",
+        "/images/sugar-skull-5.jpg",
+      ],
+    },
+    {
+      title: "Crayon and Acrylic Paint",
+      description:
+        "Jean-Michel Basquiat inspired art work second and third grade (crayon and acrylic paint on paper)",
+      images: [
+        "/images/crayon-and-acrylic-1.jpg",
+        "/images/crayon-and-acrylic-2.jpg",
+        "/images/crayon-and-acrylic-3.jpg",
+      ],
+    },
+    {
+      title: "Mini Robots Art",
+      description:
+        "Mini robot art work Second and Third Grade camp Art Academy (cardboard, card stock, foil, assorted buttons)",
+      images: [
+        "/images/mini-robotic-1.jpg",
+        "/images/mini-robotic-2.jpg",
+        "/images/mini-robotic-3.jpg",
+      ],
+    },
+    {
+      title: "Surrealist Inspired Art",
+      description: "Surrealist inspired art work second grade (mix media)",
+      images: ["/images/surrealist-art-1.png"],
+    },
   ];
 
   // Elementary art navigation functions
   useEffect(() => {
-    // Make sure elementaryImageIndexes is initialized
-    if (elementaryImageIndexes.length < 2) {
-      setElementaryImageIndexes([0, 0]); // [kindergarten, grades1-3]
+    if (sectionImageIndexes.length < elementaryArtworks.length) {
+      setSectionImageIndexes(new Array(elementaryArtworks.length).fill(0));
     }
 
     // Initialize auto-slide states if needed
-    if (autoSlideElementary.length < 2) {
-      setAutoSlideElementary([true, true]); // Default auto-slide to true
+    if (autoSlideHighSchool.length < elementaryArtworks.length) {
+      setAutoSlideHighSchool(new Array(elementaryArtworks.length).fill(true)); // Default auto-slide to true
     }
-  }, [elementaryImageIndexes.length, autoSlideElementary.length]);
+  }, [elementaryArtworks.length, sectionImageIndexes.length, autoSlideHighSchool.length]);
 
   // Auto-sliding for elementary art sections - continuous while tab is active
   useEffect(() => {
-    // Create interval for kindergarten images
-    let kindergartenInterval: NodeJS.Timeout | null = null;
-    if (
-      activeTab === "elementary" &&
-      autoSlideElementary[0] &&
-      kindergartenImages.length > 1
-    ) {
-      kindergartenInterval = setInterval(() => {
-        const currentIndex = elementaryImageIndexes[0] || 0;
-        const newIndex = (currentIndex + 1) % kindergartenImages.length;
-        setElementaryImageIndex(0, newIndex);
-      }, SLIDE_INTERVAL);
-    }
+    // Create an array of intervals for high school sections
+    const intervals = elementaryArtworks
+      .map((section, idx) => {
+        if (
+          activeTab === "high-school" &&
+          autoSlideHighSchool[idx] &&
+          section.images.length > 1
+        ) {
+          return setInterval(() => {
+            nextSectionImage(idx);
+          }, SLIDE_INTERVAL);
+        }
+        return null;
+      })
+      .filter(Boolean); // Filter out null intervals
 
-    // Create interval for grades 1-3 images
-    let gradesInterval: NodeJS.Timeout | null = null;
-    if (activeTab === "elementary" && autoSlideElementary[1] && gradesImages.length > 1) {
-      gradesInterval = setInterval(() => {
-        const currentIndex = elementaryImageIndexes[1] || 0;
-        const newIndex = (currentIndex + 1) % gradesImages.length;
-        setElementaryImageIndex(1, newIndex);
-      }, SLIDE_INTERVAL);
-    }
-
-    // Cleanup function to clear intervals
+    // Cleanup function to clear all intervals
     return () => {
-      if (kindergartenInterval) clearInterval(kindergartenInterval);
-      if (gradesInterval) clearInterval(gradesInterval);
+      intervals.forEach(interval => {
+        if (interval) clearInterval(interval);
+      });
     };
-  }, [
-    activeTab,
-    autoSlideElementary,
-    kindergartenImages.length,
-    gradesImages.length,
-    elementaryImageIndexes,
-  ]); // Only necessary dependencies
+  }, [activeTab, autoSlideHighSchool, elementaryArtworks]);
 
-  const setElementaryImageIndex = (sectionIdx: number, imageIdx: number) => {
-    const newIndexes = [...elementaryImageIndexes];
+  // Set specific section image index
+  const setSectionImageIndex = (sectionIdx: number, imageIdx: number) => {
+    const newIndexes = [...sectionImageIndexes];
     newIndexes[sectionIdx] = imageIdx;
-    setElementaryImageIndexes(newIndexes);
+    setSectionImageIndexes(newIndexes);
 
     // Pause auto-slide temporarily when manually changing images
-    if (autoSlideElementary[sectionIdx]) {
-      const newStates = [...autoSlideElementary];
+    if (sectionIdx < autoSlideHighSchool.length && autoSlideHighSchool[sectionIdx]) {
+      const newStates = [...autoSlideHighSchool];
       newStates[sectionIdx] = false;
-      setAutoSlideElementary(newStates);
+      setAutoSlideHighSchool(newStates);
 
       // Resume auto-slide after delay
       setTimeout(() => {
-        if (activeTab === "elementary") {
-          const resumeStates = [...autoSlideElementary];
+        if (activeTab === "high-school") {
+          const resumeStates = [...autoSlideHighSchool];
           resumeStates[sectionIdx] = true;
-          setAutoSlideElementary(resumeStates);
+          setAutoSlideHighSchool(resumeStates);
         }
       }, AUTO_SLIDE_RESUME_DELAY);
     }
+  };
+
+  // Next image for a specific section
+  const nextSectionImage = (sectionIdx: number) => {
+    if (sectionIdx >= elementaryArtworks.length) return;
+
+    const section = elementaryArtworks[sectionIdx];
+    if (!section || section.images.length === 0) return;
+
+    const currentIndex = sectionImageIndexes[sectionIdx] || 0;
+    const newIndex = (currentIndex + 1) % section.images.length;
+    setSectionImageIndex(sectionIdx, newIndex);
   };
 
   return (
@@ -116,69 +171,46 @@ export default function ElementaryArt({
         </p>
       </div>
 
-      <div className="space-y-24">
-        {/* Kindergarten Art Section */}
-        <section className="mb-16">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-serif italic text-gray-800 mb-4">
-              Kindergarten Art
-            </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Our youngest artists explore basic art elements through imaginative play and
-              discovery.
-            </p>
-          </div>
+      {elementaryArtworks.length > 0 ? (
+        <div className="space-y-24">
+          {/* Display all sections vertically */}
+          {elementaryArtworks.map((section, sectionIndex) => (
+            <section
+              key={`hs-section-${section.title}-${sectionIndex}`}
+              className="mb-16"
+            >
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-serif italic text-gray-800 mb-4">
+                  {section.title}
+                </h3>
+                <p className="text-gray-600 max-w-2xl mx-auto">{section.description}</p>
+              </div>
 
-          {/* Image Carousel for Kindergarten */}
-          <ImageCarousel
-            images={kindergartenImages}
-            sectionTitle="Kindergarten Art"
-            currentIndex={elementaryImageIndexes[0] || 0}
-            setCurrentIndex={index => setElementaryImageIndex(0, index)}
-            autoSlide={autoSlideElementary[0] || false}
-            setAutoSlide={value => {
-              const newStates = [...autoSlideElementary];
-              newStates[0] = value;
-              setAutoSlideElementary(newStates);
-            }}
-            onImageClick={openImageModal}
-            activeTab={activeTab}
-            tabId="elementary"
-            sectionIndex={0}
-          />
-        </section>
-
-        {/* Grades 1-3 Art Section */}
-        <section className="mb-16">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-serif italic text-gray-800 mb-4">
-              Grades 1-3 Art
-            </h3>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Young artists develop skills through guided exploration of techniques and
-              materials.
-            </p>
-          </div>
-
-          {/* Image Carousel for Grades 1-3 */}
-          <ImageCarousel
-            images={gradesImages}
-            sectionTitle="Grades 1-3 Art"
-            currentIndex={elementaryImageIndexes[1] || 0}
-            setCurrentIndex={index => setElementaryImageIndex(1, index)}
-            autoSlide={autoSlideElementary[1] || false}
-            setAutoSlide={value => {
-              const newStates = [...autoSlideElementary];
-              newStates[1] = value;
-              setAutoSlideElementary(newStates);
-            }}
-            onImageClick={openImageModal}
-            activeTab={activeTab}
-            tabId="elementary"
-            sectionIndex={1}
-          />
-        </section>
-      </div>
+              {/* Image Carousel for this section */}
+              <ImageCarousel
+                images={section.images}
+                sectionTitle={section.title}
+                currentIndex={sectionImageIndexes[sectionIndex] || 0}
+                setCurrentIndex={index => setSectionImageIndex(sectionIndex, index)}
+                autoSlide={autoSlideHighSchool[sectionIndex] || false}
+                setAutoSlide={value => {
+                  const newStates = [...autoSlideHighSchool];
+                  newStates[sectionIndex] = value;
+                  setAutoSlideHighSchool(newStates);
+                }}
+                onImageClick={openImageModal}
+                activeTab={activeTab}
+                tabId="high-school"
+                sectionIndex={sectionIndex}
+              />
+            </section>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-16 bg-gray-50 rounded-lg border border-gray-200">
+          <p className="text-gray-600">No artwork available for this section yet.</p>
+        </div>
+      )}
     </div>
   );
 }

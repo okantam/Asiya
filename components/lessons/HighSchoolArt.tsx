@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import ImageCarousel from "./ImageCarousel";
+import { FileText } from "lucide-react";
 
 interface HighSchoolSection {
   title: string;
@@ -27,46 +28,7 @@ export default function HighSchoolArt({
   const [autoSlideHighSchool, setAutoSlideHighSchool] = useState<boolean[]>([]); // For high school sections
 
   // High School art section data
-  const highSchoolPortfolioSections: HighSchoolSection[] = [
-    {
-      title: "Advanced Drawing & Painting",
-      description: "Students develop sophisticated techniques in traditional media",
-      images: [
-        "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=300&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=300&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=400&fit=crop",
-      ],
-    },
-    {
-      title: "Digital Art & Design",
-      description: "Exploring contemporary digital tools and design principles",
-      images: [
-        "https://images.unsplash.com/photo-1515378791036-0648a814c963?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-      ],
-    },
-    {
-      title: "Sculpture & 3D Art",
-      description: "Three-dimensional exploration using various materials and techniques",
-      images: [
-        "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=350&h=350&fit=crop",
-        "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=350&h=350&fit=crop",
-        "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=350&h=350&fit=crop",
-      ],
-    },
-    {
-      title: "Personal Expression Projects",
-      description: "Student-driven projects exploring individual themes and concepts",
-      images: [
-        "https://images.unsplash.com/photo-1515378791036-0648a814c963?w=300&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=300&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-        "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=400&h=300&fit=crop",
-      ],
-    },
-  ];
+  const highSchoolPortfolioSections: HighSchoolSection[] = [];
 
   // High school section image navigation
   // Initialize section image indexes if they don't exist yet
@@ -193,7 +155,16 @@ export default function HighSchoolArt({
         </div>
       ) : (
         <div className="text-center py-16 bg-gray-50 rounded-lg border border-gray-200">
-          <p className="text-gray-600">No artwork available for this section yet.</p>
+          <div className="max-w-md mx-auto">
+            <FileText className="h-12 w-12 mx-auto text-gray-400 mb-4" />
+            <h3 className="text-xl font-medium text-gray-900 mb-2">
+              No Artworks Available
+            </h3>
+            <p className="text-gray-600">
+              There are currently no artworks available for this category. Please check
+              back later or select a different category.
+            </p>
+          </div>
         </div>
       )}
     </div>

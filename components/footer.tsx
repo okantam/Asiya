@@ -10,12 +10,12 @@ const Footer = () => {
             <div className="md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="relative">
-                  <Palette className="h-8 w-8 text-dusty-rose" />
+                  <Palette className="h-8 w-8 text-coral-600" />
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-sage-green rounded-full"></div>
                 </div>
                 <div>
                   <span className=" text-sm font-serif font-bold">Art With</span>
-                  <div className="text-xl text-dusty-rose font-medium tracking-wide uppercase">
+                  <div className="text-xl text-coral-600 font-medium tracking-wide uppercase">
                     Asiya Kinebrew-Okanta
                   </div>
                 </div>
@@ -28,12 +28,12 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4 text-dusty-rose">Quick Links</h4>
+              <h4 className="font-semibold mb-4 text-coral-600">Quick Links</h4>
               <ul className="space-y-2">
                 <li>
                   <a
                     href="/about"
-                    className="text-gray-300 hover:text-dusty-rose transition-colors"
+                    className="text-gray-300 hover:text-coral-200 transition-colors"
                   >
                     About
                   </a>
@@ -42,7 +42,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="https://docs.google.com/document/d/1FjWNguA60g2dS67Y7MswOywLRwBy5GAXBqOo6ALfRI8"
-                    className="text-gray-300 hover:text-dusty-rose transition-colors"
+                    className="text-gray-300 hover:text-coral-200 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -52,7 +52,7 @@ const Footer = () => {
                 <li>
                   <a
                     href="/contact"
-                    className="text-gray-300 hover:text-dusty-rose transition-colors"
+                    className="text-gray-300 hover:text-coral-200 transition-colors"
                   >
                     Contact
                   </a>
@@ -61,7 +61,7 @@ const Footer = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4 text-dusty-rose">Programs</h4>
+              <h4 className="font-semibold mb-4 text-coral-600">Programs</h4>
               <ul className="space-y-2 text-gray-300">
                 <li>Elementary Art</li>
                 <li>Junior School Art</li>

@@ -54,7 +54,7 @@ export default function LessonPlans({
             onClick={() => setSelectedCategory(category.id)}
             className={`px-4 py-2 rounded-md transition-all ${
               selectedCategory === category.id
-                ? "bg-dusty-rose text-white font-medium shadow-md"
+                ? "bg-coral-600 text-white font-medium shadow-md"
                 : "bg-gray-100 text-gray-800 hover:bg-gray-200"
             }`}
           >
@@ -93,7 +93,7 @@ export default function LessonPlans({
                         <div className="flex flex-wrap gap-2">
                           <Badge
                             variant="secondary"
-                            className="bg-pink-50 text-pink-400 hover:bg-pink-200"
+                            className="bg-coral-50 text-coral-600 hover:bg-coral-100 hover:text-coral-700"
                           >
                             {lesson.category}
                           </Badge>
@@ -162,7 +162,7 @@ export default function LessonPlans({
                                 <material.icon
                                   className={`h-5 w-5 ${getFileTypeColor(material.type)}`}
                                 />
-                                <span className="font-medium text-gray-900 group-hover:text-pink-400 transition-colors">
+                                <span className="font-medium text-gray-900 group-hover:text-coral-600 transition-colors">
                                   {material.name}
                                 </span>
                               </div>
@@ -170,7 +170,7 @@ export default function LessonPlans({
                                 size="sm"
                                 variant="outline"
                                 onClick={() => handleDownload(material.name)}
-                                className="border-2 border-dusty-rose text-dusty-rose hover:text-white hover:bg-dusty-rose shadow-sm"
+                                className="border-2 border-coral-600 text-coral-600 hover:text-white hover:bg-coral-600 shadow-sm"
                               >
                                 <Download className="h-4 w-4 mr-2" />
                                 Download

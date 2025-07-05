@@ -183,30 +183,6 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
       image: "/images/digital_3.jpg",
       description: "",
     },
-    // {
-    //   id: 18,
-    //   category: "digital-art",
-    //   title: "Ceramic Bowl",
-    //   image:
-    //     "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-    //   description: "Hand-building techniques",
-    // },
-    // {
-    //   id: 19,
-    //   category: "digital-art",
-    //   title: "Abstract Painting",
-    //   image:
-    //     "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-    //   description: "Expressing emotions through color",
-    // },
-    // {
-    //   id: 20,
-    //   category: "digital-art",
-    //   title: "Printmaking",
-    //   image:
-    //     "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-    //   description: "Linoleum block printing",
-    // },
 
     // 2D Art
     {
@@ -216,38 +192,6 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
       image: "/images/2d_img_1.jpg",
       description: "",
     },
-    // {
-    //   id: 22,
-    //   category: "2d-art",
-    //   title: "Digital Art Composition",
-    //   image:
-    //     "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-    //   description: "Modern digital techniques",
-    // },
-    // {
-    //   id: 23,
-    //   category: "2d-art",
-    //   title: "Sculpture Study",
-    //   image:
-    //     "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-    //   description: "3D form and space exploration",
-    // },
-    // {
-    //   id: 24,
-    //   category: "2d-art",
-    //   title: "Mixed Media Installation",
-    //   image:
-    //     "https://images.pexels.com/photos/1047540/pexels-photo-1047540.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-    //   description: "Contemporary art concepts",
-    // },
-    // {
-    //   id: 25,
-    //   category: "2d-art",
-    //   title: "Photography Series",
-    //   image:
-    //     "https://images.pexels.com/photos/1266808/pexels-photo-1266808.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-    //   description: "Visual storytelling project",
-    // },
   ];
 
   const filteredArtworks =
@@ -287,7 +231,7 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
 
         <div className="relative z-10 text-center bg-soft-white/95 p-8 rounded-lg max-w-3xl mx-4 border border-border">
           <h1
-            className="text-4xl md:text-5xl font-serif italic text-dusty-rose mb-4"
+            className="text-4xl md:text-5xl font-serif italic text-coral-600 mb-4"
             style={{ fontFamily: "sacramento,cursive" }}
           >
             Artwork Gallery
@@ -311,8 +255,8 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                     selectedCategory === category.id
-                      ? "bg-dusty-rose text-white shadow-lg"
-                      : "bg-cream-pink text-coffee hover:bg-dusty-rose/20"
+                      ? "bg-coral-600 text-white shadow-lg"
+                      : "bg-coral-50 text-coffee hover:bg-coral-100 hover:text-coffee/80"
                   }`}
                 >
                   {category.name}
@@ -353,7 +297,7 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
             </p>
             <button
               onClick={onBack}
-              className="bg-dusty-rose hover:bg-mauve text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="bg-coral-600 hover:bg-mauve text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
               Enroll in Classes
             </button>
