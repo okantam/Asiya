@@ -31,7 +31,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 to-pink-200">
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center">
         <div

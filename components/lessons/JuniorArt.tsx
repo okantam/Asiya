@@ -11,7 +11,7 @@ interface JuniorArtSection {
 
 interface JuniorArtProps {
   activeTab: string;
-  openImageModal: (imageSrc: string) => void;
+  openImageModal: (imageSrc: string, images?: string[], sectionTitle?: string) => void;
 }
 
 export default function JuniorArt({
@@ -31,7 +31,7 @@ export default function JuniorArt({
     {
       title: "Tee Shirt Design",
       description: "Students experiment with various materials and textures",
-      images: ["/images/junior-img-1.avif", "/images/junior-img-2.jpg"],
+      images: ["/images/junior-img-2.jpg", "/images/junior-img-1.avif"],
     },
   ];
 
@@ -104,7 +104,7 @@ export default function JuniorArt({
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-lg shadow-md">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold text-gray-800 mb-4">Junior Art</h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">

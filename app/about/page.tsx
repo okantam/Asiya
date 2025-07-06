@@ -2,32 +2,11 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      {/* <section className="relative h-[400px] flex items-center justify-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/images/about_hero_img.jpg')",
-          }}
-        >
-          <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
-        </div>
-
-        <div className="relative z-10 text-center bg-soft-white/95 p-8 rounded-lg max-w-3xl mx-4 border border-border">
-          <h1 className="text-4xl md:text-5xl font-serif italic text-dusty-rose mb-4">
-            Teaching Portfolio
-          </h1>
-          <p className="text-lg text-coffee/80">
-            Inspiring Creativity Through Art & Education
-          </p>
-        </div>
-      </section> */}
-
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 to-pink-200">
       {/* Main Content */}
-      <section className="py-16 bg-muted/50">
+      <section className="py-16 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-card rounded-lg shadow-lg overflow-hidden border border-border">
+          <div className="bg-gradient-to-br from-pink-200 to-pink-100 rounded-lg shadow-lg overflow-hidden border border-border">
             <div className="md:flex">
               <div className="md:w-1/3 overflow-hidden">
                 <Image
@@ -132,7 +111,7 @@ export default function AboutPage() {
             <a
               href="https://docs.google.com/document/d/1FjWNguA60g2dS67Y7MswOywLRwBy5GAXBqOo6ALfRI8/edit?usp=drivesdk"
               target="_blank"
-              className="text-primary-dark hover:text-coral-700"
+              className="text-coral-600 hover:text-coral-700"
             >
               Read about my teaching philosophy
             </a>

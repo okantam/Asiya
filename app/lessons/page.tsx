@@ -77,20 +77,30 @@ export default function LessonPlansPage() {
   const [activeTab, setActiveTab] = useState("lesson-plans");
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [currentSectionImages, setCurrentSectionImages] = useState<string[]>([]);
+  const [currentSectionTitle, setCurrentSectionTitle] = useState<string>("");
 
   // Modal functions
-  const openImageModal = (imageSrc: string) => {
+  const openImageModal = (
+    imageSrc: string,
+    images: string[] = [],
+    sectionTitle: string = ""
+  ) => {
     setSelectedImage(imageSrc);
+    setCurrentSectionImages(images);
+    setCurrentSectionTitle(sectionTitle);
     setModalOpen(true);
   };
 
   const closeImageModal = () => {
     setModalOpen(false);
     setSelectedImage(null);
+    setCurrentSectionImages([]);
+    setCurrentSectionTitle("");
   };
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-pink-100 to-pink-200">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Art Lessons</h1>
@@ -111,12 +121,14 @@ export default function LessonPlansPage() {
           className="w-full"
           onValueChange={setActiveTab}
         >
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
-            <TabsTrigger value="lesson-plans">Lesson Plans</TabsTrigger>
-            <TabsTrigger value="elementary">Elementary Art</TabsTrigger>
-            <TabsTrigger value="junior">Junior Art</TabsTrigger>
-            <TabsTrigger value="high-school">High School Art</TabsTrigger>
-          </TabsList>
+          <div className="mb-8">
+            <TabsList className="bg-gradient-to-br from-pink-50 to-pink-100 grid w-full  grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+              <TabsTrigger value="lesson-plans">Lesson Plans</TabsTrigger>
+              <TabsTrigger value="elementary">Elementary Art</TabsTrigger>
+              <TabsTrigger value="junior">Junior Art</TabsTrigger>
+              <TabsTrigger value="high-school">High School Art</TabsTrigger>
+            </TabsList>
+          </div>
 
           {/* Lesson Plans Tab Content */}
           <TabsContent value="lesson-plans">
@@ -145,11 +157,13 @@ export default function LessonPlansPage() {
         </Tabs>
       </div>
 
-      {/* Image Modal */}
+      {/* Image Modal with sliding functionality */}
       <ImageModal
         modalOpen={modalOpen}
         closeImageModal={closeImageModal}
         selectedImage={selectedImage}
+        allImages={currentSectionImages}
+        sectionTitle={currentSectionTitle}
       />
     </div>
   );

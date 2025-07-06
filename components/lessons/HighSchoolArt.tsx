@@ -12,7 +12,7 @@ interface HighSchoolSection {
 
 interface HighSchoolArtProps {
   activeTab: string;
-  openImageModal: (imageSrc: string) => void;
+  openImageModal: (imageSrc: string, images?: string[], sectionTitle?: string) => void;
 }
 
 export default function HighSchoolArt({
@@ -109,7 +109,7 @@ export default function HighSchoolArt({
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md">
+    <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-lg shadow-md">
       <div className="text-center mb-10">
         <h2 className="text-3xl font-bold text-gray-800 mb-4">High School Art</h2>
         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -154,7 +154,7 @@ export default function HighSchoolArt({
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 bg-gray-50 rounded-lg border border-gray-200">
+        <div className="text-center py-16  bg-pink-50 rounded-lg border border-pink-200">
           <div className="max-w-md mx-auto">
             <FileText className="h-12 w-12 mx-auto text-gray-400 mb-4" />
             <h3 className="text-xl font-medium text-gray-900 mb-2">

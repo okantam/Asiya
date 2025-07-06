@@ -20,7 +20,7 @@ export default function Navigation() {
   const pathname = usePathname();
 
   return (
-    <header className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border sticky top-0 z-50">
+    <header className="bg-gradient-to-br from-pink-50 to-pink-100 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -40,7 +40,7 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden lg:flex">
-            <NavigationMenuList>
+            <NavigationMenuList className="flex items-center space-x-6">
               <NavigationMenuItem>
                 <NavigationMenuLink asChild>
                   <Link
@@ -214,9 +214,7 @@ export default function Navigation() {
                 <Link
                   href="/lessons"
                   className={`text-lg font-medium transition-colors ${
-                    pathname === "/lessons"
-                      ? "text-coral-600"
-                      : "hover:text-primary-dark"
+                    pathname === "/lessons" ? "text-coral-600" : "hover:text-primary-dark"
                   }`}
                   onClick={() => setIsOpen(false)}
                 >

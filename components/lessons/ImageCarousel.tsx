@@ -12,7 +12,7 @@ interface ImageCarouselProps {
   setCurrentIndex: (index: number) => void;
   autoSlide: boolean;
   setAutoSlide: (autoSlide: boolean) => void;
-  onImageClick: (imageSrc: string) => void;
+  onImageClick: (imageSrc: string, images?: string[], sectionTitle?: string) => void;
   activeTab: string;
   tabId: string;
   sectionIndex: number;
@@ -72,8 +72,8 @@ export default function ImageCarousel({
       {images.length > 0 ? (
         <>
           <button
-            className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer w-full border-0 p-0 relative"
-            onClick={() => onImageClick(images[currentIndex])}
+            className="bg-pink-50 rounded-lg shadow-lg overflow-hidden cursor-pointer w-full border-0 p-0 relative"
+            onClick={() => onImageClick(images[currentIndex], images, sectionTitle)}
             aria-label={`Enlarge ${sectionTitle} artwork`}
           >
             <AnimatePresence mode="wait">
@@ -107,7 +107,7 @@ export default function ImageCarousel({
               <Button
                 variant="outline"
                 size="icon"
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-pink-50 hover:bg-pink-100 shadow-lg"
                 onClick={prevImage}
               >
                 <ChevronLeft className="h-6 w-6" />
@@ -116,7 +116,7 @@ export default function ImageCarousel({
               <Button
                 variant="outline"
                 size="icon"
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white hover:bg-gray-100 shadow-lg"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-pink-50 hover:bg-pink-100 shadow-lg"
                 onClick={nextImage}
               >
                 <ChevronRight className="h-6 w-6" />
@@ -141,7 +141,7 @@ export default function ImageCarousel({
           )}
         </>
       ) : (
-        <div className="text-center py-12 bg-gray-50 rounded-lg">
+        <div className="text-center py-12 bg-pink-50 rounded-lg">
           <p>No images available for this section.</p>
         </div>
       )}

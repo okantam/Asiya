@@ -3,10 +3,9 @@ import React, { useState } from "react";
 import MasonryGallery from "@/components/MasonryGallery";
 
 const GalleryPage = ({ onBack }: { onBack: () => void }) => {
-  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [selectedCategory, setSelectedCategory] = useState("photography");
 
   const categories = [
-    { id: "all", name: "All Artwork" },
     { id: "photography", name: "Photography" },
     { id: "digital-art", name: "Digital Art" },
     { id: "2d-art", name: "2D Art" },
@@ -70,52 +69,45 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
 
     // Photography Art
     {
-      id: 7,
-      category: "photography",
-      title: "",
-      image: "/images/tinywow_Photo 31_82159934.avif",
-      description: "",
-    },
-    {
-      id: 8,
-      category: "photography",
-      title: "",
-      image: "/images/photo_6.jpg",
-      description: "",
-    },
-    {
-      id: 9,
-      category: "photography",
-      title: "",
-      image: "/images/photo_2.jpg",
-      description: "",
-    },
-    {
-      id: 10,
+      id: 6,
       category: "photography",
       title: "",
       image: "/images/photo_3.jpg",
       description: "",
     },
     {
-      id: 11,
+      id: 7,
       category: "photography",
       title: "",
-      image: "/images/photo_4.jpg",
+      image: "/images/photo_2.jpg",
       description: "",
     },
     {
-      id: 12,
+      id: 8,
+      category: "photography",
+      title: "",
+      image: "/images/photo_1.jpg",
+      description: "",
+    },
+    {
+      id: 9,
+      category: "photography",
+      title: "",
+      image: "/images/tinywow_Photo 31_82159934.avif",
+      description: "",
+    },
+    {
+      id: 10,
       category: "photography",
       title: "",
       image: "/images/photo_5.jpg",
       description: "",
     },
     {
-      id: 14,
+      id: 11,
       category: "photography",
       title: "",
-      image: "/images/photo_2.jpg",
+      image: "/images/photo_6.jpg",
       description: "",
     },
     {
@@ -194,40 +186,12 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
     },
   ];
 
-  const filteredArtworks =
-    selectedCategory === "all"
-      ? artworks
-      : artworks.filter(artwork => artwork.category === selectedCategory);
+  const filteredArtworks = artworks.filter(artwork => artwork.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-soft-white">
-      {/* Header */}
-      {/* <div className="bg-cream-pink/50 py-8">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-                  
-            <div className="text-center">
-              <h1 className="text-4xl lg:text-5xl font-serif font-bold text-coffee mb-4">
-                 Artwork Gallery
-              </h1>
-              <p className="text-lg text-coffee/70 max-w-2xl mx-auto">
-                Explore the creative journey of my work across different category and skill levels. 
-                Each piece represents growth, learning, and artistic expression.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div> */}
-      <section className="relative h-[400px] flex items-center justify-center">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=1200&h=400&fit=crop')",
-          }}
-        >
-          <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 to-pink-200">
+      <section className="relative h-[400px] bg-gradient-to-br from-coral-300 to-pink-300 flex items-center justify-center">
+  
 
         <div className="relative z-10 text-center bg-soft-white/95 p-8 rounded-lg max-w-3xl mx-4 border border-border">
           <h1
@@ -245,7 +209,7 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
       </section>
 
       {/* Filter Section */}
-      <div className="py-8 bg-soft-white border-b border-cream-pink">
+      <div className="py-8 ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-wrap justify-center gap-3">
@@ -285,7 +249,7 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
       </div>
 
       {/* Call to Action */}
-      <div className="py-16 bg-gradient-to-br from-cream-pink/50 to-sage-green/10">
+      {/* <div className="py-16 bg-gradient-to-br from-cream-pink/50 to-sage-green/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl font-serif font-bold text-coffee mb-4">
@@ -303,7 +267,7 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -186,7 +186,7 @@ export default function LessonPlans({
             </Card>
           ))
         ) : (
-          <div className="text-center py-16 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="text-center py-16 bg-pink-50 rounded-lg border border-pink-200">
             <div className="max-w-md mx-auto">
               <FileText className="h-12 w-12 mx-auto text-gray-400 mb-4" />
               <h3 className="text-xl font-medium text-gray-900 mb-2">

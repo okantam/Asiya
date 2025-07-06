@@ -35,20 +35,18 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-6">
+    // Alternative solution using CSS Grid with auto-fit rows:
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-6 auto-rows-max">
       {portfolioData.map(artwork => (
         <div
           key={artwork.id}
-          className="break-inside-avoid mb-6 bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300"
+          className="break-inside-avoid bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 self-start"
         >
           <div className="relative group">
             <img
               src={artwork.image}
               alt={artwork.title}
-              className="w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              style={{
-                height: artwork.height ? `${artwork.height}px` : "280px",
-              }}
+              className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
               <Dialog>

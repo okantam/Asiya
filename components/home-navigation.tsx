@@ -19,12 +19,15 @@ export default function HomeNavigation() {
   return (
     <header className="absolute top-0 left-0 right-0 z-50 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-center items-center  h-16">
           {/* Desktop Navigation */}
-          <NavigationMenu className="hidden lg:flex mx-auto">
-            <NavigationMenuList className="flex gap-40">
+          <NavigationMenu className="hidden md:flex justify-center w-full">
+            <NavigationMenuList
+              className="flex justify-between !gap-x-28 items-center  w-full"
+              
+            >
               {/* Left navigation items */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 ">
                 <NavigationMenuItem>
                   <NavigationMenuLink asChild>
                     <Link
@@ -90,7 +93,7 @@ export default function HomeNavigation() {
           </NavigationMenu>
 
           {/* Theme Toggle and Mobile Menu Button */}
-          <div className="flex items-center justify-between w-full  pt-8 md:pt-0">
+          <div className="flex items-center justify-between w-full md:w-32 pt-8 md:pt-0">
             <div className="text-white">
               <ThemeToggle />
             </div>
@@ -105,11 +108,11 @@ export default function HomeNavigation() {
               </span>
             </div>
 
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4 md:hidden">
               {/* Mobile Navigation */}
               <Sheet open={isOpen} onOpenChange={setIsOpen}>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="sm" className="lg:hidden text-white">
+                  <Button variant="ghost" size="sm" className="md:hidden text-white">
                     <Menu className="h-8 w-8" />
                     <span className="sr-only">Toggle menu</span>
                   </Button>
