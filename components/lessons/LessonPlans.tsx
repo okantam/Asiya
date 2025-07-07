@@ -35,14 +35,28 @@ export default function LessonPlans({
   // Filter lesson plans based on selected category
   const filteredLessons = lessonPlans.filter(lesson => lesson.type === selectedCategory);
 
-  const handleDownload = (materialName: string) => {
-    // In a real app, this would trigger the actual download
-    console.log(`Downloading: ${materialName}`);
+  const handleDownload = (filePath: string) => {
+    if (!filePath) {
+      return;
+    }
+    
+    const link = document.createElement("a");
+    const normalizedPath = filePath.startsWith('/') ? filePath : `/${filePath}`;
+    link.href = normalizedPath;
+    const fileName = normalizedPath.split('/').pop() || "download";
+    link.setAttribute("download", fileName);
+    document.body.appendChild(link);
+    link.click();
+    // Clean up
+    document.body.removeChild(link);
+    console.log(`Downloading: ${fileName}`);
   };
 
   const handleExternalLink = (url: string) => {
-    // In a real app, this would open the external link
-    window.open(url, "_blank");
+    if (!url) {
+      return;
+    } 
+    window.open(url, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -128,7 +142,9 @@ export default function LessonPlans({
                                 }
                                 <button
                                   onClick={() =>
-                                    handleExternalLink("https://example.com")
+                                    handleExternalLink(
+                                      "https://aacimotaatiiyankwi.org/2023/03/07/bringing-myaamia-art-to-the-classroom/"
+                                    )
                                   }
                                   className="text-blue-600 hover:text-blue-800 underline font-medium inline-flex items-center gap-1"
                                 >
@@ -169,7 +185,7 @@ export default function LessonPlans({
                               <Button
                                 size="sm"
                                 variant="outline"
-                                onClick={() => handleDownload(material.name)}
+                                onClick={() => handleDownload(material?.path)}
                                 className="border-2 border-coral-600 text-coral-600 hover:text-white hover:bg-coral-600 shadow-sm"
                               >
                                 <Download className="h-4 w-4 mr-2" />

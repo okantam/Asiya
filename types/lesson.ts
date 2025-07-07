@@ -4,6 +4,8 @@ export interface Material {
   name: string;
   type: string;
   icon: LucideIcon;
+  path: string; 
+  externalLink?: string;
 }
 
 export interface LessonPlan {
