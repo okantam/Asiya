@@ -2,7 +2,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Linkedin, Instagram, Eye, Sparkles, Brush, Palette } from "lucide-react";
+import {
+  ArrowRight,
+  Linkedin,
+  Instagram,
+  Eye,
+} from "lucide-react";
 import HomeNavigation from "@/components/home-navigation";
 
 export default function HomePage() {
@@ -164,11 +169,7 @@ export default function HomePage() {
             {/* Elementary Art */}
             <div className="bg-card rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow border border-coral-600">
               <div className="h-48 bg-gradient-to-br from-coral-300 to-pink-300 dark:bg-blue-900/20 p-4">
-                <div
-                  className={`w-20 h-20 rounded-2xl bg-gradient-to-br from-pink-400 to-rose-500 dark:from-pink-500 dark:to-rose-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300 shadow-lg`}
-                >
-                  <Palette className="w-12 h-12" />
-                </div>
+                
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-foreground mb-3">Elementary Art</h3>
@@ -189,15 +190,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Middle School Art */}
+            {/* Junior School Art */}
             <div className="bg-card rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow border border-coral-600">
-              <div className="h-48 bg-gradient-to-br from-coral-300 to-pink-300 p-4">
-                <div
-                  className={`w-20 h-20 rounded-2xl bg-gradient-to-br from-pink-400 to-rose-500 dark:from-pink-500 dark:to-rose-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300 shadow-lg`}
-                >
-                  <Brush className="w-12 h-12" />
-                </div>
-              </div>
+              <div className="h-48 bg-gradient-to-br from-pink-300 to-coral-300 p-4"></div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-foreground mb-3">
                   Junior School Art
@@ -221,13 +216,7 @@ export default function HomePage() {
 
             {/* High School Art */}
             <div className="bg-card rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow border border-coral-600">
-              <div className="h-48 bg-gradient-to-br from-coral-300 to-pink-300 p-4">
-                <div
-                  className={`w-20 h-20 rounded-2xl bg-gradient-to-br from-pink-400 to-rose-500 dark:from-pink-500 dark:to-rose-600 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300 shadow-lg`}
-                >
-                  <Sparkles className="w-12 h-12" />
-                </div>
-              </div>
+              <div className="h-48 bg-gradient-to-br from-coral-300 to-pink-300 p-4"></div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-foreground mb-3">
                   High School Art

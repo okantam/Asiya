@@ -7,8 +7,8 @@ export default function AboutPage() {
       <section className="py-16 ">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-br from-pink-200 to-pink-100 rounded-lg shadow-lg overflow-hidden border border-border">
-            <div className="md:flex">
-              <div className="md:w-1/3 overflow-hidden">
+            <div className="flex flex-col lg:flex-row">
+              <div className="lg:w-1/3 overflow-hidden">
                 <Image
                   src="/images/asiya-profile_.avif"
                   alt="Asiya - Art Educator at the beach"
@@ -17,20 +17,20 @@ export default function AboutPage() {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="md:w-2/3 p-8 my-auto">
+              <div className="lg:w-2/3 p-8 my-auto">
                 <div className="mb-8">
-                  <blockquote className="text-lg italic text-muted-foreground mb-4 text-center">
+                  <blockquote className="text-lg italic text-foreground mb-4 text-center">
                     “Art has the role in education of helping children become like
                     themselves instead of more like everyone else.” —{" "}
                     <span className="font-semibold">Sydney Gurewitz Clemens</span>
                   </blockquote>
                 </div>
 
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-foreground mb-6 leading-relaxed">
                   Hi, I'm Asiya - an artist, educator, and Visionary
                 </p>
 
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-foreground mb-6 leading-relaxed">
                   My work lives at the intersection of creativity, care, and
                   self-discovery. Whether I'm in the studio or the classroom, I believe
                   art is more than just a product - it's a process of healing, reflection,
@@ -38,7 +38,7 @@ export default function AboutPage() {
                   students not only build skills but also tune into their inner voice,
                   their history, and their sense of wonder….
                 </p>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-foreground mb-6 leading-relaxed">
                   I'm passionate about creating spaces where every student feels seen,
                   valued, and free to explore, as well as express what words sometimes
                   can't. In my classroom my approach blends traditional art techniques
@@ -47,7 +47,7 @@ export default function AboutPage() {
                   possibilities - together!
                 </p>
 
-                <p className="text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-foreground mb-6 leading-relaxed">
                   Through process-based, reflective learning, I guide young artists to
                   explore their identities, tap into their intuition, and express what
                   words sometimes can’t. In my classroom, we embrace exploration, make

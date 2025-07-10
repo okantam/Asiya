@@ -32,14 +32,14 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
       id: 3,
       category: "3d-art",
       title: "",
-      image: "/images/ceramic_3.png",
+      image: "/images/ceramic_4.png",
       description: "",
     },
     {
       id: 4,
       category: "3d-art",
       title: "",
-      image: "/images/ceramic_4.png",
+      image: "/images/ceramic_3.png",
       description: "",
     },
 
