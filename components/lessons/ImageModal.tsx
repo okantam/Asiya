@@ -69,7 +69,7 @@ export default function ImageModal({
   return (
     <Dialog open={modalOpen} onOpenChange={closeImageModal}>
       <DialogOverlay className="bg-black/80" />
-      <DialogContent className="max-w-5xl p-0 border-none bg-transparent overflow-hidden">
+      <DialogContent className="max-w-5xl p-0 border-none bg-transparent dark:bg-transparent overflow-hidden">
         <div className="relative">
           <AnimatePresence mode="wait">
             {images[currentImageIndex] && (
@@ -109,25 +109,25 @@ export default function ImageModal({
               <Button
                 variant="outline"
                 size="icon"
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/50 hover:bg-white rounded-full"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/50 dark:bg-gray-800/70 hover:bg-white dark:hover:bg-gray-700 rounded-full dark:border-gray-600"
                 onClick={handlePrevImage}
               >
-                <ChevronLeft className="h-6 w-6" />
+                <ChevronLeft className="h-6 w-6 dark:text-gray-200" />
                 <span className="sr-only">Previous image</span>
               </Button>
 
               <Button
                 variant="outline"
                 size="icon"
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/50 hover:bg-white rounded-full"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/50 dark:bg-gray-800/70 hover:bg-white dark:hover:bg-gray-700 rounded-full dark:border-gray-600"
                 onClick={handleNextImage}
               >
-                <ChevronRight className="h-6 w-6" />
+                <ChevronRight className="h-6 w-6 dark:text-gray-200" />
                 <span className="sr-only">Next image</span>
               </Button>
 
               {/* Image counter */}
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-3 py-1 rounded-full text-sm">
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 dark:bg-black/70 text-white px-3 py-1 rounded-full text-sm">
                 {currentImageIndex + 1} / {images.length}
               </div>
             </>

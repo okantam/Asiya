@@ -186,21 +186,21 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
     },
   ];
 
-  const filteredArtworks = artworks.filter(artwork => artwork.category === selectedCategory);
+  const filteredArtworks = artworks.filter(
+    artwork => artwork.category === selectedCategory
+  );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 to-pink-200">
-      <section className="relative h-[400px] bg-gradient-to-br from-coral-300 to-pink-300 flex items-center justify-center">
-  
-
-        <div className="relative z-10 text-center bg-soft-white/95 p-8 rounded-lg max-w-3xl mx-4 border border-border">
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 to-pink-200 dark:from-gray-900 dark:to-gray-800">
+      <section className="relative h-[400px] bg-gradient-to-br from-coral-300 to-pink-300 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center">
+        <div className="relative z-10 text-center bg-soft-white/95 dark:bg-gray-800/95 p-8 rounded-lg max-w-3xl mx-4 border border-border dark:border-gray-700">
           <h1
-            className="text-4xl md:text-5xl font-serif italic text-coral-600 mb-4"
+            className="text-4xl md:text-5xl font-serif italic text-coral-600 dark:text-coral-400 mb-4"
             style={{ fontFamily: "sacramento,cursive" }}
           >
             Artwork Gallery
           </h1>
-          <p className="text-lg text-coffee/80">
+          <p className="text-lg text-coffee/80 dark:text-gray-300">
             {" "}
             Explore the creative journey of my work across different category and skill
             levels. Each piece represents growth, learning, and artistic expression.
@@ -219,8 +219,8 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                     selectedCategory === category.id
-                      ? "bg-coral-600 text-white shadow-lg"
-                      : "bg-coral-50 text-coffee hover:bg-coral-100 hover:text-coffee/80"
+                      ? "bg-coral-600 dark:bg-coral-700 text-white shadow-lg"
+                      : "bg-coral-50 dark:bg-gray-700 text-coffee dark:text-gray-200 hover:bg-coral-100 dark:hover:bg-gray-600 hover:text-coffee/80 dark:hover:text-white/90"
                   }`}
                 >
                   {category.name}
@@ -237,7 +237,7 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
           <div className="max-w-7xl mx-auto">
             {filteredArtworks.length === 0 ? (
               <div className="text-center py-16">
-                <p className="text-coffee/70 text-lg">
+                <p className="text-coffee/70 dark:text-gray-400 text-lg">
                   No artwork found for the selected category.
                 </p>
               </div>

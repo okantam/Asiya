@@ -22,15 +22,17 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
   const getLevelColor = (category: string) => {
     switch (category) {
       case "ceramics":
-        return "bg-blue-100 text-blue-800";
+        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
       case "photography":
-        return "bg-green-100 text-green-800";
+        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
       case "digital-art":
-        return "bg-purple-100 text-purple-800";
+        return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200";
       case "2d-art":
-        return "bg-amber-100 text-amber-800";
+        return "bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200";
+      case "3d-art":
+        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
       default:
-        return "bg-gray-100 text-gray-800";
+        return "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200";
     }
   };
 
@@ -40,7 +42,7 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
       {portfolioData.map(artwork => (
         <div
           key={artwork.id}
-          className="break-inside-avoid bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 self-start"
+          className="break-inside-avoid bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 self-start"
         >
           <div className="relative group">
             <img
@@ -52,10 +54,10 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
               <Dialog>
                 <DialogTrigger asChild>
                   <button
-                    className="opacity-0 group-hover:opacity-100 duration-300 bg-white bg-opacity-90 hover:bg-opacity-100 rounded-full p-3 transform hover:scale-110 transition-transform"
+                    className="opacity-0 group-hover:opacity-100 duration-300 bg-white dark:bg-gray-800 bg-opacity-90 hover:bg-opacity-100 dark:bg-opacity-90 dark:hover:bg-opacity-100 rounded-full p-3 transform hover:scale-110 transition-transform"
                     onClick={() => setSelectedImage(artwork.image)}
                   >
-                    <Eye className="h-6 w-6 text-gray-800" />
+                    <Eye className="h-6 w-6 text-gray-800 dark:text-gray-200" />
                   </button>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl max-h-[90vh] p-0 bg-transparent border-none">
@@ -86,9 +88,11 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
             </div>
           </div>
           <div className="p-4">
-            <h3 className="font-semibold text-gray-800 mb-2">{artwork.title}</h3>
+            <h3 className="font-semibold text-gray-800 dark:text-gray-100 mb-2">
+              {artwork.title}
+            </h3>
             {artwork.description && (
-              <p className="text-sm text-gray-600 mb-2 line-clamp-2">
+              <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 line-clamp-2">
                 {artwork.description}
               </p>
             )}

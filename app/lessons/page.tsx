@@ -130,11 +130,13 @@ export default function LessonPlansPage() {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-pink-100 to-pink-200">
+    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-pink-100 to-pink-200 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Art Lessons</h1>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            Art Lessons
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Explore my comprehensive curriculum spanning elementary, junior, and high
             school levels.
           </p>
@@ -152,11 +154,31 @@ export default function LessonPlansPage() {
           onValueChange={setActiveTab}
         >
           <div className="mb-8">
-            <TabsList className="bg-gradient-to-br from-pink-50 to-pink-100 grid w-full  grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-              <TabsTrigger value="lesson-plans">Lesson Plans</TabsTrigger>
-              <TabsTrigger value="elementary">Elementary Art</TabsTrigger>
-              <TabsTrigger value="junior">Junior Art</TabsTrigger>
-              <TabsTrigger value="high-school">High School Art</TabsTrigger>
+            <TabsList className="bg-gradient-to-br from-pink-50 to-pink-100 dark:from-gray-800 dark:to-gray-700 grid w-full  grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+              <TabsTrigger
+                value="lesson-plans"
+                className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50"
+              >
+                Lesson Plans
+              </TabsTrigger>
+              <TabsTrigger
+                value="elementary"
+                className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50"
+              >
+                Elementary Art
+              </TabsTrigger>
+              <TabsTrigger
+                value="junior"
+                className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50"
+              >
+                Junior Art
+              </TabsTrigger>
+              <TabsTrigger
+                value="high-school"
+                className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50"
+              >
+                High School Art
+              </TabsTrigger>
             </TabsList>
           </div>
 

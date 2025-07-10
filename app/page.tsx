@@ -2,12 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  Linkedin,
-  Instagram,
-  Eye,
-} from "lucide-react";
+import { ArrowRight, Linkedin, Instagram, Eye } from "lucide-react";
 import HomeNavigation from "@/components/home-navigation";
 
 export default function HomePage() {
@@ -15,13 +10,13 @@ export default function HomePage() {
     window.open("/Asiya Kinebrew's Resume.pdf", "_blank");
   };
   return (
-    <div className="min-h-screen bg-[#e58991] dark:bg-gray-900 text-white">
+    <div className="min-h-screen bg-[#e58991] dark:bg-gray-950 text-white">
       <HomeNavigation />
 
       {/* Hero Section */}
       {/* New Hero Section */}
-      <section className="pt-24 bg-[linear-gradient(157deg,_#be848f_2.23%,_#d58597_73.54%,_#d9b7bd_100%)] relative">
-        <div className="absolute top-24 right-36 w-32 h-32 bg-[#d5a4a8] rounded-full opacity-30"></div>
+      <section className="pt-24 bg-[linear-gradient(157deg,_#be848f_2.23%,_#d58597_73.54%,_#d9b7bd_100%)] dark:bg-[linear-gradient(157deg,_#3d2d36_2.23%,_#563642_73.54%,_#483840_100%)] relative">
+        <div className="absolute top-24 right-36 w-32 h-32 bg-[#d5a4a8] dark:bg-[#714953] rounded-full opacity-30"></div>
         <div className="max-w-7xl mx-auto my-auto px-4 gap-12 flex items-center relative">
           <div className="flex flex-col md:flex-row md:mt-16 justify-center">
             <div className="flex md:w-1/2 mt-6 md:mt-0 overflow-hidden rounded-md relative">
@@ -34,11 +29,11 @@ export default function HomePage() {
               />
             </div>
             <div className=" md:w-1/2 p-8 my-auto">
-              <h2 className="text-4xl text-center md:text-left md:w-[60%] font-bold text-white dark:text-charcoal mb-4">
+              <h2 className="text-4xl text-center md:text-left md:w-[60%] font-bold text-white dark:text-gray-300 mb-4">
                 Inspiring the Next Generation of Artists
               </h2>
 
-              <p className="w-full text-center md:text-left  md:w-2/3 text-charcoal mb-6 leading-relaxed">
+              <p className="w-full text-center md:text-left md:w-2/3 text-charcoal dark:text-gray-300 mb-6 leading-relaxed">
                 A Pre-Service Art Teacher at Miami University of Ohio, pursuing a degree
                 in Art Education.
               </p>
@@ -46,14 +41,14 @@ export default function HomePage() {
                 <a
                   href="https://www.linkedin.com/in/asiyakinebrew/"
                   target="_blank"
-                  className="text-coffee hover:text-coral-700 dark:hover:text-coral-700"
+                  className="text-coffee hover:text-coral-700 dark:text-gray-300 dark:hover:text-coral-500"
                 >
                   <Linkedin className="w-6 h-6" />
                 </a>
                 <Link
                   href="https://www.instagram.com/asiyateaches"
                   target="_blank"
-                  className="text-coffee hover:text-coral-700 dark:hover:text-coral-700"
+                  className="text-coffee hover:text-coral-700 dark:text-gray-300 dark:hover:text-coral-500"
                 >
                   <Instagram className="w-6 h-6" />
                 </Link>
@@ -62,13 +57,13 @@ export default function HomePage() {
                 <Button
                   asChild
                   variant="secondary"
-                  className="bg-coral-600 border-coral-600 text-white px-8 py-4 rounded-full font-bold hover:bg-coral-700 transition-all transform hover:scale-105"
+                  className="bg-coral-600 dark:bg-coral-800 border-coral-600 dark:border-coral-700 text-white px-8 py-4 rounded-full font-bold hover:bg-coral-700 dark:hover:bg-coral-700 transition-all transform hover:scale-105"
                 >
                   <Link href="/about">Read More</Link>
                 </Button>
                 <Button
                   onClick={openResume}
-                  className="border-2   bg-transparent hover:border-coral-700 text-gray-100 px-8 py-4 rounded-full font-bold hover:bg-coral-700 hover:text-white transition-all"
+                  className="border-2 border-white dark:border-gray-400 bg-transparent hover:border-coral-700 dark:hover:border-coral-700 text-gray-100 dark:text-gray-200 px-8 py-4 rounded-full font-bold hover:bg-coral-700 dark:hover:bg-coral-700 hover:text-white transition-all"
                 >
                   View My Resume
                   <Eye className="w-4 h-4 mr-2" />
@@ -76,13 +71,14 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-          <div className="absolute bottom-0 -left-16 w-32 h-32 bg-[#c36e75] rounded-full opacity-30"></div>
-          <div className="absolute bottom-0 right-32 w-32 h-32 bg-coral-300 rounded-full opacity-30"></div>
+          <div className="absolute bottom-0 -left-16 w-32 h-32 bg-[#c36e75] dark:bg-[#6e4249] rounded-full opacity-30"></div>
+          <div className="absolute bottom-0 right-32 w-32 h-32 bg-coral-300 dark:bg-coral-900 rounded-full opacity-30"></div>
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
           <path
             fill="#e58991"
             fillOpacity="1"
+            className="dark:fill-[#483036]"
             d="M0,256L48,218.7C96,181,192,107,288,112C384,117,480,203,576,245.3C672,288,768,288,864,250.7C960,213,1056,139,1152,122.7C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
           ></path>
         </svg>
@@ -163,17 +159,17 @@ export default function HomePage() {
       </section> */}
 
       {/* Art Categories Section */}
-      <section className="py-16">
+      <section className="py-16 dark:bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             {/* Elementary Art */}
-            <div className="bg-card rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow border border-coral-600">
-              <div className="h-48 bg-gradient-to-br from-coral-300 to-pink-300 dark:bg-blue-900/20 p-4">
-                
-              </div>
+            <div className="bg-card dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow border border-coral-600 dark:border-coral-800">
+              <div className="h-48 bg-gradient-to-br from-coral-300 to-pink-300 dark:from-coral-900/40 dark:to-pink-900/40 p-4"></div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-3">Elementary Art</h3>
-                <p className="text-muted-foreground mb-4 text-sm">
+                <h3 className="text-xl font-bold text-foreground dark:text-gray-200 mb-3">
+                  Elementary Art
+                </h3>
+                <p className="text-muted-foreground dark:text-gray-400 mb-4 text-sm">
                   Students explore colors, shapes, and textures, building creative
                   foundations through play and curiosity.
                 </p>
@@ -181,7 +177,7 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="group-hover:bg-coral-600 text-charcoal bg-coral-300  group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
+                  className="group-hover:bg-coral-600 text-charcoal dark:text-gray-200 bg-coral-300 dark:bg-coral-950/40 group-hover:text-white dark:group-hover:bg-coral-800 transition-colors"
                 >
                   <Link href="/lessons?tab=elementary" className="flex items-center">
                     View Lesson <ArrowRight className="w-4 h-4 ml-2" />
@@ -191,13 +187,13 @@ export default function HomePage() {
             </div>
 
             {/* Junior School Art */}
-            <div className="bg-card rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow border border-coral-600">
-              <div className="h-48 bg-gradient-to-br from-pink-300 to-coral-300 p-4"></div>
+            <div className="bg-card dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow border border-coral-600 dark:border-coral-800">
+              <div className="h-48 bg-gradient-to-br from-pink-300 to-coral-300 dark:from-pink-900/40 dark:to-coral-900/40 p-4"></div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-3">
+                <h3 className="text-xl font-bold text-foreground dark:text-gray-200 mb-3">
                   Junior School Art
                 </h3>
-                <p className="text-muted-foreground mb-4 text-sm">
+                <p className="text-muted-foreground dark:text-gray-400 mb-4 text-sm">
                   Growing artists experiment with techniques, materials, and
                   self-expression, gaining confidence and creativity.
                 </p>
@@ -205,7 +201,7 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="group-hover:bg-coral-600 text-charcoal bg-coral-300  group-hover:text-white dark:group-hover:bg-primary-dark transition-colors"
+                  className="group-hover:bg-coral-600 text-charcoal dark:text-gray-200 bg-coral-300 dark:bg-coral-950/40 group-hover:text-white dark:group-hover:bg-coral-800 transition-colors"
                 >
                   <Link href="/lessons?tab=junior" className="flex items-center">
                     View Lesson <ArrowRight className="w-4 h-4 ml-2" />
@@ -215,13 +211,13 @@ export default function HomePage() {
             </div>
 
             {/* High School Art */}
-            <div className="bg-card rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow border border-coral-600">
-              <div className="h-48 bg-gradient-to-br from-coral-300 to-pink-300 p-4"></div>
+            <div className="bg-card dark:bg-gray-900 rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-shadow border border-coral-600 dark:border-coral-800">
+              <div className="h-48 bg-gradient-to-br from-coral-300 to-pink-300 dark:from-coral-900/40 dark:to-pink-900/40 p-4"></div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-foreground mb-3">
+                <h3 className="text-xl font-bold text-foreground dark:text-gray-200 mb-3">
                   High School Art
                 </h3>
-                <p className="text-muted-foreground mb-4 text-sm">
+                <p className="text-muted-foreground dark:text-gray-400 mb-4 text-sm">
                   Advanced students refine their skills, explore personal themes, and
                   blend traditional and digital techniques.
                 </p>
@@ -229,7 +225,7 @@ export default function HomePage() {
                   asChild
                   variant="outline"
                   size="sm"
-                  className="group-hover:bg-coral-600 text-charcoal bg-coral-300  group-hover:text-white dark:group-hover:bg-coral-600 transition-colors"
+                  className="group-hover:bg-coral-600 text-charcoal dark:text-gray-200 bg-coral-300 dark:bg-coral-950/40 group-hover:text-white dark:group-hover:bg-coral-800 transition-colors"
                 >
                   <Link href="/lessons?tab=high-school" className="flex items-center">
                     View Lesson <ArrowRight className="w-4 h-4 ml-2" />

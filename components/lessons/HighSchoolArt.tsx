@@ -109,10 +109,12 @@ export default function HighSchoolArt({
   };
 
   return (
-    <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-lg shadow-md">
+    <div className="bg-gradient-to-br from-pink-50 to-pink-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-lg shadow-md dark:shadow-gray-900">
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">High School Art</h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+          High School Art
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           Advanced students refine their skills, explore personal themes, and blend
           traditional and digital techniques.
         </p>
@@ -127,10 +129,12 @@ export default function HighSchoolArt({
               className="mb-16"
             >
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-serif italic text-gray-800 mb-4">
+                <h3 className="text-2xl font-serif italic text-gray-800 dark:text-gray-200 mb-4">
                   {section.title}
                 </h3>
-                <p className="text-gray-600 max-w-2xl mx-auto">{section.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                  {section.description}
+                </p>
               </div>
 
               {/* Image Carousel for this section */}
@@ -154,13 +158,13 @@ export default function HighSchoolArt({
           ))}
         </div>
       ) : (
-        <div className="text-center py-16  bg-pink-50 rounded-lg border border-pink-200">
+        <div className="text-center py-16 bg-pink-50 dark:bg-gray-800 rounded-lg border border-pink-200 dark:border-gray-700">
           <div className="max-w-md mx-auto">
-            <FileText className="h-12 w-12 mx-auto text-gray-400 mb-4" />
-            <h3 className="text-xl font-medium text-gray-900 mb-2">
+            <FileText className="h-12 w-12 mx-auto text-gray-400 dark:text-gray-500 mb-4" />
+            <h3 className="text-xl font-medium text-gray-900 dark:text-gray-200 mb-2">
               No Artworks Available
             </h3>
-            <p className="text-gray-600">
+            <p className="text-gray-600 dark:text-gray-400">
               There are currently no artworks available for this category. Please check
               back later or select a different category.
             </p>

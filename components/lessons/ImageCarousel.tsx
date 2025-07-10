@@ -72,7 +72,7 @@ export default function ImageCarousel({
       {images.length > 0 ? (
         <>
           <button
-            className="bg-pink-50 rounded-lg shadow-lg overflow-hidden cursor-pointer w-full border-0 p-0 relative"
+            className="bg-pink-50 dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden cursor-pointer w-full border-0 p-0 relative"
             onClick={() => onImageClick(images[currentIndex], images, sectionTitle)}
             aria-label={`Enlarge ${sectionTitle} artwork`}
           >
@@ -93,7 +93,7 @@ export default function ImageCarousel({
                   className="w-full h-96 object-cover"
                 />
                 <div className="absolute inset-0 bg-black/5 hover:bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                  <span className="bg-white/80 px-4 py-2 rounded-full text-sm font-medium">
+                  <span className="bg-white/80 dark:bg-gray-800/80 px-4 py-2 rounded-full text-sm font-medium dark:text-gray-200">
                     <Eye className="inline h-4 w-4 mr-1" /> View
                   </span>
                 </div>
@@ -107,19 +107,19 @@ export default function ImageCarousel({
               <Button
                 variant="outline"
                 size="icon"
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-pink-50 hover:bg-pink-100 shadow-lg"
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-pink-50 dark:bg-gray-700 hover:bg-pink-100 dark:hover:bg-gray-600 shadow-lg dark:border-gray-600"
                 onClick={prevImage}
               >
-                <ChevronLeft className="h-6 w-6" />
+                <ChevronLeft className="h-6 w-6 dark:text-gray-200" />
               </Button>
 
               <Button
                 variant="outline"
                 size="icon"
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-pink-50 hover:bg-pink-100 shadow-lg"
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-pink-50 dark:bg-gray-700 hover:bg-pink-100 dark:hover:bg-gray-600 shadow-lg dark:border-gray-600"
                 onClick={nextImage}
               >
-                <ChevronRight className="h-6 w-6" />
+                <ChevronRight className="h-6 w-6 dark:text-gray-200" />
               </Button>
             </>
           )}
@@ -131,7 +131,9 @@ export default function ImageCarousel({
                 <button
                   key={`dot-${sectionTitle}-${imgIndex}`}
                   className={`w-3 h-3 rounded-full transition-colors ${
-                    imgIndex === currentIndex ? "bg-coral-600" : "bg-gray-300"
+                    imgIndex === currentIndex
+                      ? "bg-coral-600 dark:bg-coral-500"
+                      : "bg-gray-300 dark:bg-gray-600"
                   }`}
                   onClick={() => goToImage(imgIndex)}
                   aria-label={`View image ${imgIndex + 1}`}
@@ -141,8 +143,8 @@ export default function ImageCarousel({
           )}
         </>
       ) : (
-        <div className="text-center py-12 bg-pink-50 rounded-lg">
-          <p>No images available for this section.</p>
+        <div className="text-center py-12 bg-pink-50 dark:bg-gray-800 rounded-lg">
+          <p className="dark:text-gray-300">No images available for this section.</p>
         </div>
       )}
     </div>

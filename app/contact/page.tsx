@@ -31,7 +31,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-100 to-pink-200">
+    <div className="min-h-screen bg-gradient-to-br from-pink-100 to-pink-200 dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
       <section className="relative h-[400px] flex items-center justify-center">
         <div
@@ -43,11 +43,11 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-black/20 dark:bg-black/40"></div>
         </div>
 
-        <div className="relative z-10 text-center bg-soft-white/95 p-8 rounded-lg max-w-3xl mx-4 border border-border">
-          <h1 className="text-4xl md:text-5xl font-serif italic text-coral-600 mb-4">
+        <div className="relative z-10 text-center bg-soft-white/95 dark:bg-gray-800/95 p-8 rounded-lg max-w-3xl mx-4 border border-border dark:border-gray-700">
+          <h1 className="text-4xl md:text-5xl font-serif italic text-coral-600 dark:text-coral-400 mb-4">
             Let's Create Together
           </h1>
-          <p className="text-lg text-coffee/80">
+          <p className="text-lg text-coffee/80 dark:text-gray-300">
             Ready to start your artistic journey? Get in touch to learn more about
             classes, schedule a consultation, or ask any questions about art education.
           </p>
@@ -59,12 +59,15 @@ export default function ContactPage() {
       {/* Background & Experience */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-6 bg-white/80 dark:bg-gray-800/90 p-8 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700"
+          >
             <div className="grid md:grid-cols-2 gap-6">
               <div>
                 <Label
                   htmlFor="firstName"
-                  className="text-sm font-medium text-foreground"
+                  className="text-sm font-medium text-foreground dark:text-gray-200"
                 >
                   First Name
                 </Label>
@@ -74,11 +77,14 @@ export default function ContactPage() {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  className="mt-1"
+                  className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:focus:border-coral-400"
                 />
               </div>
               <div>
-                <Label htmlFor="lastName" className="text-sm font-medium text-foreground">
+                <Label
+                  htmlFor="lastName"
+                  className="text-sm font-medium text-foreground dark:text-gray-200"
+                >
                   Last Name
                 </Label>
                 <Input
@@ -87,13 +93,16 @@ export default function ContactPage() {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  className="mt-1"
+                  className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:focus:border-coral-400"
                 />
               </div>
             </div>
 
             <div>
-              <Label htmlFor="email" className="text-sm font-medium text-foreground">
+              <Label
+                htmlFor="email"
+                className="text-sm font-medium text-foreground dark:text-gray-200"
+              >
                 Email *
               </Label>
               <Input
@@ -103,12 +112,15 @@ export default function ContactPage() {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="mt-1"
+                className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:focus:border-coral-400"
               />
             </div>
 
             <div>
-              <Label htmlFor="message" className="text-sm font-medium text-foreground">
+              <Label
+                htmlFor="message"
+                className="text-sm font-medium text-foreground dark:text-gray-200"
+              >
                 Message
               </Label>
               <Textarea
@@ -117,17 +129,17 @@ export default function ContactPage() {
                 value={formData.message}
                 onChange={handleChange}
                 rows={6}
-                className="mt-1"
+                className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:focus:border-coral-400"
               />
             </div>
 
             <div className="text-center">
               <Button
                 type="submit"
-                className="bg-coral-600 hover:bg-coral-700 text-white px-12 py-3"
+                className="bg-coral-600 hover:bg-coral-700 dark:bg-coral-700 dark:hover:bg-coral-800 text-white px-12 py-3"
               >
                 Send Message
-                <Send className="h-5 w-5" />
+                <Send className="h-5 w-5 ml-2" />
               </Button>
             </div>
           </form>

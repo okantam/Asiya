@@ -104,10 +104,12 @@ export default function JuniorArt({
   };
 
   return (
-    <div className="bg-gradient-to-br from-pink-50 to-pink-100 p-6 rounded-lg shadow-md">
+    <div className="bg-gradient-to-br from-pink-50 to-pink-100 dark:from-gray-800 dark:to-gray-700 p-6 rounded-lg shadow-md dark:shadow-gray-900">
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-gray-800 mb-4">Junior Art</h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-4">
+          Junior Art
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
           Growing artists experiment with techniques, materials, and self-expression,
           gaining confidence and creativity.
         </p>
@@ -122,10 +124,12 @@ export default function JuniorArt({
               className="mb-16"
             >
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-serif italic text-gray-800 mb-4">
+                <h3 className="text-2xl font-serif italic text-gray-800 dark:text-gray-200 mb-4">
                   {section.title}
                 </h3>
-                <p className="text-gray-600 max-w-2xl mx-auto">{section.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+                  {section.description}
+                </p>
               </div>
 
               {/* Image Carousel for this section */}
@@ -149,8 +153,10 @@ export default function JuniorArt({
           ))}
         </div>
       ) : (
-        <div className="text-center py-16 bg-gray-50 rounded-lg border border-gray-200">
-          <p className="text-gray-600">No artwork available for this section yet.</p>
+        <div className="text-center py-16 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+          <p className="text-gray-600 dark:text-gray-400">
+            No artwork available for this section yet.
+          </p>
         </div>
       )}
     </div>
