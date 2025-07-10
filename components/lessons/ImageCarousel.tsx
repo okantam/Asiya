@@ -94,7 +94,7 @@ export default function ImageCarousel({
                 />
                 <div className="absolute inset-0 bg-black/5 hover:bg-black/10 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
                   <span className="bg-white/80 dark:bg-gray-800/80 px-4 py-2 rounded-full text-sm font-medium dark:text-gray-200">
-                    <Eye className="inline h-4 w-4 mr-1" /> View
+                    <Eye className="inline h-4 w-4 mr-1" />
                   </span>
                 </div>
               </motion.div>
