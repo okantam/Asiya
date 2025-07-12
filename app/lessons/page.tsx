@@ -74,7 +74,7 @@ const lessonPlans: LessonPlan[] = [
     id: 5,
     title: "Let's Get Growing! ",
     description: `In my Introduction Art Methods class, my group and I designed a craft activity inspired by Emily Holt's sculpture located at Miami University Art Museum on campus. Our goal was to create a lesson that encourages students to engage with art in a meaningful way while drawing inspiration from a prominent piece in our community.`,
-    image: "/images/grow-up.png",
+    image: "/images/lesson-image.png",
     imageAlt: "Get growing",
     materials: [
       {

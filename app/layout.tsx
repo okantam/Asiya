@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   description:
     "Inspiring creativity through art and education. Explore student artwork from elementary to high school levels.",
   generator: "Emmanuel Foeh",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

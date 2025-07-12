@@ -175,13 +175,13 @@ export default function LessonPlans({
                           {lesson.materials.map((material, materialIndex) => (
                             <div
                               key={`material-${lesson.id}-${material.name}-${materialIndex}`}
-                              className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group"
+                              className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/90 rounded-lg hover:bg-gray-100 transition-colors group"
                             >
                               <div className="flex items-center gap-3">
                                 <material.icon
                                   className={`h-5 w-5 ${getFileTypeColor(material.type)}`}
                                 />
-                                <span className="font-medium text-gray-900 group-hover:text-coral-600 transition-colors">
+                                <span className="font-medium text-gray-900 dark:text-gray-100  group-hover:text-coral-600 transition-colors">
                                   {material.name}
                                 </span>
                               </div>
