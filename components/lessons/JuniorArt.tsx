@@ -62,7 +62,9 @@ export default function JuniorArt({
               <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                 {artwork.title}
               </h2>
-              <p className="text-gray-600 dark:text-gray-300">{artwork.description}</p>
+              <p className="text-gray-600 dark:text-gray-300 text-center  max-w-3xl mx-auto">
+                {artwork.description}
+              </p>
             </div>
 
             {/* Image gallery using MasonryGallery */}
