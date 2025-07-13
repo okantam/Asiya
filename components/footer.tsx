@@ -45,7 +45,7 @@ const Footer = () => {
                 {/* <li><a href="#gallery" className="text-gray-300 hover:text-dusty-rose transition-colors">Student Artwork</a></li> */}
                 <li>
                   <a
-                    href="https://docs.google.com/document/d/1FjWNguA60g2dS67Y7MswOywLRwBy5GAXBqOo6ALfRI8"
+                    href="https://beacons.ai/asiyaokanta"
                     className="text-gray-300 dark:text-gray-400 hover:text-coral-200 dark:hover:text-coral-300 transition-colors"
                     target="_blank"
                     rel="noopener noreferrer"
