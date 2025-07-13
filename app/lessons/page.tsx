@@ -20,7 +20,7 @@ const lessonPlans: LessonPlan[] = [
     description: `I served as a teacher in a program where Miami University Art Education students collaborate with Miami Tribe of Oklahoma citizens from the Myaamia Center to develop a curriculum which I then taught in area public elementary schools. This project allows the Art Education program to address gaps in Ohio state arts, science, and history learning standards, which rank especially low nationwide for inclusion of Indigenous culture, particularly contemporary Indigenous culture. Under the mentorship of Myaamia scholars and as part of a teaching team, I developed a two-lesson unit focusing on Myaamia history, language, and contemporary arts and culture, and taught them to students in an Oxford, OH and Middle Town fourth-grade classroom.`,
     additionalInfo: `Because the lesson plans contain sensitive cultural information, I am not sharing them directly in this portfolio; however, I have included approved images of this work.`,
     moreInfoText: `More information on this collaboration can be found on the Miami Tribe's community blog.`,
-    image: "/images/myaamia-lesson-plan-2-slides-3.jpg",
+    image: "/images/myaamia-lesson-img.jpg",
     imageAlt: "Traditional Myaamia geometric pattern artwork in red, white, and black",
     materials: [
       {
@@ -56,7 +56,7 @@ const lessonPlans: LessonPlan[] = [
     id: 2,
     title: "Marine Life Collaborative Mural",
     description: `In my Introduction to Elementary Art Methods class, my group and I developed a lesson inspired by an existing one that lacked depth. Our goal was to create a detailed and clear plan, ensuring it was both comprehensive and easy to follow.`,
-    image: "/images/marine-life.avif",
+    image: "/images/marine-lesson-img.jpg",
     imageAlt: "Traditional Myaamia geometric pattern artwork in red, white, and black",
     materials: [
       {
