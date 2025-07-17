@@ -38,17 +38,17 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
 
   return (
     // Alternative solution using CSS Grid with auto-fit rows:
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-6 auto-rows-max">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-6">
       {portfolioData.map(artwork => (
         <div
           key={artwork.id}
           className="break-inside-avoid bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 self-start"
         >
-          <div className="relative group">
+          <div className="overflow-hidden relative group">
             <img
               src={artwork.image}
               alt={artwork.title}
-              className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
+              className="group-hover:brightness-50 w-full aspect-square bg-surface-200 dark:bg-surface-700 object-cover duration-300 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
               <Dialog>
@@ -65,7 +65,7 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
                     <img
                       src={artwork.image}
                       alt={artwork.title}
-                      className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+                      className="w-full min-h-52 object-cover rounded-lg"
                     />
                     <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4 rounded-b-lg">
                       <h3 className="text-xl font-bold">{artwork.title}</h3>
