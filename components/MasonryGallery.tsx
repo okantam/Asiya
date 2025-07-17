@@ -5,7 +5,6 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
-  DialogClose,
   DialogTitle,
 } from "@/components/ui/dialog";
 
@@ -102,7 +101,7 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
                   </button>
                 </DialogTrigger>
                 <DialogContent
-                  className="max-w-4xl p-0 bg-transparent border-none"
+                  className="max-w-4xl max-h-[90vh] p-0 bg-transparent border-none"
                   onKeyDown={handleKeyDown}
                 >
                   <DialogTitle className="sr-only">
@@ -112,7 +111,7 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
                     <img
                       src={portfolioData[selectedImageIndex].image}
                       alt={portfolioData[selectedImageIndex].title || "Gallery image"}
-                      className="w-full min-h-52 aspect-square object-cover rounded-lg"
+                      className="w-full max-h-[70vh] object-contain rounded-lg"
                     />
 
                     {/* Navigation buttons */}
@@ -133,8 +132,7 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
                     >
                       <ChevronRight className="h-8 w-8" />
                     </button>
-
-
+{/* image footer section */}
                     <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4 rounded-b-lg">
                       <h3 className="text-xl font-bold">
                         {portfolioData[selectedImageIndex].title}
@@ -152,7 +150,7 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
                         {portfolioData[selectedImageIndex].category}
                       </span>
 
-                      {/* Image counter */}
+                     
                       <div className="absolute bottom-4 right-4 text-white/80 text-sm">
                         {selectedImageIndex + 1} / {portfolioData.length}
                       </div>
