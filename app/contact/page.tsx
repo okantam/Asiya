@@ -1,35 +1,6 @@
-"use client";
-
-import type React from "react";
-
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { Send } from "lucide-react";
+import ContactForm from "@/components/contact/contact-form";
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-pink-100 to-pink-200 dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
@@ -56,94 +27,9 @@ export default function ContactPage() {
 
       {/* Main Content */}
 
-      {/* Background & Experience */}
+      {/* Contact Form Section */}
       <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <form
-            onSubmit={handleSubmit}
-            className="space-y-6 bg-white/80 dark:bg-gray-800/90 p-8 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700"
-          >
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <Label
-                  htmlFor="firstName"
-                  className="text-sm font-medium text-foreground dark:text-gray-200"
-                >
-                  First Name
-                </Label>
-                <Input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:focus:border-coral-400"
-                />
-              </div>
-              <div>
-                <Label
-                  htmlFor="lastName"
-                  className="text-sm font-medium text-foreground dark:text-gray-200"
-                >
-                  Last Name
-                </Label>
-                <Input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:focus:border-coral-400"
-                />
-              </div>
-            </div>
-
-            <div>
-              <Label
-                htmlFor="email"
-                className="text-sm font-medium text-foreground dark:text-gray-200"
-              >
-                Email *
-              </Label>
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:focus:border-coral-400"
-              />
-            </div>
-
-            <div>
-              <Label
-                htmlFor="message"
-                className="text-sm font-medium text-foreground dark:text-gray-200"
-              >
-                Message
-              </Label>
-              <Textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                rows={6}
-                className="mt-1 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:focus:border-coral-400"
-              />
-            </div>
-
-            <div className="text-center">
-              <Button
-                type="submit"
-                className="bg-coral-600 hover:bg-coral-700 dark:bg-coral-700 dark:hover:bg-coral-800 text-white px-12 py-3"
-              >
-                Send Message
-                <Send className="h-5 w-5 ml-2" />
-              </Button>
-            </div>
-          </form>
-        </div>
+        <ContactForm />
       </section>
     </div>
   );

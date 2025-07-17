@@ -10,7 +10,7 @@ export default function AboutPage() {
             <div className="flex flex-col lg:flex-row">
               <div className="lg:w-1/3 overflow-hidden">
                 <Image
-                  src="/images/asiya-profile_.avif"
+                  src="/images/about-profile.png"
                   alt="Asiya - Art Educator at the beach"
                   width={400}
                   height={500}

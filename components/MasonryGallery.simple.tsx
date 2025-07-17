@@ -6,7 +6,6 @@ import {
   DialogContent,
   DialogTrigger,
   DialogClose,
-  DialogTitle,
 } from "@/components/ui/dialog";
 
 interface ArtworkItem {
@@ -102,17 +101,14 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
                   </button>
                 </DialogTrigger>
                 <DialogContent
-                  className="max-w-4xl p-0 bg-transparent border-none"
+                  className="max-w-4xl max-h-[90vh] p-0 bg-transparent border-none"
                   onKeyDown={handleKeyDown}
                 >
-                  <DialogTitle className="sr-only">
-                    {portfolioData[selectedImageIndex].title || "Image Gallery"}
-                  </DialogTitle>
                   <div className="relative">
                     <img
                       src={portfolioData[selectedImageIndex].image}
                       alt={portfolioData[selectedImageIndex].title || "Gallery image"}
-                      className="w-full min-h-52 aspect-square object-cover rounded-lg"
+                      className="w-full min-h-52 object-cover rounded-lg"
                     />
 
                     {/* Navigation buttons */}
@@ -134,6 +130,11 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
                       <ChevronRight className="h-8 w-8" />
                     </button>
 
+                    <DialogClose asChild>
+                      <button className="absolute top-2 right-2 bg-black bg-opacity-50 hover:bg-opacity-70 rounded-full p-1 text-white z-30">
+                        <X className="h-6 w-6" />
+                      </button>
+                    </DialogClose>
 
                     <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4 rounded-b-lg">
                       <h3 className="text-xl font-bold">
