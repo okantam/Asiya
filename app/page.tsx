@@ -22,10 +22,11 @@ export default function HomePage() {
             <div className="flex md:w-1/2 mt-6 md:mt-0 overflow-hidden rounded-md relative">
               <Image
                 src="/images/asiya-hero-brush.png"
-                alt="Asiya - profile"
+                alt="Asiya Kinebrew-Okanta Profile"
                 width={500}
                 height={1000}
                 className="w-full h-full object-cover"
+                priority
               />
             </div>
             <div className=" md:w-1/2 p-8 my-auto">

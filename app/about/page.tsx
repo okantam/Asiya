@@ -10,8 +10,8 @@ export default function AboutPage() {
             <div className="flex flex-col lg:flex-row">
               <div className="lg:w-1/3 overflow-hidden">
                 <Image
-                  src="/images/about-profile.png"
-                  alt="Asiya - Art Educator at the beach"
+                  src="/images/new_about-profile.webp"
+                  alt="Asiya Kinebrew-Okanta Profile"
                   width={400}
                   height={500}
                   className="w-full h-full object-cover"

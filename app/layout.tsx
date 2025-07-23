@@ -5,6 +5,7 @@ import "./globals.css";
 import ConditionalNavigation from "@/components/conditional-navigation";
 import Footer from "@/components/footer";
 import { ThemeProvider } from "@/components/theme-provider";
+import { personStructuredData, websiteStructuredData } from "./utils/seo-optimisation";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -64,16 +65,19 @@ export const metadata: Metadata = {
     siteName: "Art With Asiya",
     images: [
       {
-        url: "/images/Asiya-profile.png",
+        url: "/images/new_about-profile.webp",
         width: 800,
         height: 600,
-        alt: "Art With Asiya",
+        alt: "Asiya Kinebrew-Okanta Profile",
       },
     ],
     locale: "en_US",
     type: "website",
   },
 };
+
+
+
 
 export default function RootLayout({
   children,
@@ -84,6 +88,20 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(personStructuredData),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteStructuredData),
+          }}
+        />
+      </head>
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"

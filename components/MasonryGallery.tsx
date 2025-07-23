@@ -7,6 +7,7 @@ import {
   DialogTrigger,
   DialogTitle,
 } from "@/components/ui/dialog";
+import Image from "next/image";
 
 interface ArtworkItem {
   id: number;
@@ -79,13 +80,14 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
       {portfolioData.map((artwork, index) => (
         <div
           key={artwork.id}
-          className="break-inside-avoid bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 self-start"
+          className="break-inside-avoid bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 self-start"
         >
-          <div className="overflow-hidden relative group">
+          <div className="h-fit relative group">
             <img
               src={artwork.image}
               alt={artwork.title}
-              className="group-hover:brightness-50 w-full aspect-square bg-surface-200 dark:bg-surface-700 object-cover duration-300 group-hover:scale-105"
+              loading="lazy"
+              className="group-hover:brightness-50 h-[35rem] w-full aspect-square bg-surface-200 dark:bg-surface-700 object-cover duration-300 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
               <Dialog
@@ -132,7 +134,7 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
                     >
                       <ChevronRight className="h-8 w-8" />
                     </button>
-{/* image footer section */}
+                    {/* image footer section */}
                     <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 text-white p-4 rounded-b-lg">
                       <h3 className="text-xl font-bold">
                         {portfolioData[selectedImageIndex].title}
@@ -150,7 +152,6 @@ const MasonryGallery = ({ portfolioData }: MasonryGalleryProps) => {
                         {portfolioData[selectedImageIndex].category}
                       </span>
 
-                     
                       <div className="absolute bottom-4 right-4 text-white/80 text-sm">
                         {selectedImageIndex + 1} / {portfolioData.length}
                       </div>

@@ -50,22 +50,6 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
       image: "/images/3d-img-1.png",
       description: "",
     },
-    // {
-    //   id: 5,
-    //   category: "ceramics",
-    //   title: "Pattern Painting",
-    //   image:
-    //     "https://images.pexels.com/photos/1148998/pexels-photo-1148998.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-    //   description: "Learning patterns through paint",
-    // },
-    // {
-    //   id: 6,
-    //   category: "ceramics",
-    //   title: "Animal Friends",
-    //   image:
-    //     "https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop",
-    //   description: "Simple animal shapes and colors",
-    // },
 
     // Photography Art
     {
@@ -76,10 +60,31 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
       description: "",
     },
     {
+      id: 66,
+      category: "photography",
+      title: "",
+      image: "/images/forest-img-2.jpg",
+      description: "",
+    },
+    {
       id: 7,
       category: "photography",
       title: "",
       image: "/images/photo_2.jpg",
+      description: "",
+    },
+    {
+      id: 77,
+      category: "photography",
+      title: "",
+      image: "/images/forest-img-4.jpg",
+      description: "",
+    },
+    {
+      id: 88,
+      category: "photography",
+      title: "",
+      image: "/images/forest-img-3.jpg",
       description: "",
     },
     {
@@ -97,10 +102,17 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
       description: "",
     },
     {
-      id: 10,
+      id: 99,
       category: "photography",
       title: "",
       image: "/images/photo_5.jpg",
+      description: "",
+    },
+    {
+      id: 10,
+      category: "photography",
+      title: "",
+      image: "/images/markup-man-img.jpg",
       description: "",
     },
     {
@@ -108,6 +120,62 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
       category: "photography",
       title: "",
       image: "/images/photo_6.jpg",
+      description: "",
+    },
+    {
+      id: 111,
+      category: "photography",
+      title: "",
+      image: "/images/sea-side-img-2.jpg",
+      description: "",
+    },
+    {
+      id: 122,
+      category: "photography",
+      title: "",
+      image: "/images/sea-side-img.jpg",
+      description: "",
+    },
+    {
+      id: 1222,
+      category: "photography",
+      title: "",
+      image: "/images/face-img-1.jpg",
+      description: "",
+    },
+    {
+      id: 1223,
+      category: "photography",
+      title: "",
+      image: "/images/face-img-3.jpg",
+      description: "",
+    },
+    {
+      id: 1224,
+      category: "photography",
+      title: "",
+      image: "/images/face-img-2.jpg",
+      description: "",
+    },
+    {
+      id: 1225,
+      category: "photography",
+      title: "",
+      image: "/images/official-img-2.jpg",
+      description: "",
+    },
+    {
+      id: 1226,
+      category: "photography",
+      title: "",
+      image: "/images/official-img-3.jpg",
+      description: "",
+    },
+    {
+      id: 1227,
+      category: "photography",
+      title: "",
+      image: "/images/official-img-1.jpg",
       description: "",
     },
     {
@@ -150,6 +218,48 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
       category: "photography",
       title: "",
       image: "/images/photo_12.jpg",
+      description: "",
+    },
+    {
+      id: 119,
+      category: "photography",
+      title: "",
+      image: "/images/lady-model-img-4.jpg",
+      description: "",
+    },
+    {
+      id: 120,
+      category: "photography",
+      title: "",
+      image: "/images/lady-model-img-6.jpg",
+      description: "",
+    },
+    {
+      id: 121,
+      category: "photography",
+      title: "",
+      image: "/images/lady-model-img-5.jpg",
+      description: "",
+    },
+    {
+      id: 1121,
+      category: "photography",
+      title: "",
+      image: "/images/lady-model.avif",
+      description: "",
+    },
+    {
+      id: 1221,
+      category: "photography",
+      title: "",
+      image: "/images/lady-model.avif",
+      description: "",
+    },
+    {
+      id: 1321,
+      category: "photography",
+      title: "",
+      image: "/images/lady-model.avif",
       description: "",
     },
 
@@ -234,7 +344,7 @@ const GalleryPage = ({ onBack }: { onBack: () => void }) => {
       {/* Gallery Grid */}
       <div className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
+          <div className="max-w-full mx-auto">
             {filteredArtworks.length === 0 ? (
               <div className="text-center py-16">
                 <p className="text-coffee/70 dark:text-gray-400 text-lg">
