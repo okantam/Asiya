@@ -77,12 +77,12 @@ export default function ElementaryArt({
         "/images/mini-robotic-3.jpg",
       ],
     },
-    {
-      title: "Surrealist Inspired Art",
-      description:
-        "With scissors, glue, and big imaginations, students made surrealist collages that mix the real with the unreal. This project was all about seeing the world in a new and playful way.",
-      images: ["/images/surrealist-art-1.png"],
-    },
+    // {
+    //   title: "Surrealist Inspired Art",
+    //   description:
+    //     "With scissors, glue, and big imaginations, students made surrealist collages that mix the real with the unreal. This project was all about seeing the world in a new and playful way.",
+    //   images: ["/images/surrealist-art-1.png"],
+    // },
   ];
 
   const handleArtworkClick = (index: number) => {
