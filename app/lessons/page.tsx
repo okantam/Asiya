@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, Suspense, useRef, useEffect } from "react";
+import { motion, AnimatePresence, useScroll, useInView } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FileText, Presentation } from "lucide-react";
 import { LessonPlan } from "@/types/lesson";
@@ -109,6 +110,46 @@ export default function LessonPlansPage() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentSectionImages, setCurrentSectionImages] = useState<string[]>([]);
   const [currentSectionTitle, setCurrentSectionTitle] = useState<string>("");
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  // Scroll animation
+  const { scrollYProgress } = useScroll();
+
+  // Refs for scroll animations
+  const headerRef = useRef<HTMLDivElement>(null);
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // Check if elements are in view
+  const isHeaderInView = useInView(headerRef, { once: true, amount: 0.3 });
+  const isTabsInView = useInView(tabsRef, { once: true, amount: 0.3 });
+  const isContentInView = useInView(contentRef, { once: true, amount: 0.3 });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setHasScrolled(scrollPosition > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Animation variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
 
   // Modal functions
   const openImageModal = (
@@ -130,17 +171,159 @@ export default function LessonPlansPage() {
   };
 
   return (
-    <div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-pink-100 to-pink-200 dark:from-gray-900 dark:to-gray-800">
+    <motion.div className="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-pink-100 to-pink-200 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+      {/* Scroll progress indicator */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-coral-500 dark:bg-coral-600 z-50 origin-left"
+        style={{ scaleX: scrollYProgress }}
+      />
+
+      {/* Scroll hint arrow */}
+      <motion.div
+        className={`fixed bottom-8 left-1/2 transform -translate-x-1/2 z-40 ${
+          hasScrolled ? "opacity-0" : "opacity-100"
+        }`}
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: hasScrolled ? 0 : 1, y: hasScrolled ? -20 : 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.div
+          className="text-coral-600 dark:text-coral-400 bg-white/80 dark:bg-gray-800/80 rounded-full p-2 shadow-md backdrop-blur-sm"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M12 19V5" />
+            <path d="m5 12 7 7 7-7" />
+          </svg>
+        </motion.div>
+      </motion.div>
+
+      {/* Decorative floating elements */}
+      <motion.div
+        className="absolute top-32 right-10 w-24 h-24 rounded-full bg-pink-300/30 dark:bg-pink-800/20 z-0 backdrop-blur-md"
+        animate={{
+          y: [0, -15, 0],
+          opacity: [0.7, 0.9, 0.7],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        whileHover={{
+          scale: 1.2,
+          backgroundColor: "rgba(244, 114, 182, 0.4)",
+          boxShadow: "0 0 20px rgba(244, 114, 182, 0.3)",
+        }}
+      />
+
+      {/* Square decoration */}
+      <motion.div
+        className="absolute top-[40vh] right-[30%] w-16 h-16 bg-coral-300/20 dark:bg-coral-700/20 z-0 backdrop-blur-sm"
+        animate={{
+          rotate: [0, 45, 0],
+          scale: [1, 1.2, 1],
+          opacity: [0.6, 0.8, 0.6],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        whileHover={{
+          scale: 1.4,
+          backgroundColor: "rgba(251, 113, 133, 0.4)",
+          borderRadius: "30%",
+        }}
+      />
+
+      <motion.div
+        className="absolute bottom-40 left-16 w-32 h-32 rounded-full bg-pink-200/30 dark:bg-pink-700/10 z-0 backdrop-blur-md"
+        animate={{
+          y: [0, -20, 0],
+          opacity: [0.5, 0.8, 0.5],
+          scale: [1, 1.15, 1],
+        }}
+        transition={{
+          duration: 7.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+          delay: 1.5,
+        }}
+        whileHover={{
+          scale: 1.3,
+          backgroundColor: "rgba(244, 114, 182, 0.35)",
+        }}
+      />
+
+      {/* Triangle decoration */}
+      <motion.div
+        className="absolute top-[60vh] right-8 w-24 h-24 z-0"
+        style={{
+          clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
+          background:
+            "linear-gradient(45deg, rgba(244, 114, 182, 0.2), rgba(236, 72, 153, 0.1))",
+          backdropFilter: "blur(8px)",
+        }}
+        animate={{
+          rotate: [0, 360],
+          scale: [0.8, 1, 0.8],
+        }}
+        transition={{
+          rotate: {
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear",
+          },
+          scale: {
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+        }}
+        whileHover={{
+          scale: 1.3,
+          rotate: 180,
+          filter: "hue-rotate(90deg)",
+        }}
+      />
+
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+        <motion.div
+          ref={headerRef}
+          className="text-center mb-10"
+          initial="hidden"
+          animate={isHeaderInView ? "visible" : "hidden"}
+          variants={staggerContainer}
+        >
+          <motion.h1
+            className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4"
+            variants={fadeInUp}
+            transition={{ duration: 0.6 }}
+          >
             Art Lessons
-          </h1>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          </motion.h1>
+          <motion.p
+            className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+            variants={fadeInUp}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Explore my comprehensive curriculum spanning elementary, junior, and high
             school levels.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Use TabSelector to set tab based on URL parameters */}
         <Suspense fallback={null}>
@@ -153,70 +336,156 @@ export default function LessonPlansPage() {
           className="w-full"
           onValueChange={setActiveTab}
         >
-          <div className="mb-8">
-            <TabsList className="bg-gradient-to-br from-pink-50 to-pink-100 dark:from-gray-800 dark:to-gray-700 grid w-full  grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-              <TabsTrigger
-                value="lesson-plans"
-                className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50"
+          <motion.div
+            className="mb-8"
+            ref={tabsRef}
+            initial="hidden"
+            animate={isTabsInView ? "visible" : "hidden"}
+            variants={fadeInUp}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <TabsList className="bg-gradient-to-br from-pink-50 to-pink-100 dark:from-gray-800 dark:to-gray-700 grid w-full grid-cols-2 md:grid-cols-4 gap-3 mb-8 shadow-md">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <TabsTrigger
+                  value="lesson-plans"
+                  className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50 transition-all duration-300"
+                >
+                  Lesson Plans
+                </TabsTrigger>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ delay: 0.05 }}
               >
-                Lesson Plans
-              </TabsTrigger>
-              <TabsTrigger
-                value="elementary"
-                className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50"
+                <TabsTrigger
+                  value="elementary"
+                  className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50 transition-all duration-300"
+                >
+                  Elementary Art
+                </TabsTrigger>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ delay: 0.1 }}
               >
-                Elementary Art
-              </TabsTrigger>
-              <TabsTrigger
-                value="junior"
-                className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50"
+                <TabsTrigger
+                  value="junior"
+                  className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50 transition-all duration-300"
+                >
+                  Junior Art
+                </TabsTrigger>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ delay: 0.15 }}
               >
-                Junior Art
-              </TabsTrigger>
-              <TabsTrigger
-                value="high-school"
-                className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50"
-              >
-                High School Art
-              </TabsTrigger>
+                <TabsTrigger
+                  value="high-school"
+                  className="dark:data-[state=active]:bg-coral-700 dark:data-[state=active]:text-gray-100 dark:text-gray-300 dark:hover:bg-gray-700/50 transition-all duration-300"
+                >
+                  High School Art
+                </TabsTrigger>
+              </motion.div>
             </TabsList>
-          </div>
+          </motion.div>
 
-          {/* Lesson Plans Tab Content */}
-          <TabsContent value="lesson-plans">
-            <LessonPlans
-              lessonPlans={lessonPlans}
-              categories={categories}
-              selectedCategory={selectedCategory}
-              setSelectedCategory={setSelectedCategory}
-            />
-          </TabsContent>
+          {/* Animated Tab Contents with AnimatePresence for smooth transitions */}
+          <motion.div
+            ref={contentRef}
+            initial="hidden"
+            animate={isContentInView ? "visible" : "hidden"}
+            variants={fadeInUp}
+            transition={{ duration: 0.7 }}
+            className="relative"
+          >
+            <AnimatePresence mode="wait">
+              {/* Lesson Plans Tab Content */}
+              <TabsContent value="lesson-plans" className="relative overflow-hidden">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, type: "spring", stiffness: 120 }}
+                  className="relative"
+                  layoutId="tab-content-lesson-plans"
+                >
+                  <LessonPlans
+                    lessonPlans={lessonPlans}
+                    categories={categories}
+                    selectedCategory={selectedCategory}
+                    setSelectedCategory={setSelectedCategory}
+                  />
+                </motion.div>
+              </TabsContent>
 
-          {/* Elementary Art Tab Content */}
-          <TabsContent value="elementary">
-            <ElementaryArt activeTab={activeTab} openImageModal={openImageModal} />
-          </TabsContent>
+              {/* Elementary Art Tab Content */}
+              <TabsContent value="elementary" className="relative overflow-hidden">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, type: "spring", stiffness: 120 }}
+                  className="relative"
+                  layoutId="tab-content-elementary"
+                >
+                  <ElementaryArt activeTab={activeTab} openImageModal={openImageModal} />
+                </motion.div>
+              </TabsContent>
 
-          {/* Junior Art Tab Content */}
-          <TabsContent value="junior">
-            <JuniorArt activeTab={activeTab} openImageModal={openImageModal} />
-          </TabsContent>
+              {/* Junior Art Tab Content */}
+              <TabsContent value="junior" className="relative overflow-hidden">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, type: "spring", stiffness: 120 }}
+                  className="relative"
+                  layoutId="tab-content-junior"
+                >
+                  <JuniorArt activeTab={activeTab} openImageModal={openImageModal} />
+                </motion.div>
+              </TabsContent>
 
-          {/* High School Art Tab Content */}
-          <TabsContent value="high-school">
-            <HighSchoolArt activeTab={activeTab} openImageModal={openImageModal} />
-          </TabsContent>
+              {/* High School Art Tab Content */}
+              <TabsContent value="high-school" className="relative overflow-hidden">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5, type: "spring", stiffness: 120 }}
+                  className="relative"
+                  layoutId="tab-content-high-school"
+                >
+                  <HighSchoolArt activeTab={activeTab} openImageModal={openImageModal} />
+                </motion.div>
+              </TabsContent>
+            </AnimatePresence>
+          </motion.div>
         </Tabs>
       </div>
 
       {/* Image Modal with sliding functionality */}
-      <ImageModal
-        modalOpen={modalOpen}
-        closeImageModal={closeImageModal}
-        selectedImage={selectedImage}
-        allImages={currentSectionImages}
-        sectionTitle={currentSectionTitle}
-      />
-    </div>
+      <AnimatePresence>
+        {modalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ImageModal
+              modalOpen={modalOpen}
+              closeImageModal={closeImageModal}
+              selectedImage={selectedImage}
+              allImages={currentSectionImages}
+              sectionTitle={currentSectionTitle}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }
