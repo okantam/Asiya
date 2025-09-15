@@ -68,7 +68,7 @@ export const metadata: Metadata = {
         url: "/images/new_about-profile.webp",
         width: 800,
         height: 600,
-        alt: "Asiya Kinebrew-Okanta Profile",
+        alt: "Asiya Kinebrew Profile",
       },
     ],
     locale: "en_US",

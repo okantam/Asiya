@@ -7,6 +7,7 @@ import HomeNavigation from "@/components/home-navigation";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import GeometricBackground from "@/components/GeometricBackground";
 
 export default function HomePage() {
   const openResume = () => {
@@ -33,12 +34,16 @@ export default function HomePage() {
     },
   };
 
+  //relative min-h-screen bg-background overflow-hidden
   return (
-    <div className="min-h-screen bg-[#e58991] dark:bg-gray-950 text-white">
+    <div className="relative min-h-screen bg-[linear-gradient(157deg,_#be848f_2.23%,_#d58597_73.54%,_#d9b7bd_100%)] dark:bg-[linear-gradient(157deg,_#3d2d36_2.23%,_#563642_73.54%,_#483840_100%)] text-white">
       <HomeNavigation />
 
+      {/* Geometric Background */}
+      <GeometricBackground />
+
       {/* Hero Section */}
-      <section className="pt-24 bg-[linear-gradient(157deg,_#be848f_2.23%,_#d58597_73.54%,_#d9b7bd_100%)] dark:bg-[linear-gradient(157deg,_#3d2d36_2.23%,_#563642_73.54%,_#483840_100%)] relative overflow-hidden">
+      <section className="pt-24 bg-transparent relative overflow-hidden">
         <motion.div
           className="absolute top-24 right-36 w-32 h-32 bg-[#d5a4a8] dark:bg-[#714953] rounded-full opacity-30"
           animate={{
@@ -61,7 +66,7 @@ export default function HomePage() {
             >
               <Image
                 src="/images/asiya-hero-brush.png"
-                alt="Asiya Kinebrew-Okanta Profile"
+                alt="Asiya Kinebrew Profile"
                 width={500}
                 height={1000}
                 className="w-full h-full object-cover"
@@ -127,7 +132,7 @@ export default function HomePage() {
                   <Button
                     asChild
                     variant="secondary"
-                    className="bg-coral-600 dark:bg-coral-800 border-coral-600 dark:border-coral-700 text-white px-8 py-4 rounded-full font-bold hover:bg-coral-700 dark:hover:bg-coral-700 transition-all"
+                    className="flex bg-coral-600 dark:bg-coral-800 border-coral-600 dark:border-coral-700 text-white px-8 py-4 rounded-full font-bold hover:bg-coral-700 dark:hover:bg-coral-700 transition-all"
                   >
                     <Link href="/about">Read More</Link>
                   </Button>
@@ -135,7 +140,7 @@ export default function HomePage() {
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button
                     onClick={openResume}
-                    className="border-2 border-white dark:border-gray-400 bg-transparent hover:border-coral-700 dark:hover:border-coral-700 text-gray-100 dark:text-gray-200 px-8 py-4 rounded-full font-bold hover:bg-coral-700 dark:hover:bg-coral-700 hover:text-white transition-all"
+                    className="flex  w-full border-2 border-white dark:border-gray-400 bg-transparent hover:border-coral-700 dark:hover:border-coral-700 text-gray-100 dark:text-gray-200 px-8 py-4 rounded-full font-bold hover:bg-coral-700 dark:hover:bg-coral-700 hover:text-white transition-all"
                   >
                     View My Resume
                     <Eye className="w-4 h-4 mr-2" />
@@ -190,7 +195,7 @@ export default function HomePage() {
         animate={isCategoryInView ? "visible" : "hidden"}
         transition={{ duration: 0.5 }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div className="grid md:grid-cols-3 gap-8" variants={staggerChildren}>
             {/* Elementary Art */}
             <motion.div

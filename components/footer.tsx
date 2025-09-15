@@ -3,7 +3,7 @@ import { Palette } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-coffee dark:bg-gray-900 text-white py-12">
+    <footer className="bg-coffee dark:bg-gray-900 text-white py-12 relative z-10">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
@@ -18,7 +18,7 @@ const Footer = () => {
                     Art With
                   </span>
                   <div className="text-xl text-coral-600 dark:text-coral-500 font-medium tracking-wide uppercase">
-                    Asiya Kinebrew-Okanta
+                    Asiya Kinebrew
                   </div>
                 </div>
               </div>

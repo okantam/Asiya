@@ -268,7 +268,7 @@ export default function AboutPage() {
                 <motion.div whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }}>
                   <Image
                     src="/images/new_about-profile.webp"
-                    alt="Asiya Kinebrew-Okanta Profile"
+                    alt="Asiya Kinebrew Profile"
                     width={400}
                     height={500}
                     className="w-full h-full object-cover transition-all duration-700 group-hover:brightness-110"
