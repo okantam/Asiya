@@ -128,7 +128,7 @@ export const artworks: ArtworkItem[] = [
     location: "Hueston Woods State Park",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom,Adobe Express & Adobe Photoshop ",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 99,
@@ -140,7 +140,7 @@ export const artworks: ArtworkItem[] = [
     location: "Hueston Woods State Park",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom,Adobe Express & Adobe Photoshop ",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 10,
@@ -152,7 +152,7 @@ export const artworks: ArtworkItem[] = [
     location: "Hueston Woods State Park",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom,Adobe Express & Adobe Photoshop ",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 11,
@@ -164,7 +164,7 @@ export const artworks: ArtworkItem[] = [
     location: "Hueston Woods State Park",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom,Adobe Express & Adobe Photoshop ",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 111,
@@ -176,7 +176,7 @@ export const artworks: ArtworkItem[] = [
     location: "Hueston Woods State Park",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom,Adobe Express & Adobe Photoshop ",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 122,
@@ -188,7 +188,7 @@ export const artworks: ArtworkItem[] = [
     location: "Hueston Woods State Park",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom,Adobe Express & Adobe Photoshop ",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 1222,
@@ -200,7 +200,7 @@ export const artworks: ArtworkItem[] = [
     location: "Home Bathroom Shoot",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom,Adobe Express & Adobe Photoshop ",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 1223,
@@ -212,7 +212,7 @@ export const artworks: ArtworkItem[] = [
     location: "Home Bathroom Shoot",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom,Adobe Express & Adobe Photoshop ",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 1224,
@@ -224,7 +224,7 @@ export const artworks: ArtworkItem[] = [
     location: "Home Bathroom Shoot",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom,Adobe Express & Adobe Photoshop ",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 12244,
@@ -236,7 +236,7 @@ export const artworks: ArtworkItem[] = [
     location: "Pool",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 12245,
@@ -248,7 +248,7 @@ export const artworks: ArtworkItem[] = [
     location: "Pool",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 12246,
@@ -260,7 +260,7 @@ export const artworks: ArtworkItem[] = [
     location: "Pool",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom",
-    model: "Micheal Okanta",
+    model: "Michael Okanta",
   },
   {
     id: 1225,
@@ -272,7 +272,7 @@ export const artworks: ArtworkItem[] = [
     location: "Miami University Campus",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom,Adobe Express ",
-    model: "Micheal Okanta & Ahmed Danquah",
+    model: "Michael Okanta & Ahmed Danquah",
   },
   {
     id: 1226,
@@ -296,7 +296,7 @@ export const artworks: ArtworkItem[] = [
     location: "Miami University Campus",
     cameraUsed: "Canon Rebel T100",
     editedOn: "Adobe Lightroom,Adobe Express ",
-    model: "Micheal Okanta & Ahmed Danquah",
+    model: "Michael Okanta & Ahmed Danquah",
   },
   {
     id: 113,
