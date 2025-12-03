@@ -595,11 +595,11 @@ export default function AboutPage() {
               </motion.svg>
             </motion.a>
             <motion.div
-              className="mt-6 p-4 rounded-lg bg-pink-100 dark:bg-gray-700 border border-pink-200 dark:border-gray-600 shadow-inner"
+              className="mt-6 p-4 rounded-lg bg-pink-50 dark:bg-gray-800"
               initial={{ opacity: 0, y: 20 }}
               animate={isPhilosophyInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ delay: 0.7, duration: 0.5 }}
-              whileHover={{ scale: 1.01, backgroundColor: "rgba(255, 192, 203, 0.2)" }}
+              
             >
               <motion.h3
                 className="text-xl font-bold text-foreground dark:text-gray-100 mb-3 flex items-center"
@@ -610,7 +610,7 @@ export default function AboutPage() {
                 <motion.span className="mr-2 text-pink-600 dark:text-pink-400">
                   📄
                 </motion.span>
-                Professional Resume
+                Professional CV
               </motion.h3>
 
               <motion.a
@@ -624,7 +624,7 @@ export default function AboutPage() {
                 whileHover={{ x: 5 }}
                 whileTap={{ scale: 0.98 }}
               >
-                View my Resume
+                View my CV
                 <motion.svg
                   className="w-4 h-4 ml-1"
                   fill="none"

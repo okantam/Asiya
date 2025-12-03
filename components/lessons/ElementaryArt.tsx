@@ -18,6 +18,34 @@ export default function ElementaryArt({
 
   const elementaryArtworks = [
     {
+      title: "What's Under the Surface of You",
+      description:
+        "Pre-K Self-Portraits",
+      images: [
+        "/images/DSC_1186 (1)_anonymized.jpg",
+        "/images/DSC_1187 (1)_anonymized.jpg",
+        "/images/DSC_1188 (1)_anonymized.jpg",
+        "/images/DSC_1202 (1)_anonymized.jpg",
+        "/images/DSC_1304 (2)_anonymized.jpg",
+        "/images/PXL_20251004_150920252.jpg",
+        "/images/PXL_20251004_150925811.jpg",
+        "/images/PXL_20251004_151003516.jpg",
+        "/images/PXL_20251004_151008013.jpg",
+        "/images/PXL_20251004_151059155.jpg",
+        "/images/PXL_20251004_151101527.jpg"
+      ]
+    },
+    {
+      title: "Sea Mural Collab",
+      description:
+        "Pre-K Sea Mural Collab",
+      images: [
+        "/images/Mural Sea Collab.png", 
+        "/images/DSC_1623 (2)_anonymized.jpg",
+        "/images/DSC_1622 (1)_anonymized.jpg"
+      ]
+    },
+    {
       title: "Paper Plate Mask",
       description:
         "Our second grade artists at Camp Art Academy had a blast transforming simple materials such as paper plates into wearable art! This project sparked their imagination while introducing key elements of mask-making and storytelling",

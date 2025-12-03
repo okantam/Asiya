@@ -142,7 +142,7 @@ export default function HomePage() {
                     onClick={openResume}
                     className="flex  w-full border-2 border-white dark:border-gray-400 bg-transparent hover:border-coral-700 dark:hover:border-coral-700 text-gray-100 dark:text-gray-200 px-8 py-4 rounded-full font-bold hover:bg-coral-700 dark:hover:bg-coral-700 hover:text-white transition-all"
                   >
-                    View My Resume
+                    View My CV
                     <Eye className="w-4 h-4 mr-2" />
                   </Button>
                 </motion.div>
@@ -176,20 +176,52 @@ export default function HomePage() {
             }}
           />
         </div>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-          <path
-            fill="#e58991"
-            fillOpacity="1"
-            className="dark:fill-[#483036]"
-            d="M0,256L48,218.7C96,181,192,107,288,112C384,117,480,203,576,245.3C672,288,768,288,864,250.7C960,213,1056,139,1152,122.7C1248,107,1344,149,1392,170.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-          ></path>
-        </svg>
+       {/* Featured Art Snapshot Gallery (Reverted to Original Look) */}
+        <motion.div
+          className="max-w-7xl mx-auto px-4 relative mt-8 z-20"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.3 }}
+        >
+          <div className="grid grid-cols-3 gap-4 md:gap-6">
+            {/* Image 1: Placeholder for a featured artwork (Original simple style) */}
+            <div className="rounded-xl overflow-hidden shadow-xl aspect-[4/3] group cursor-pointer border-4 border-white/50 hover:border-white transition-all duration-300">
+              <img
+                src="/images/DSC_1830_anonymized.jpg" // Using <img> and src
+                alt="Featured Collaborative Art Project"
+                width={400}
+                height={300}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            {/* Image 2: Placeholder for a featured artwork (Original simple style) */}
+            <div className="rounded-xl overflow-hidden shadow-xl aspect-[4/3] group cursor-pointer border-4 border-white/50 hover:border-white transition-all duration-300">
+              <img
+                src="/images/DSC_1061_anonymized.jpg" // Using <img> and src
+                alt="Featured Identity Portrait Lesson"
+                width={400}
+                height={300}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            {/* Image 3: Placeholder for a featured artwork (Original simple style) */}
+            <div className="rounded-xl overflow-hidden shadow-xl aspect-[4/3] group cursor-pointer border-4 border-white/50 hover:border-white transition-all duration-300">
+              <img
+                src="/images/Screenshot 2025-12-03 001122.png" // Using <img> and src
+                alt="Featured Mask Making Project"
+                width={400}
+                height={300}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Art Categories Section */}
       <motion.section
         ref={categoryRef}
-        className="py-16 dark:bg-gray-950"
+        className="py-16 dark:bg-gray-950 bg-white"
         variants={fadeInUp}
         initial="hidden"
         animate={isCategoryInView ? "visible" : "hidden"}

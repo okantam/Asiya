@@ -15,8 +15,44 @@ import ImageModal from "@/components/lessons/ImageModal";
 import TabSelector from "@/components/lessons/TabSelector";
 
 const lessonPlans: LessonPlan[] = [
-  {
+   {
     id: 1,
+    title: "Mural Sea Collab",
+    description: `This lesson was born from the idea that the final day of the Miami University Saturday Art Camp should be something next-level collaborative, where every Pre-K and Kindergarten student’s piece actually connects into one giant thing. Since our whole semester theme was "Art Under the Surface," a massive sea mural collaboration was the perfect fit. It wasn't just about drawing cute fish; we redesigned the whole curriculum to be standards-aligned and super intentional about teamwork and shared ownership. It’s a great example of taking a basic concept and making it a robust, process-based experience that proves how powerful it is when everyone creates together.`,
+    image: "/images/Mural Sea Collab.png",
+    imageAlt: "2D and mixed media sea mural pre-k + k collaborative",
+    materials: [
+      {
+        name: "Lesson Plan",
+        type: "pdf",
+        icon: FileText,
+        path: "/documents/Mural Sea collab.docx.pdf",
+      },
+    ],
+    category: "Elementary",
+    type: "elementary",
+    grade: "Pre-K & Kindergarten",
+  },
+  {
+    id: 2,
+    title: "What's Under the Surface of You",
+    description: `This is one of my favorite lessons, designed for the Pre-K and Kindergarten crew to explore how they see themselves, both inside and out. The big idea is using layered self-portraits to visually separate the Surface what we look like clothes, hair from the Underneath our feelings, favorite things, and imagination. Inspired by artists like Frida Kahlo and Romare Bearden, the kids use stencils and collage to build their personal narrative. It is a powerful, process-based activity that lets them express things words cannot, proving art is the best tool for self-discovery and making space for all their big feelings.`,
+    image: "/images/What's Under the Surface of You.jpg",
+    imageAlt: "Young student using glue and a stencil to create the `Surface` layer of her identity portrait on pink paper.",
+    materials: [
+      {
+        name: "Lesson Plan",
+        type: "pdf",
+        icon: FileText,
+        path: "/documents/What's Under the Surface… Of YOU.docx.pdf",
+      },
+    ],
+    category: "Elementary",
+    type: "elementary",
+    grade: "Pre-K & Kindergarten",
+  },
+  {
+    id: 3,
     title: "Myaamia Arts and Culture Education Partnership",
     description: `I served as a teacher in a program where Miami University Art Education students collaborate with Miami Tribe of Oklahoma citizens from the Myaamia Center to develop a curriculum which I then taught in area public elementary schools. This project allows the Art Education program to address gaps in Ohio state arts, science, and history learning standards, which rank especially low nationwide for inclusion of Indigenous culture, particularly contemporary Indigenous culture. Under the mentorship of Myaamia scholars and as part of a teaching team, I developed a two-lesson unit focusing on Myaamia history, language, and contemporary arts and culture, and taught them to students in an Oxford, OH and Middle Town fourth-grade classroom.`,
     additionalInfo: `Because the lesson plans contain sensitive cultural information, I am not sharing them directly in this portfolio; however, I have included approved images of this work.`,
@@ -53,26 +89,9 @@ const lessonPlans: LessonPlan[] = [
     type: "elementary",
     grade: "4th Grade",
   },
+
   {
-    id: 2,
-    title: "Marine Life Collaborative Mural",
-    description: `In my Introduction to Elementary Art Methods class, my group and I developed a lesson inspired by an existing one that lacked depth. Our goal was to create a detailed and clear plan, ensuring it was both comprehensive and easy to follow.`,
-    image: "/images/marine-lesson-img.jpg",
-    imageAlt: "Traditional Myaamia geometric pattern artwork in red, white, and black",
-    materials: [
-      {
-        name: "Lesson Plan",
-        type: "pdf",
-        icon: FileText,
-        path: "/documents/Marine Life lesson.pdf",
-      },
-    ],
-    category: "Elementary",
-    type: "elementary",
-    grade: "4th Grade",
-  },
-  {
-    id: 5,
+    id: 4,
     title: "Let's Get Growing! ",
     description: `In my Introduction Art Methods class, my group and I designed a craft activity inspired by Emily Holt's sculpture located at Miami University Art Museum on campus. Our goal was to create a lesson that encourages students to engage with art in a meaningful way while drawing inspiration from a prominent piece in our community.`,
     image: "/images/lesson-image.png",
