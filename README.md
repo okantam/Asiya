@@ -1,1 +1,1 @@
-# Art Eductor Website
+# Art Educator Website

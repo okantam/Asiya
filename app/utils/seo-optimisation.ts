@@ -2,7 +2,7 @@
 export const personStructuredData = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: "Asiya Kine Brew",
+  name: "Asiya Kinebrew",
   jobTitle: "Art Educator & Artist",
   description:
     "Inspiring creativity through art and education. Art educator specializing in elementary to high school art instruction.",
@@ -36,7 +36,7 @@ export const websiteStructuredData = {
   "description": "Inspiring creativity through art and education. Explore student artwork from elementary to high school levels.",
   "author": {
     "@type": "Person",
-    "name": "Asiya Kine Brew"
+    "name": "Asiya Kinebrew"
   },
   "potentialAction": {
     "@type": "SearchAction",

@@ -594,6 +594,53 @@ export default function AboutPage() {
                 />
               </motion.svg>
             </motion.a>
+            <motion.div
+              className="mt-6 p-4 rounded-lg bg-pink-100 dark:bg-gray-700 border border-pink-200 dark:border-gray-600 shadow-inner"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isPhilosophyInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
+              whileHover={{ scale: 1.01, backgroundColor: "rgba(255, 192, 203, 0.2)" }}
+            >
+              <motion.h3
+                className="text-xl font-bold text-foreground dark:text-gray-100 mb-3 flex items-center"
+                initial={{ opacity: 0 }}
+                animate={isPhilosophyInView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ delay: 0.8, duration: 0.5 }}
+              >
+                <motion.span className="mr-2 text-pink-600 dark:text-pink-400">
+                  📄
+                </motion.span>
+                Professional Resume
+              </motion.h3>
+
+              <motion.a
+                // This links to the PDF file in your public folder
+                href="/Asiya Kinebrew's Resume.pdf"
+                target="_blank"
+                className="inline-flex items-center text-coral-600 hover:text-coral-700 dark:text-coral-400 dark:hover:text-coral-300 underline underline-offset-2"
+                initial={{ opacity: 0 }}
+                animate={isPhilosophyInView ? { opacity: 1 } : { opacity: 0 }}
+                transition={{ delay: 0.9, duration: 0.5 }}
+                whileHover={{ x: 5 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                View my Resume
+                <motion.svg
+                  className="w-4 h-4 ml-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  />
+                </motion.svg>
+              </motion.a>
+            </motion.div>
           </motion.div>
         </div>
       </section>
